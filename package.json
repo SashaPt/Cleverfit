@@ -12,7 +12,7 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:css": "stylelint ./src/**/*.css",
+    "lint:css": "stylelint ./src/**/*.{css,scss}",
     "lint:scripts": "eslint ./ ./src/ --ext .js,.jsx,.ts,.tsx",
     "lint": "yarn lint:css && yarn lint:scripts",
     "lint:fix": "yarn lint:css --fix && yarn lint:scripts --fix",

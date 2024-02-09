@@ -1,42 +1,112 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+.main-content {
+    background: unset;
+}
+
+.main-page {
+    background: url('../../../public/main_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main-page .ant-space-item {
+    display: flex;
+}
+
+.main-container {
+    max-width: 100%;
+    width: 752px;
+    padding: 24px 0 0;
+}
+
+.main-page .ant-layout-content {
+    padding-bottom: 180px;
+}
+
+.main-card {
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+}
+
+.main-card-blue .ant-typography {
+    color: #061178;
+    font-size: 16px;
+}
+
+.main-card-black .ant-typography {
+    color: #262626;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.main-cards {
+    margin-top: 8px;
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.main-cards .ant-card {
+    width: 100%;
+    height: 100%;
+}
+
+.main-cards .ant-card-head {
+    min-height: unset;
+    padding: 0;
+}
+
+.main-cards .ant-card-head-title {
     text-align: center;
+    padding: 12px 24px;
+    color: #262626;
+    white-space: unset;
+    text-overflow: unset;
 }
 
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+.card-btn {
+    background-color: transparent !important;
+    color: #2f54eb;
 }
 
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
+.card-btn:hover,
+.card-btn:active {
+    color: #597ef7;
+}
+
+.card-btn:focus {
+    color: #1d39c4;
+}
+
+@media screen and (max-width: 900px) {
+    .main-cards {
+        grid-template-columns: repeat(auto-fit, minmax(182px, 1fr));
     }
-    to {
-        transform: rotate(360deg);
+
+    .main-cards .ant-card-head-title {
+        text-align: left;
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
+@media screen and (max-width: 600px) {
+    .main-page .ant-layout-content {
+        padding-bottom: 24px;
     }
-}
+    .main-page .ant-layout-content ._container {
+        padding: 0 16px;
+    }
 
-.card {
-    padding: 2em;
-}
+    .main-card .ant-card-body {
+        padding: 16px;
+    }
 
-.read-the-docs {
-    color: #888;
+    .main-cards {
+        gap: 8px;
+    }
+
+    .main-cards .ant-card-head-title {
+        text-align: center;
+    }
 }
