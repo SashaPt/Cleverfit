@@ -1,0 +1,80 @@
+#header {
+    padding: 16px 0;
+    background: #f0f5ff;
+    height: unset;
+
+    .ant-breadcrumb {
+        color: #8c8c8c;
+        li:last-child {
+            color: #262626;
+        }
+    }
+
+    .header-content {
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 8px;
+    }
+
+    .header-title {
+        color: #262626;
+        padding: 6px 0px;
+        font-weight: 700;
+        margin: 0;
+        font-size: min(2.639vw, 38px);
+    }
+
+    .settings-btn {
+        width: max-content;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #header {
+        .header-title {
+            font-size: min(2.878vw, 24px);
+            font-weight: 500;
+        }
+
+        .settings-btn .anticon {
+            display: none;
+        }
+
+        .settings-btn > .anticon + span,
+        .settings-btn > span + .anticon {
+            margin-left: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #header {
+        .header-content {
+            padding-top: 0;
+        }
+
+        .header-title {
+            font-size: min(5.556vw, 20px);
+        }
+
+        .settings-btn {
+            padding: 0;
+        }
+
+        .settings-btn .anticon {
+            display: flex;
+            justify-content: center;
+            border: 1px solid #d9d9d9;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+            background: #fff;
+        }
+
+        .settings-btn > .anticon + span {
+            display: none;
+        }
+    }
+}
