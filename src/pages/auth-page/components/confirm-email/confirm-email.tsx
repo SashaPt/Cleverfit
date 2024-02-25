@@ -35,14 +35,13 @@ export const ConfirmEmail: React.FC = () => {
     const onComplete = async () => {
         const code = confirmForm.getFieldValue('verification');
         try {
-            const response = await confirmEmail({ email, code }).unwrap();
-            if (response && response.message) {
-                dispatch(
-                    push(Paths.AUTH + '/' + Paths.CHANGE_PASSWORD, {
-                        prevPath: history.location.pathname,
-                    }),
-                );
-            }
+            await confirmEmail({ email, code }).unwrap();
+
+            dispatch(
+                push(Paths.AUTH + '/' + Paths.CHANGE_PASSWORD, {
+                    prevPath: history.location.pathname,
+                }),
+            );
         } catch (err) {
             confirmForm.resetFields(['verification']);
             setIsValid(false);

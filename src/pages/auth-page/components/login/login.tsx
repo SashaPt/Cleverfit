@@ -62,14 +62,14 @@ export const Login: React.FC = () => {
 
     const handleCheckEmail = async (email: string) => {
         try {
-            const resp = await checkEmail({ email }).unwrap();
-            if (resp && resp.email) {
-                dispatch(
-                    push(Paths.AUTH + '/' + Paths.CONFIRM_EMAIL, {
-                        prevPath: history.location.pathname,
-                    }),
-                );
-            }
+            await checkEmail({ email }).unwrap();
+
+            dispatch(
+                push(Paths.AUTH + '/' + Paths.CONFIRM_EMAIL, {
+                    prevPath: history.location.pathname,
+                }),
+            );
+
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             if (err.status === 404 && err.data.message === 'Email не найден') {

@@ -40,30 +40,33 @@ export const ChangePassword: React.FC = () => {
         });
     };
 
-    const onFinish = async (formValue: ChangePasswordData) => {
-        const { password, confirmPassword } = formValue;
+    const onFinish = () => {
+        const { password, confirmPassword } = changeForm.getFieldsValue();
         if (password && confirmPassword) {
             dispatch(setPassword(password));
+            handleChangePassword({ password, confirmPassword });
         }
-        const value =
-            password && confirmPassword
-                ? { password, confirmPassword }
-                : { password: passwordState, confirmPassword: passwordState };
-        try {
-            const response = await changePassword(value).unwrap();
+    };
 
-            if (response && response.message) {
-                dispatch(push(Paths.RESULT + '/' + Paths.SUCCESS_CHANGE_PASSWORD));
-            }
+    const handleChangePassword = async (value: ChangePasswordData) => {
+        const { password, confirmPassword } = value;
+        try {
+            await changePassword({ password, confirmPassword }).unwrap();
+
+            dispatch(push(Paths.RESULT + '/' + Paths.SUCCESS_CHANGE_PASSWORD, {
+                prevPath: location.pathname,
+            }));
         } catch (err) {
-            dispatch(push(Paths.RESULT + '/' + Paths.ERROR_CHANGE_PASSWORD));
+            dispatch(push(Paths.RESULT + '/' + Paths.ERROR_CHANGE_PASSWORD, {
+                prevPath: location.pathname,
+            }));
         }
     };
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         if (prevPath == Paths.RESULT + '/' + Paths.ERROR_CHANGE_PASSWORD) {
-            onFinish({ password: passwordState, confirmPassword: passwordState });
+            handleChangePassword({ password: passwordState, confirmPassword: passwordState });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

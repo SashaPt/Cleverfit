@@ -59,7 +59,7 @@ const resultChangeError: IResult = {
     description: 'Что-то пошло не так. Попробуйте ещё раз',
     buttonName: 'Повторить',
     buttonData: 'change-retry-button',
-    buttonNavigate: Paths.CHANGE_PASSWORD,
+    buttonNavigate: Paths.AUTH + '/' + Paths.CHANGE_PASSWORD,
 };
 const resultChangeSuccess: IResult = {
     icon: <CheckCircleFilled style={{ color: '#52c41a', fontSize: '80px' }} />,
