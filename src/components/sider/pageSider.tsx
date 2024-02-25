@@ -15,6 +15,10 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import Icon, { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
+import { useDispatch } from 'react-redux';
+import { push } from 'redux-first-history';
+import { Paths } from '../../routes/paths';
+import { setAccessToken } from '@redux/auth/authSlice';
 
 const ExitSvg = () => (
     <svg
@@ -39,6 +43,13 @@ const ExitIcon = (props: Partial<CustomIconComponentProps>) => (
 
 export const PageSider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const dispatch = useDispatch();
+
+    const onExitClick = () => {
+        localStorage.removeItem('jwtToken');
+        dispatch(setAccessToken(''));
+        dispatch(push(Paths.AUTH));
+    };
     return (
         <>
             <Sider
@@ -51,13 +62,12 @@ export const PageSider: React.FC = () => {
                 collapsedWidth={64}
             >
                 <div>
-                    <a href='#'>
-                        <img
-                            src={collapsed ? logoSmart : logoBig}
-                            className='logo'
-                            alt='Cleverfit logo'
-                        />
-                    </a>
+                    <img
+                        src={collapsed ? logoSmart : logoBig}
+                        className='logo'
+                        alt='Cleverfit logo'
+                    />
+
                     <Menu
                         theme='light'
                         mode='inline'
@@ -91,6 +101,7 @@ export const PageSider: React.FC = () => {
                     icon={<ExitIcon />}
                     className='exit-btn btn'
                     style={{ color: '#262626', textAlign: 'left' }}
+                    onClick={onExitClick}
                 >
                     Выход
                 </Button>
@@ -112,9 +123,7 @@ export const PageSider: React.FC = () => {
                 collapsedWidth={0}
             >
                 <div>
-                    <a href='#'>
-                        <img src={logoMobile} className='logo' alt='Cleverfit logo' />
-                    </a>
+                    <img src={logoMobile} className='logo' alt='Cleverfit logo' />
                     <Menu
                         theme='light'
                         mode='inline'
@@ -147,6 +156,7 @@ export const PageSider: React.FC = () => {
                     type='text'
                     className='exit-btn btn'
                     style={{ color: '#262626' }}
+                    onClick={onExitClick}
                 >
                     Выход
                 </Button>

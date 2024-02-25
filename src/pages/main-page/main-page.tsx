@@ -3,7 +3,7 @@ import { Button, Card, Col, Layout, Row, Space, Typography } from 'antd';
 const { Content } = Layout;
 const { Text, Title } = Typography;
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+
 import './main-page.css';
 
 import { PageHeader } from '@components/header/pageHeader';

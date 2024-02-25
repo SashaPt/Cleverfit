@@ -1,0 +1,97 @@
+.registration-form {
+    width: 539px;
+    max-width: 100%;
+    margin: 169px auto;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    background: #fff;
+    border-radius: 2px;
+    padding: 64px 85.5px;
+
+    .logo {
+        margin: 0 auto 48px;
+    }
+
+    .ant-form-item-explain,
+    .ant-form-item-extra {
+        color: #8c8c8c;
+    }
+    .ant-form-item {
+        margin-bottom: 32px;
+    }
+
+    .ant-input-wrapper,
+    .ant-input-affix-wrapper {
+        height: 40px;
+    }
+
+    .ant-input-group-addon {
+        color: #262626;
+    }
+
+    .ant-input-group-wrapper-status-error .ant-input-group-addon {
+        border-right-color: #d9d9d9;
+    }
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+        border-left-color: #d9d9d9;
+    }
+
+    .ant-input {
+        padding: 10px 11px;
+        color: #262626;
+    }
+
+    .ant-form-item-explain-error {
+        font-size: 12px;
+    }
+
+    .registration-form-button:not([disabled]) {
+        background-color: #2f54eb;
+    }
+
+    .registration-form-button:not([disabled]):hover {
+        background-color: #597ef7;
+    }
+
+    .registration-form-google:not([disabled]):hover {
+        color: #597ef7;
+        border-color: #597ef7;
+    }
+
+    .registration-form-button-wrapper {
+        margin-bottom: 16px;
+    }
+
+    .registration-form-google {
+        color: #262626;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .registration-form {
+        margin: 200px auto 252px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .registration-form {
+        margin: 90px auto 98px;
+        padding: 32px 16px 92px;
+
+        .logo {
+            height: 50px;
+            margin: 0 auto 32px;
+        }
+
+        .registration-form-button {
+            font-size: 14px;
+        }
+
+        .registration-form-google {
+            font-size: 14px;
+            .anticon {
+                display: none;
+            }
+        }
+    }
+}

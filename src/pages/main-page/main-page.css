@@ -3,7 +3,7 @@
 }
 
 .main-page {
-    background: url('../../../public/main_bg.png');
+    background: url('/main_bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
