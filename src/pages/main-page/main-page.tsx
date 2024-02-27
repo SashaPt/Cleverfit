@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Layout, Row, Space, Typography } from 'antd';
 const { Content } = Layout;
 const { Text, Title } = Typography;
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
+
 import './main-page.css';
 
 import { PageHeader } from '@components/header/pageHeader';
 import { PageSider } from '@components/sider/pageSider';
 import { PageFooter } from '@components/footer/pageFooter';
+import { Loader } from '@components/loader/loader';
 
 export const MainPage: React.FC = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(false);
+    }, []);
     return (
         <>
+            {isLoading && <Loader />}
             <Layout className='main-page'>
                 <PageSider></PageSider>
                 <Layout className='main-content'>
@@ -24,13 +31,13 @@ export const MainPage: React.FC = () => {
                                     <Text>
                                         С CleverFit ты сможешь: <br />
                                         — планировать свои тренировки на&nbsp;календаре, выбирая тип
-                                        и&nbsp;уровень нагрузки; <br />
-                                        — отслеживать свои достижения в&nbsp;разделе статистики,
-                                        сравнивая свои результаты с нормами и&nbsp;рекордами; <br />
-                                        — создавать свой профиль, где ты&nbsp;можешь загружать свои фото,
-                                        видео и отзывы о тренировках; <br />— выполнять расписанные
-                                        тренировки для разных частей тела, следуя подробным
-                                        инструкциям и&nbsp;советам профессиональных тренеров.
+                                        и&nbsp;уровень нагрузки; <br />— отслеживать свои достижения
+                                        в&nbsp;разделе статистики, сравнивая свои результаты с
+                                        нормами и&nbsp;рекордами; <br />— создавать свой профиль,
+                                        где ты&nbsp;можешь загружать свои фото, видео и отзывы о
+                                        тренировках; <br />— выполнять расписанные тренировки для
+                                        разных частей тела, следуя подробным инструкциям
+                                        и&nbsp;советам профессиональных тренеров.
                                     </Text>
                                 </Card>
                             </Space>
