@@ -82,8 +82,8 @@ export const ChangePassword: React.FC = () => {
                 onFinish={onFinish}
                 onFieldsChange={onChange}
             >
-                <Title level={3} style={{ textAlign: 'center', marginBottom: '32px' }}>
-                    Восстановление аккауанта
+                <Title level={3} style={{ textAlign: 'center', marginBottom: '32px', fontWeight: 500 }}>
+                    Восстановление аккаунта
                 </Title>
                 <Form.Item
                     name='password'
