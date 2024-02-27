@@ -1,6 +1,6 @@
 .result {
     width: 539px;
-    padding: 64px 32px;
+    padding: 64px 85.5px;
     .ant-card-body {
         padding: 0;
     }
@@ -35,10 +35,20 @@
     }
 
     .result-button {
+        display: block;
         height: 40px;
-
+        margin: 0 auto;
         &:not([disabled]):not(:hover) {
             background: #2f54eb;
+        }
+    }
+
+    &.include-check-back-button,
+    &.include-check-retry-button {
+        padding: 64px 32px 56px;
+        .result-button {
+            width: max-content;
+            max-width: 100%;
         }
     }
 }

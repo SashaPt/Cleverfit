@@ -48,7 +48,7 @@ const resultCheckError: IResult = {
 const resultCheckEmailError: IResult = {
     icon: <CloseCircleFilled style={{ color: '#ff4d4f', fontSize: '80px' }} />,
     title: 'Такой e-mail не зарегистрирован',
-    description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail.',
+    description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти\u00A0с\u00A0другим\u00A0e\u2011mail.',
     buttonName: 'Попробовать снова',
     buttonData: 'check-retry-button',
     buttonNavigate: Paths.AUTH,

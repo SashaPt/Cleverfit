@@ -6,8 +6,6 @@ import { authApi } from '../services/authApi';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
-    savePreviousLocations: 1,
-    //other options if needed
 });
 
 export const store = configureStore({

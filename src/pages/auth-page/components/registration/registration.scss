@@ -1,7 +1,6 @@
 .registration-form {
     width: 539px;
     max-width: 100%;
-    margin: 169px auto;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
     background: #fff;
     border-radius: 2px;
@@ -14,6 +13,14 @@
     .ant-form-item-explain,
     .ant-form-item-extra {
         color: #8c8c8c;
+        transition: none !important;
+        animation-duration: 0s !important;
+        & > * {
+            animation-duration: 0s !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: none !important;
+        }
     }
     .ant-form-item {
         margin-bottom: 32px;
@@ -67,15 +74,8 @@
     }
 }
 
-@media screen and (max-width: 900px) {
-    .registration-form {
-        margin: 200px auto 252px;
-    }
-}
-
 @media screen and (max-width: 600px) {
     .registration-form {
-        margin: 90px auto 98px;
         padding: 32px 16px 92px;
 
         .logo {

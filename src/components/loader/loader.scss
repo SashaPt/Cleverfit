@@ -1,0 +1,14 @@
+.loader {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(121, 156, 212, 0.5);
+}

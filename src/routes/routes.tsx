@@ -10,7 +10,7 @@ import { MainPage } from '@pages/main-page';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import * as results from '@pages/result-page/components/result/results';
 import { Paths } from './paths';
-import PrivateRoute from './privateRoute';
+import { PrivateRoute } from './privateRoute';
 import { ResultPage } from '@pages/result-page';
 
 export const routes = (

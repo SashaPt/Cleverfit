@@ -7,7 +7,7 @@ const token = localStorage.getItem('jwtToken');
 const initialState: AuthState = {
     email: '',
     password: '',
-    accessToken: token ? token : '',
+    accessToken: token || '',
 };
 
 const authSlice = createSlice({

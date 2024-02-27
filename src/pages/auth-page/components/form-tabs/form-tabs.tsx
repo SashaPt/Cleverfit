@@ -23,6 +23,7 @@ export const FormTabs: React.FC<{ active: string }> = ({ active }) => {
     return (
         <Tabs
             defaultActiveKey={active}
+            animated={false}
             size='large'
             tabBarGutter={0}
             centered={true}

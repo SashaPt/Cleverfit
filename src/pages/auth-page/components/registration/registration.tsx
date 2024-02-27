@@ -28,13 +28,11 @@ export const Registration: React.FC = () => {
 
     const prevPath = location.state?.prevPath;
 
-    const onChange = async () => {
-        setTimeout(() => {
-            const touched = registrationForm.isFieldsTouched(true);
-            const notErr = !registrationForm.getFieldsError().some(({ errors }) => errors.length);
-            const isFormValid = touched && notErr;
-            setIsValid(isFormValid);
-        });
+    const onChange = () => {
+        const touched = registrationForm.isFieldsTouched(true);
+        const notErr = !registrationForm.getFieldsError().some(({ errors }) => errors.length);
+        const isFormValid = touched && notErr;
+        setIsValid(isFormValid);
     };
 
     const onFinish = async (value: RegistrationData) => {
@@ -80,89 +78,86 @@ export const Registration: React.FC = () => {
 
     return (
         <>
-            {isLoading ? (
-                <Loader />
-            ) : (
-                <Form
-                    form={registrationForm}
-                    name='auth_registration'
-                    className='registration-form'
-                    onFinish={onFinish}
-                    onValuesChange={onChange}
+            {isLoading && <Loader />}
+            <Form
+                form={registrationForm}
+                name='auth_registration'
+                className='registration-form'
+                onFinish={onFinish}
+                onFieldsChange={onChange}
+            >
+                <img src={logoAuth} className='logo' alt='Cleverfit logo' />
+                <FormTabs active='registration' />
+
+                <Form.Item
+                    name='email'
+                    rules={[
+                        {
+                            validator: validateEmail,
+                        },
+                        { required: true, message: 'Введите, пожалуйста, email!' },
+                    ]}
                 >
-                    <img src={logoAuth} className='logo' alt='Cleverfit logo' />
-                    <FormTabs active='registration' />
-
-                    <Form.Item
-                        name='email'
-                        rules={[
-                            {
-                                validator: validateEmail,
+                    <Input addonBefore='e-mail:' data-test-id='registration-email' />
+                </Form.Item>
+                <Form.Item
+                    name='password'
+                    help={
+                        <div style={{ fontSize: '12px' }}>
+                            Пароль не менее 8 символов, с заглавной буквой и цифрой
+                        </div>
+                    }
+                    rules={[
+                        { required: true, message: 'Введите, пожалуйста, пароль' },
+                        { validator: validatePassword },
+                    ]}
+                >
+                    <Input.Password placeholder='Пароль' data-test-id='registration-password' />
+                </Form.Item>
+                <Form.Item
+                    name='confirm-password'
+                    rules={[
+                        { required: true, message: 'Повторите, пожалуйста, пароль' },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('Пароли не совпадают'));
                             },
-                            { required: true, message: 'Введите, пожалуйста, email!' },
-                        ]}
-                    >
-                        <Input addonBefore='e-mail:' data-test-id='registration-email' />
-                    </Form.Item>
-                    <Form.Item
-                        name='password'
-                        help={
-                            <div style={{ fontSize: '12px' }}>
-                                Пароль не менее 8 символов, с заглавной буквой и цифрой
-                            </div>
-                        }
-                        rules={[
-                            { required: true, message: 'Введите, пожалуйста, пароль' },
-                            { validator: validatePassword },
-                        ]}
-                    >
-                        <Input.Password placeholder='Пароль' data-test-id='registration-password' />
-                    </Form.Item>
-                    <Form.Item
-                        name='confirm-password'
-                        rules={[
-                            { required: true, message: 'Повторите, пожалуйста, пароль' },
-                            ({ getFieldValue }) => ({
-                                validator(_, value) {
-                                    if (!value || getFieldValue('password') === value) {
-                                        return Promise.resolve();
-                                    }
-                                    return Promise.reject(new Error('Пароли не совпадают'));
-                                },
-                            }),
-                        ]}
-                    >
-                        <Input.Password
-                            placeholder='Повторите пароль'
-                            data-test-id='registration-confirm-password'
-                        />
-                    </Form.Item>
+                        }),
+                    ]}
+                >
+                    <Input.Password
+                        placeholder='Повторите пароль'
+                        data-test-id='registration-confirm-password'
+                    />
+                </Form.Item>
 
-                    <Form.Item className='registration-form-button-wrapper'>
-                        <Button
-                            type='primary'
-                            htmlType='submit'
-                            className='registration-form-button'
-                            size='large'
-                            block={true}
-                            disabled={!isValid}
-                            data-test-id='registration-submit-button'
-                        >
-                            Войти
-                        </Button>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button
-                            className='registration-form-google'
-                            size='large'
-                            icon={<GooglePlusOutlined />}
-                            block={true}
-                        >
-                            Регистрация через Google
-                        </Button>
-                    </Form.Item>
-                </Form>
-            )}
+                <Form.Item className='registration-form-button-wrapper'>
+                    <Button
+                        type='primary'
+                        htmlType='submit'
+                        className='registration-form-button'
+                        size='large'
+                        block={true}
+                        disabled={!isValid}
+                        data-test-id='registration-submit-button'
+                    >
+                        Войти
+                    </Button>
+                </Form.Item>
+                <Form.Item>
+                    <Button
+                        className='registration-form-google'
+                        size='large'
+                        icon={<GooglePlusOutlined />}
+                        block={true}
+                    >
+                        Регистрация через Google
+                    </Button>
+                </Form.Item>
+            </Form>
         </>
     );
 };

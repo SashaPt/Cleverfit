@@ -3,6 +3,7 @@ import { selectAccessToken } from '@redux/auth/authSlice';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { Paths } from '../../routes/paths';
 import { Layout } from 'antd';
+import './result-page.scss';
 
 export const ResultPage: React.FC = () => {
     const token = useAppSelector(selectAccessToken);
@@ -17,12 +18,10 @@ export const ResultPage: React.FC = () => {
         return <Navigate to={Paths.AUTH} />;
     }
     return (
-        <>
-            <Layout className='auth-page'>
-                <div className='_container'>
-                    <Outlet></Outlet>
-                </div>
-            </Layout>
-        </>
+        <Layout className='result-page'>
+            <div className='_container'>
+                <Outlet />
+            </div>
+        </Layout>
     );
 };

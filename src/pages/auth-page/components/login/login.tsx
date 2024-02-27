@@ -15,6 +15,7 @@ import { LoginData } from '../../../../types/auth';
 import { history } from '../../../../redux/configure-store';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { EMAIL_REGEX } from '@constants/constants';
 
 export const Login: React.FC = () => {
     const [loginForm] = useForm();
@@ -90,7 +91,7 @@ export const Login: React.FC = () => {
 
     const onCheckEmail = () => {
         const email = loginForm.getFieldValue('email');
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const emailRegex = EMAIL_REGEX;
         if (email && emailRegex.test(email)) {
             setIsEmailError(false);
         } else {
@@ -107,85 +108,82 @@ export const Login: React.FC = () => {
 
     return (
         <>
-            {isLoading || isLoadingCheckEmail ? (
-                <Loader />
-            ) : (
-                <Form
-                    form={loginForm}
-                    name='auth_login'
-                    className='login-form'
-                    initialValues={{ remember: true }}
-                    onFieldsChange={onCheckEmail}
-                    onFinish={onFinish}
+            {(isLoading || isLoadingCheckEmail) && <Loader />}
+            <Form
+                form={loginForm}
+                name='auth_login'
+                className='login-form'
+                initialValues={{ remember: true }}
+                onFieldsChange={onCheckEmail}
+                onFinish={onFinish}
+            >
+                <img src={logoAuth} className='logo' alt='Cleverfit logo' />
+
+                <FormTabs active='login' />
+                <Form.Item
+                    name='email'
+                    rules={[
+                        {
+                            type: 'email',
+                            message: 'Введите, пожалуйста, корректый email!',
+                        },
+                        { required: true, message: 'Введите, пожалуйста, email!' },
+                    ]}
                 >
-                    <img src={logoAuth} className='logo' alt='Cleverfit logo' />
-
-                    <FormTabs active='login' />
-                    <Form.Item
-                        name='email'
-                        rules={[
-                            {
-                                type: 'email',
-                                message: 'Введите, пожалуйста, корректый email!',
-                            },
-                            { required: true, message: 'Введите, пожалуйста, email!' },
-                        ]}
+                    <Input addonBefore='e-mail:' data-test-id='login-email' />
+                </Form.Item>
+                <Form.Item
+                    name='password'
+                    rules={[
+                        { required: true, message: 'Введите, пожалуйста, пароль!' },
+                        { min: 8, message: '' },
+                    ]}
+                >
+                    <Input.Password
+                        placeholder='Пароль'
+                        data-test-id='login-password'
+                        autoComplete='on'
+                    />
+                </Form.Item>
+                <Form.Item className='form-item-container'>
+                    <Form.Item name='remember' valuePropName='checked' noStyle>
+                        <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
+                    </Form.Item>
+                    <Button
+                        type='link'
+                        className='login-form-forgot'
+                        size='large'
+                        data-test-id='login-forgot-button'
+                        onClick={onForgot}
+                        disabled={isEmailError}
                     >
-                        <Input addonBefore='e-mail:' data-test-id='login-email' />
-                    </Form.Item>
-                    <Form.Item
-                        name='password'
-                        rules={[
-                            { required: true, message: 'Введите, пожалуйста, пароль!' },
-                            { min: 8, message: '' },
-                        ]}
-                    >
-                        <Input.Password
-                            placeholder='Пароль'
-                            data-test-id='login-password'
-                            autoComplete='on'
-                        />
-                    </Form.Item>
-                    <Form.Item className='form-item-container'>
-                        <Form.Item name='remember' valuePropName='checked' noStyle>
-                            <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
-                        </Form.Item>
-                        <Button
-                            type='link'
-                            className='login-form-forgot'
-                            size='large'
-                            data-test-id='login-forgot-button'
-                            onClick={onForgot}
-                            disabled={isEmailError}
-                        >
-                            Забыли пароль?
-                        </Button>
-                    </Form.Item>
+                        Забыли пароль?
+                    </Button>
+                </Form.Item>
 
-                    <Form.Item className='login-form-button-wrapper'>
-                        <Button
-                            type='primary'
-                            htmlType='submit'
-                            className='login-form-button'
-                            size='large'
-                            block={true}
-                            data-test-id='login-submit-button'
-                        >
-                            Войти
-                        </Button>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button
-                            className='login-form-google'
-                            size='large'
-                            icon={<GooglePlusOutlined />}
-                            block={true}
-                        >
-                            Войти через Google
-                        </Button>
-                    </Form.Item>
-                </Form>
-            )}
+                <Form.Item className='login-form-button-wrapper'>
+                    <Button
+                        type='primary'
+                        htmlType='submit'
+                        className='login-form-button'
+                        size='large'
+                        block={true}
+                        data-test-id='login-submit-button'
+                    >
+                        Войти
+                    </Button>
+                </Form.Item>
+                <Form.Item>
+                    <Button
+                        className='login-form-google'
+                        size='large'
+                        icon={<GooglePlusOutlined />}
+                        block={true}
+                    >
+                        Войти через Google
+                    </Button>
+                </Form.Item>
+            </Form>
         </>
     );
 };

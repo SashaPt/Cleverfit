@@ -14,12 +14,10 @@ export const AuthPage: React.FC = () => {
         return <Navigate to={Paths.MAIN} />;
     }
     return (
-        <>
-            <Layout className='auth-page'>
-                <div className='_container'>
-                    <Outlet></Outlet>
-                </div>
-            </Layout>
-        </>
+        <Layout className='auth-page'>
+            <div className='_container'>
+                <Outlet />
+            </div>
+        </Layout>
     );
 };
