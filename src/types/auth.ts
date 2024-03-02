@@ -1,49 +1,49 @@
-export interface AuthState {
+export type AuthState = {
     email: string;
     password: string;
     accessToken: string;
 }
 
-export interface LoginData {
+export type LoginData = {
     email: string;
     password: string;
     remember?: boolean;
 }
 
-export interface LoginSuccess {
+export type LoginSuccess = {
     accessToken: string;
 }
 
-export interface RegistrationData {
+export type RegistrationData = {
     email: string;
     password: string;
     'confirm-password'?: string;
 }
 
-export interface CheckEmailData {
+export type CheckEmailData = {
     email: string;
 }
 
-export interface CheckEmailSuccess {
+export type CheckEmailSuccess = {
     email: string;
     message: string;
 }
 
-export interface ConfirmEmailData {
+export type ConfirmEmailData = {
     email: string;
     code: string;
 }
 
-export interface ConfirmEmailSuccess {
+export type ConfirmEmailSuccess = {
     email: string;
     message: string;
 }
 
-export interface ChangePasswordData {
+export type ChangePasswordData = {
     password: string;
     confirmPassword: string;
 }
 
-export interface ChangePasswordSuccess {
+export type ChangePasswordSuccess = {
     message: string;
 }

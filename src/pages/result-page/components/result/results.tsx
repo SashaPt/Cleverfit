@@ -48,7 +48,8 @@ const resultCheckError: IResult = {
 const resultCheckEmailError: IResult = {
     icon: <CloseCircleFilled style={{ color: '#ff4d4f', fontSize: '80px' }} />,
     title: 'Такой e-mail не зарегистрирован',
-    description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти\u00A0с\u00A0другим\u00A0e\u2011mail.',
+    description:
+        'Мы не нашли в базе вашего e-mail. Попробуйте войти\u00A0с\u00A0другим\u00A0e\u2011mail.',
     buttonName: 'Попробовать снова',
     buttonData: 'check-retry-button',
     buttonNavigate: Paths.AUTH,
@@ -69,6 +70,30 @@ const resultChangeSuccess: IResult = {
     buttonData: 'change-entry-button',
     buttonNavigate: Paths.AUTH,
 };
+const resultWriteReviewSuccess: IResult = {
+    icon: <CheckCircleFilled style={{ color: '#52c41a', fontSize: '80px' }} />,
+    title: 'Отзыв успешно опубликован',
+    description: '',
+    buttonName: '',
+    buttonData: '',
+    buttonNavigate: '',
+};
+const resultWriteReviewError: IResult = {
+    icon: <CloseCircleFilled style={{ color: '#ff4d4f', fontSize: '80px' }} />,
+    title: 'Данные не сохранились',
+    description: 'Что-то пошло не так. Попробуйте ещё раз.',
+    buttonName: '',
+    buttonData: '',
+    buttonNavigate: '',
+};
+const resultGetFeedbacksError: IResult = {
+    icon: <img src={errorAvatar} />,
+    title: 'Что-то пошло не так',
+    description: 'Произошла ошибка, попробуйте\u00A0ещё\u00A0раз.',
+    buttonName: '',
+    buttonData: 'check-back-button',
+    buttonNavigate: '',
+};
 
 export {
     resultLoginError,
@@ -79,4 +104,7 @@ export {
     resultCheckEmailError,
     resultChangeError,
     resultChangeSuccess,
+    resultWriteReviewSuccess,
+    resultWriteReviewError,
+    resultGetFeedbacksError,
 };

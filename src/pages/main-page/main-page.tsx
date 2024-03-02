@@ -1,15 +1,13 @@
+import './main-page.css';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Layout, Row, Space, Typography } from 'antd';
-const { Content } = Layout;
-const { Text, Title } = Typography;
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
-
-import './main-page.css';
-
 import { PageHeader } from '@components/header/pageHeader';
 import { PageSider } from '@components/sider/pageSider';
 import { PageFooter } from '@components/footer/pageFooter';
 import { Loader } from '@components/loader/loader';
+const { Content } = Layout;
+const { Text, Title } = Typography;
 
 export const MainPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -21,9 +19,9 @@ export const MainPage: React.FC = () => {
         <>
             {isLoading && <Loader />}
             <Layout className='main-page'>
-                <PageSider></PageSider>
+                <PageSider />
                 <Layout className='main-content'>
-                    <PageHeader></PageHeader>
+                    <PageHeader isMain={true} breadcrumbs={[{ name: 'Главная', href: '' }]} />
                     <Content>
                         <div className='_container'>
                             <Space className='main-container'>
@@ -102,7 +100,7 @@ export const MainPage: React.FC = () => {
                             </Space>
                         </div>
                     </Content>
-                    <PageFooter></PageFooter>
+                    <PageFooter />
                 </Layout>
             </Layout>
         </>

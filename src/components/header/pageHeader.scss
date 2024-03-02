@@ -5,8 +5,13 @@
 
     .ant-breadcrumb {
         color: #8c8c8c;
-        li:last-child {
+        a {
+            color: #8c8c8c;
+        }
+        li:last-child,
+        li:last-child a {
             color: #262626;
+            cursor: default;
         }
     }
 

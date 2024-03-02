@@ -75,6 +75,11 @@ export const authApi = createApi({
                 };
             },
         }),
+        googleAuth: builder.query({
+            query: () => ({
+                url: 'auth/google',
+            }),
+        }),
     }),
 });
 
@@ -84,4 +89,5 @@ export const {
     useCheckEmailMutation,
     useConfirmEmailMutation,
     useChangePasswordMutation,
+    useLazyGoogleAuthQuery,
 } = authApi;
