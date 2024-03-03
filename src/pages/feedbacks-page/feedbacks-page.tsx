@@ -63,8 +63,8 @@ export const FeedbacksPage: React.FC = () => {
                     <PageHeader
                         isMain={false}
                         breadcrumbs={[
-                            { name: 'Главная', href: Paths.MAIN },
-                            { name: 'Отзывы пользователей', href: '' },
+                            { id: 1, name: 'Главная', href: Paths.MAIN },
+                            { id: 2, name: 'Отзывы пользователей', href: '' },
                         ]}
                     />
                     <Content>

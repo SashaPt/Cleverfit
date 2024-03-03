@@ -21,7 +21,10 @@ export const MainPage: React.FC = () => {
             <Layout className='main-page'>
                 <PageSider />
                 <Layout className='main-content'>
-                    <PageHeader isMain={true} breadcrumbs={[{ name: 'Главная', href: '' }]} />
+                    <PageHeader
+                        isMain={true}
+                        breadcrumbs={[{ id: 1, name: 'Главная', href: '' }]}
+                    />
                     <Content>
                         <div className='_container'>
                             <Space className='main-container'>

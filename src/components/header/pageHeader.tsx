@@ -8,9 +8,10 @@ const { Header } = Layout;
 const { Title } = Typography;
 
 type Breadcrumb = {
+    id: number;
     name: string;
     href: string;
-}
+};
 
 export const PageHeader: React.FC<{ breadcrumbs: Breadcrumb[]; isMain: boolean }> = ({
     breadcrumbs,
@@ -19,9 +20,9 @@ export const PageHeader: React.FC<{ breadcrumbs: Breadcrumb[]; isMain: boolean }
     <Header id='header'>
         <div className='_container'>
             <Breadcrumb>
-                {breadcrumbs.map((breadcrumb, index) => {
+                {breadcrumbs.map((breadcrumb) => {
                     return (
-                        <Breadcrumb.Item className='header-breadcrumbs' key={index}>
+                        <Breadcrumb.Item className='header-breadcrumbs' key={breadcrumb.id}>
                             <Link to={breadcrumb.href}> {breadcrumb.name}</Link>
                         </Breadcrumb.Item>
                     );
