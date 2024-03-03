@@ -1,7 +1,7 @@
 import './feedbacks-page.scss';
 import { Button, Layout, Modal } from 'antd';
 import { NoFeedbacks } from './components/no-feedbacks/no-feedbacks';
-import React, { useEffect, useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import * as results from '@pages/result-page/components/result/results';
 import { PageSider } from '@components/sider/pageSider';
 import { PageHeader } from '@components/header/pageHeader';
@@ -23,13 +23,15 @@ import { FEEDBACKS_LIMIT } from '@constants/constants';
 import { setAccessToken } from '@redux/auth/authSlice';
 
 export const FeedbacksPage: React.FC = () => {
-    const [getFeedbacks, { isLoading, isError }] = useLazyGetFeedbacksQuery();
+    const [getFeedbacks, { isLoading, isError, isSuccess }] = useLazyGetFeedbacksQuery();
     const [feedbacks, setFeedbacks] = useState<FeedbackSuccess[]>([]);
+    const [height, setHeight] = useState('');
     const isAdded = useAppSelector(selectAdded);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [isItemsCollapsed, setIsItemsCollapsed] = useState(true);
     const dispatch = useDispatch();
     const location = useLocation();
+    const itemsRef = createRef<HTMLDivElement>();
 
     const updateFeedbacks = async () => {
         try {
@@ -48,6 +50,16 @@ export const FeedbacksPage: React.FC = () => {
     };
 
     const sortedFeedbacks = useSorted(feedbacks || []);
+
+    useEffect(() => {
+        if (isSuccess && itemsRef && itemsRef.current) {
+            const heightEl = itemsRef?.current?.scrollHeight;
+            if (!height) {
+                setHeight(`${heightEl}px`);
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [itemsRef]);
 
     useEffect(() => {
         updateFeedbacks();
@@ -73,7 +85,8 @@ export const FeedbacksPage: React.FC = () => {
                                 <div className='feedbacks-container _container'>
                                     <div
                                         className='feedbacks-items'
-                                        style={{ maxHeight: isItemsCollapsed ? 'unset' : '' }}
+                                        ref={itemsRef}
+                                        style={{ maxHeight: isItemsCollapsed ? 'unset' : height }}
                                     >
                                         {sortedFeedbacks.map((feedback, index) => {
                                             if (isItemsCollapsed) {
