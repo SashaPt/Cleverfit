@@ -1,22 +1,17 @@
-import {
-    AuthPage,
-    ChangePassword,
-    ConfirmEmail,
-    Login,
-    Registration,
-    Result,
-} from '@pages/auth-page';
+import { AuthPage, ChangePassword, ConfirmEmail, Login, Registration } from '@pages/auth-page';
 import { MainPage } from '@pages/main-page';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import * as results from '@pages/result-page/components/result/results';
 import { Paths } from './paths';
 import { PrivateRoute } from './privateRoute';
-import { ResultPage } from '@pages/result-page';
+import { Result, ResultPage } from '@pages/result-page';
+import { FeedbacksPage } from '@pages/feedbacks-page';
 
 export const routes = (
     <Routes>
         <Route element={<PrivateRoute />}>
             <Route path={Paths.MAIN} element={<MainPage />} />
+            <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
         </Route>
 
         <Route path='/' element={<Navigate to={Paths.MAIN} />} />

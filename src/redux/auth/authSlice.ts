@@ -2,6 +2,10 @@ import { AuthState } from '../../types/auth';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
+const googleToken = new URLSearchParams(window.location.search).get('accessToken');
+if (googleToken) {
+    localStorage.setItem('jwtToken', googleToken);
+}
 const token = localStorage.getItem('jwtToken');
 
 const initialState: AuthState = {

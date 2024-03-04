@@ -43,6 +43,7 @@ const ExitIcon = (props: Partial<CustomIconComponentProps>) => (
 
 export const PageSider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const [collapsedMobile, setCollapsedMobile] = useState(true);
     const dispatch = useDispatch();
 
     const onExitClick = () => {
@@ -116,7 +117,7 @@ export const PageSider: React.FC = () => {
             <Sider
                 trigger={null}
                 collapsible
-                collapsed={collapsed}
+                collapsed={collapsedMobile}
                 theme='light'
                 id='sider-mobile'
                 width={106}
@@ -164,9 +165,9 @@ export const PageSider: React.FC = () => {
                 <Space
                     className='trigger trigger-mobile'
                     data-test-id='sider-switch-mobile'
-                    onClick={() => setCollapsed(!collapsed)}
+                    onClick={() => setCollapsedMobile(!collapsedMobile)}
                 >
-                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {})}
+                    {React.createElement(collapsedMobile ? MenuUnfoldOutlined : MenuFoldOutlined, {})}
                 </Space>
             </Sider>
         </>

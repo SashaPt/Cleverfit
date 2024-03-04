@@ -25,20 +25,22 @@ export const Result: React.FC<IResult> = ({
                 description={description}
                 className='result-content'
             />
-            <Button
-                type='primary'
-                className='result-button'
-                data-test-id={buttonData}
-                onClick={() =>
-                    dispatch(
-                        push(buttonNavigate, {
-                            prevPath: location.pathname,
-                        }),
-                    )
-                }
-            >
-                {buttonName}
-            </Button>
+            {buttonName && (
+                <Button
+                    type='primary'
+                    className='result-button'
+                    data-test-id={buttonData}
+                    onClick={() =>
+                        dispatch(
+                            push(buttonNavigate, {
+                                prevPath: location.pathname,
+                            }),
+                        )
+                    }
+                >
+                    {buttonName}
+                </Button>
+            )}
         </Card>
     );
 };

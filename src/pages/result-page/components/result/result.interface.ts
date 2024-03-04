@@ -1,4 +1,4 @@
-export interface IResult {
+export type IResult ={
     icon: JSX.Element;
     title: string;
     description: string;

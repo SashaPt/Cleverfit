@@ -16,6 +16,7 @@ import { history } from '../../../../redux/configure-store';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { EMAIL_REGEX } from '@constants/constants';
+import { BASE_URL } from '../../../../http';
 
 export const Login: React.FC = () => {
     const [loginForm] = useForm();
@@ -50,6 +51,10 @@ export const Login: React.FC = () => {
                 }),
             );
         }
+    };
+
+    const onGoogleLogin = () => {
+        window.location.href = `${BASE_URL}/auth/google`;
     };
 
     const onForgot = () => {
@@ -113,7 +118,7 @@ export const Login: React.FC = () => {
                 form={loginForm}
                 name='auth_login'
                 className='login-form'
-                initialValues={{ remember: true }}
+                initialValues={{ remember: false }}
                 onFieldsChange={onCheckEmail}
                 onFinish={onFinish}
             >
@@ -176,9 +181,11 @@ export const Login: React.FC = () => {
                 <Form.Item>
                     <Button
                         className='login-form-google'
+                        htmlType='button'
                         size='large'
                         icon={<GooglePlusOutlined />}
                         block={true}
+                        onClick={onGoogleLogin}
                     >
                         Войти через Google
                     </Button>

@@ -14,4 +14,5 @@ export enum Paths {
     ERROR_CHECK_EMAIL = 'error-check-email',
     ERROR_CHANGE_PASSWORD = 'error-change-password',
     SUCCESS_CHANGE_PASSWORD = 'success-change-password',
+    FEEDBACKS = '/feedbacks',
 }
