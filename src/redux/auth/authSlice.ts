@@ -1,4 +1,4 @@
-import { AuthState } from '../../types/auth';
+import { AuthState } from '../../types/auth/auth';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -7,9 +7,10 @@ if (googleToken) {
     localStorage.setItem('jwtToken', googleToken);
 }
 const token = localStorage.getItem('jwtToken');
+const email = localStorage.getItem('email');
 
 const initialState: AuthState = {
-    email: '',
+    email: email || '',
     password: '',
     accessToken: token || '',
 };

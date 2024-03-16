@@ -6,12 +6,14 @@ import { Paths } from './paths';
 import { PrivateRoute } from './privateRoute';
 import { Result, ResultPage } from '@pages/result-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
+import { CalendarPage } from '@pages/calendar-page';
 
 export const routes = (
     <Routes>
         <Route element={<PrivateRoute />}>
             <Route path={Paths.MAIN} element={<MainPage />} />
             <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
+            <Route path={Paths.CALENDAR} element={<CalendarPage />} />
         </Route>
 
         <Route path='/' element={<Navigate to={Paths.MAIN} />} />

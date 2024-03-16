@@ -6,15 +6,19 @@ import { PageHeader } from '@components/header/pageHeader';
 import { PageSider } from '@components/sider/pageSider';
 import { PageFooter } from '@components/footer/pageFooter';
 import { Loader } from '@components/loader/loader';
+import { useDispatch } from 'react-redux';
+import { setIsCalendarQueried } from '@redux/calendar/calendarSlice';
 const { Content } = Layout;
 const { Text, Title } = Typography;
 
 export const MainPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setIsLoading(false);
     }, []);
+
     return (
         <>
             {isLoading && <Loader />}
@@ -77,6 +81,8 @@ export const MainPage: React.FC = () => {
                                                     type='text'
                                                     icon={<CalendarOutlined />}
                                                     className='card-btn'
+                                                    data-test-id='menu-button-calendar'
+                                                    onClick={() => dispatch(setIsCalendarQueried(true))}
                                                 >
                                                     Календарь
                                                 </Button>,

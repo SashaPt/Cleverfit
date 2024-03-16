@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { FeedbackData, FeedbacksState } from '../../types/feedbacks';
+import { FeedbackData, FeedbacksState } from '../../types/feedbacks/feedbacks';
 
 const initialState: FeedbacksState = {
     added: {

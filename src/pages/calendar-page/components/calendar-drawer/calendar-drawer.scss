@@ -1,0 +1,181 @@
+.calendar-drawer {
+    & > .ant-drawer-content-wrapper {
+        width: 408px !important;
+    }
+    .ant-drawer-header {
+        padding: 24px 32px 16px;
+        border: none;
+    }
+
+    .ant-drawer-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 20px;
+    }
+    .ant-drawer-mask {
+        background: transparent;
+    }
+    .ant-drawer-body {
+        padding: 0 32px 24px;
+    }
+}
+
+.calendar-drawer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #8c8c8c;
+    padding-bottom: 8px;
+}
+
+.calendar-drawer-form {
+    .form-fields {
+        margin-top: 24px;
+    }
+    .ant-form-item {
+        margin-bottom: 0;
+    }
+    .ant-form-item-control-input {
+        min-height: unset;
+    }
+    .ant-input,
+    .ant-input-number-input {
+        padding: 1px 8px;
+        height: 24px;
+    }
+
+    .form-line {
+        display: flex;
+        width: 100%;
+    }
+
+    .form-exercise-input {
+        width: 100%;
+    }
+
+    .form-check {
+        border-bottom: 1px solid #d9d9d9;
+        border-right: 1px solid #d9d9d9;
+        border-top: 1px solid #d9d9d9;
+        border-radius: 0 2px 2px 0;
+        width: 40px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ant-checkbox-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .ant-checkbox {
+            top: unset;
+        }
+    }
+
+    .form-number-inputs {
+        display: flex;
+        align-items: flex-end;
+        margin-top: 8px;
+        .ant-form-item:first-child {
+            margin-right: 32px;
+        }
+        .ant-form-item-label {
+            background: #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 8px;
+            height: 24px;
+            display: flex;
+            margin-bottom: 6px;
+            & > label {
+                font-size: 12px;
+                color: #262626;
+            }
+        }
+        .form-mult {
+            margin: 3px 2px;
+            color: #bfbfbf;
+        }
+    }
+
+    .form-actions {
+        margin-top: 24px;
+        border-radius: 0 0 6px 6px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: #f0f0f0;
+        .form-button-add,
+        .form-button-remove {
+            width: 50%;
+            height: 40px;
+            background: transparent;
+        }
+        .form-button-add {
+            color: #2f54eb;
+            &:hover {
+                color: #597ef7;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .calendar-drawer {
+        & > .ant-drawer-content-wrapper {
+            width: 100% !important;
+            height: 555px;
+            top: unset;
+            bottom: 0;
+            box-shadow: unset;
+        }
+        .ant-drawer-content {
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+                0 6px 16px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .ant-drawer-header {
+            padding: 24px 16px 16px;
+        }
+
+        .ant-drawer-body {
+            padding: 0 16px 24px;
+        }
+    }
+
+    .calendar-drawer-form {
+        .form-check {
+            border-bottom: 1px solid #d9d9d9;
+            border-right: 1px solid #d9d9d9;
+            border-top: 1px solid #d9d9d9;
+            border-radius: 0 2px 2px 0;
+            width: 40px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .ant-checkbox-wrapper {
+                display: flex;
+                align-items: center;
+            }
+
+            .ant-checkbox {
+                top: unset;
+            }
+        }
+
+        .form-number-inputs {
+            .ant-form-item:first-child {
+                margin-right: 16px;
+            }
+            .ant-form-item-label {
+                flex: unset;
+            }
+        }
+    }
+}

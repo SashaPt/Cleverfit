@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { FeedbackSuccess } from '../types/feedbacks';
+import { FeedbackSuccess } from '../types/feedbacks/feedbacks';
 
 export const useSorted = (array: FeedbackSuccess[]) => {
     const sortedArray = useMemo(() => {

@@ -11,7 +11,7 @@ import { useCheckEmailMutation, useLoginMutation } from '../../../../services/au
 import { selectEmail, setAccessToken, setEmail } from '@redux/auth/authSlice';
 import { push } from 'redux-first-history';
 import { Paths } from '../../../../routes/paths';
-import { LoginData } from '../../../../types/auth';
+import { LoginData } from '../../../../types/auth/auth';
 import { history } from '../../../../redux/configure-store';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -24,7 +24,7 @@ export const Login: React.FC = () => {
     const [checkEmail, { isLoading: isLoadingCheckEmail }] = useCheckEmailMutation();
     const location = useLocation();
     const dispatch = useDispatch();
-    const emailState = useAppSelector(selectEmail);
+    const emailState: string = useAppSelector(selectEmail);
     const emailValue = Form.useWatch('email', loginForm);
     const prevPath = location.state?.prevPath;
 
@@ -38,6 +38,7 @@ export const Login: React.FC = () => {
             if (response && response.accessToken) {
                 if (value.remember) {
                     localStorage.setItem('jwtToken', response.accessToken);
+                    localStorage.setItem('email', email);
                 } else {
                     localStorage.setItem('jwtToken', '');
                 }

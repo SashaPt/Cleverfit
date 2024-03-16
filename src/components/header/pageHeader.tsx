@@ -1,6 +1,6 @@
 import React from 'react';
 import './pageHeader.scss';
-import { Layout, Breadcrumb, Button, Space, Typography } from 'antd';
+import { Layout, Breadcrumb, Button, Typography } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -13,10 +13,11 @@ type Breadcrumb = {
     href: string;
 };
 
-export const PageHeader: React.FC<{ breadcrumbs: Breadcrumb[]; isMain: boolean }> = ({
-    breadcrumbs,
-    isMain,
-}) => (
+export const PageHeader: React.FC<{
+    breadcrumbs: Breadcrumb[];
+    isMain: boolean;
+    isSettings?: boolean;
+}> = ({ breadcrumbs, isMain, isSettings }) => (
     <Header id='header'>
         <div className='_container'>
             <Breadcrumb>
@@ -28,12 +29,14 @@ export const PageHeader: React.FC<{ breadcrumbs: Breadcrumb[]; isMain: boolean }
                     );
                 })}
             </Breadcrumb>
-            {isMain && (
-                <Space className='header-content'>
-                    <Title className='header-title'>
-                        Приветствуем тебя в&nbsp;CleverFit&nbsp;— приложении, <br />
-                        которое поможет тебе добиться своей мечты!
-                    </Title>
+            {(isMain || isSettings) && (
+                <div className='header-content'>
+                    {isMain && (
+                        <Title className='header-title'>
+                            Приветствуем тебя в&nbsp;CleverFit&nbsp;— приложении, <br />
+                            которое поможет тебе добиться своей мечты!
+                        </Title>
+                    )}
                     <Button
                         type='text'
                         icon={<SettingOutlined />}
@@ -42,7 +45,7 @@ export const PageHeader: React.FC<{ breadcrumbs: Breadcrumb[]; isMain: boolean }
                     >
                         Настройки
                     </Button>
-                </Space>
+                </div>
             )}
         </div>
     </Header>

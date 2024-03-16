@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Layout, Menu, Button, Space } from 'antd';
-const { Sider } = Layout;
-
+import React, { useEffect, useState } from 'react';
+import { Layout, Menu, Button, Space, MenuProps, Modal } from 'antd';
 import logoBig from '/logo_big.svg';
 import logoSmart from '/logo_smart.svg';
 import logoMobile from '/logo_mobile.svg';
@@ -15,10 +13,22 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import Icon, { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
+import * as results from '@pages/result-page/components/result/results';
 import { useDispatch } from 'react-redux';
 import { push } from 'redux-first-history';
 import { Paths } from '../../routes/paths';
 import { setAccessToken } from '@redux/auth/authSlice';
+import { Link } from 'react-router-dom';
+import { useLazyGetUserTrainingsQuery } from '../../services/calendarApi';
+import { Loader } from '@components/loader/loader';
+import { Result } from '@pages/result-page';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import {
+    selectIsCalendarQueried,
+    setIsCalendarQueried,
+    setCalendarResponse,
+} from '@redux/calendar/calendarSlice';
+const { Sider } = Layout;
 
 const ExitSvg = () => (
     <svg
@@ -41,18 +51,48 @@ const ExitIcon = (props: Partial<CustomIconComponentProps>) => (
     <Icon component={ExitSvg} {...props} />
 );
 
-export const PageSider: React.FC = () => {
+export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => {
     const [collapsed, setCollapsed] = useState(false);
     const [collapsedMobile, setCollapsedMobile] = useState(true);
     const dispatch = useDispatch();
+    const isCalendarQueried = useAppSelector(selectIsCalendarQueried);
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [getTrainings, { isLoading: isCalendarLoading }] = useLazyGetUserTrainingsQuery();
+
+    const queryCalendar = async () => {
+        try {
+            const resp = await getTrainings(null).unwrap();
+            dispatch(setCalendarResponse(resp));
+            dispatch(push(Paths.CALENDAR));
+        } catch (error) {
+            setIsErrorModalOpen(true);
+        } finally {
+            dispatch(setIsCalendarQueried(false));
+        }
+    };
+
+    const onClick: MenuProps['onClick'] = (e) => {
+        if (e.key == 'calendar') {
+            dispatch(setIsCalendarQueried(true));
+        }
+    };
 
     const onExitClick = () => {
         localStorage.removeItem('jwtToken');
         dispatch(setAccessToken(''));
         dispatch(push(Paths.AUTH));
     };
+
+    useEffect(() => {
+        if (isCalendarQueried) {
+            queryCalendar();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isCalendarQueried]);
+
     return (
         <>
+            {isCalendarLoading && <Loader />}
             <Sider
                 trigger={null}
                 collapsible
@@ -63,19 +103,22 @@ export const PageSider: React.FC = () => {
                 collapsedWidth={64}
             >
                 <div>
-                    <img
-                        src={collapsed ? logoSmart : logoBig}
-                        className='logo'
-                        alt='Cleverfit logo'
-                    />
-
+                    <Link to={Paths.MAIN}>
+                        <img
+                            src={collapsed ? logoSmart : logoBig}
+                            className='logo'
+                            alt='Cleverfit logo'
+                        />
+                    </Link>
                     <Menu
                         theme='light'
                         mode='inline'
                         style={{ color: '#262626' }}
+                        defaultSelectedKeys={[`${menuActive}`]}
+                        onClick={onClick}
                         items={[
                             {
-                                key: '1',
+                                key: 'calendar',
                                 icon: <CalendarOutlined />,
                                 label: 'Календарь',
                             },
@@ -124,30 +167,30 @@ export const PageSider: React.FC = () => {
                 collapsedWidth={0}
             >
                 <div>
-                    <img src={logoMobile} className='logo' alt='Cleverfit logo' />
+                    <Link to={Paths.MAIN}>
+                        <img src={logoMobile} className='logo' alt='Cleverfit logo' />
+                    </Link>
                     <Menu
                         theme='light'
                         mode='inline'
                         style={{ color: '#262626' }}
+                        defaultSelectedKeys={[`${menuActive}`]}
+                        onClick={onClick}
                         items={[
                             {
-                                key: '1',
-
+                                key: 'calendar',
                                 label: 'Календарь',
                             },
                             {
                                 key: '2',
-
                                 label: 'Тренировки',
                             },
                             {
                                 key: '3',
-
                                 label: 'Достижения',
                             },
                             {
                                 key: '4',
-
                                 label: 'Профиль',
                             },
                         ]}
@@ -161,15 +204,42 @@ export const PageSider: React.FC = () => {
                 >
                     Выход
                 </Button>
-
                 <Space
                     className='trigger trigger-mobile'
                     data-test-id='sider-switch-mobile'
                     onClick={() => setCollapsedMobile(!collapsedMobile)}
                 >
-                    {React.createElement(collapsedMobile ? MenuUnfoldOutlined : MenuFoldOutlined, {})}
+                    {React.createElement(
+                        collapsedMobile ? MenuUnfoldOutlined : MenuFoldOutlined,
+                        {},
+                    )}
                 </Space>
             </Sider>
+            <Modal
+                className='calendar-error-modal'
+                centered={true}
+                open={isErrorModalOpen}
+                data-test-id='modal-no-review'
+                footer={[
+                    <Button
+                        key='submit'
+                        type='primary'
+                        onClick={() => {
+                            setIsErrorModalOpen(false);
+                            dispatch(push(Paths.MAIN));
+                        }}
+                        className='calendar-submit-button'
+                    >
+                        Назад
+                    </Button>,
+                ]}
+                closeIcon={false}
+                closable={false}
+                width={'fit-content'}
+                bodyStyle={{ padding: 0 }}
+            >
+                <Result {...results.resultGetCalendarError}></Result>
+            </Modal>
         </>
     );
 };

@@ -2,7 +2,7 @@ import { Card, Rate, Typography } from 'antd';
 import './feedback.scss';
 import React from 'react';
 import Meta from 'antd/lib/card/Meta';
-import { FeedbackSuccess } from '../../../../types/feedbacks';
+import { FeedbackSuccess } from '../../../../types/feedbacks/feedbacks';
 import { StarFilled, StarOutlined, UserOutlined } from '@ant-design/icons';
 import { useDateFormat } from '@hooks/useDateFormat';
 const { Text } = Typography;
