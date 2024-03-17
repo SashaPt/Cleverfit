@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from '../http';
 
 import { RootState } from '@redux/configure-store';
-import { FeedbackSuccess, FeedbackData } from '../types/feedbacks';
+import { FeedbackSuccess, FeedbackData } from '../types/feedbacks/feedbacks';
 
 export const feedbacksApi = createApi({
     reducerPath: 'feedbacksApi',

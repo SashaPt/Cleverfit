@@ -10,7 +10,7 @@ import {
     ConfirmEmailSuccess,
     ChangePasswordData,
     ChangePasswordSuccess,
-} from '../types/auth';
+} from '../types/auth/auth';
 import { RootState } from '@redux/configure-store';
 
 export const authApi = createApi({

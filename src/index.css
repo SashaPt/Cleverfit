@@ -86,3 +86,10 @@ svg {
     padding: 0 24px;
     margin: 0 auto;
 }
+
+.ant-modal-wrap,
+.ant-modal-mask,
+.ant-modal {
+    animation-duration: 0s !important;
+    transition: unset !important;
+}

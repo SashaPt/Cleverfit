@@ -95,6 +95,15 @@ const resultGetFeedbacksError: IResult = {
     buttonNavigate: '',
 };
 
+const resultGetCalendarError: IResult = {
+    icon: <img src={errorAvatar} />,
+    title: 'Что-то пошло не так',
+    description: 'Произошла ошибка, попробуйте\u00A0ещё\u00A0раз.',
+    buttonName: '',
+    buttonData: 'check-back-button',
+    buttonNavigate: '',
+};
+
 export {
     resultLoginError,
     resultRegistrationError,
@@ -107,4 +116,5 @@ export {
     resultWriteReviewSuccess,
     resultWriteReviewError,
     resultGetFeedbacksError,
+    resultGetCalendarError,
 };

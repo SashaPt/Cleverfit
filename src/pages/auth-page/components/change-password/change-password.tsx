@@ -10,7 +10,7 @@ import Title from 'antd/lib/typography/Title';
 import { useEffect, useState } from 'react';
 import { useChangePasswordMutation } from '../../../../services/authApi';
 import { Loader } from '@components/loader/loader';
-import { ChangePasswordData } from '../../../../types/auth';
+import { ChangePasswordData } from '../../../../types/auth/auth';
 import { useDispatch } from 'react-redux';
 import { push } from 'redux-first-history';
 

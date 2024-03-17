@@ -1,0 +1,43 @@
+.trainigs-items {
+    &-modal {
+        margin-top: 14px;
+        padding: 16px 0;
+        .trainigs-item:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+}
+.trainigs-item {
+    display: flex;
+    &-name {
+        margin-right: auto;
+        white-space: nowrap;
+    }
+}
+
+.trainigs-items-subtitle {
+    color: #8c8c8c;
+}
+
+.trainigs-items-image {
+    display: block;
+    margin: 32px auto 16px;
+}
+
+.trainigs-items-edit,
+ .trainigs-items-edit[disabled],
+ .trainigs-items-edit[disabled]:hover {
+    padding: 0;
+    background: transparent;
+    border: none;
+    height: auto;
+    width: unset;
+    background: unset;
+}
+
+@media screen and (max-width: 900px) {
+    .trainigs-item-name,
+    .ant-badge-status-text {
+        font-size: 12px;
+    }
+}

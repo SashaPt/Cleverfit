@@ -7,7 +7,7 @@ import { PageSider } from '@components/sider/pageSider';
 import { PageHeader } from '@components/header/pageHeader';
 import { Content } from 'antd/lib/layout/layout';
 import { useLazyGetFeedbacksQuery } from '../../services/feedbacksApi';
-import { FeedbackSuccess } from '../../types/feedbacks';
+import { FeedbackSuccess } from '../../types/feedbacks/feedbacks';
 import { Feedback } from './components/feedback/feedback';
 import { Loader } from '@components/loader/loader';
 import { WriteReview } from './components/write-review/write-review';

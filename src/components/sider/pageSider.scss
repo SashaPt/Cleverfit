@@ -86,6 +86,23 @@
     display: none;
 }
 
+.calendar-error-modal {
+    .ant-modal-footer {
+        padding: 0 32px 56px;
+        margin-top: -56px;
+        border: none;
+        display: flex;
+    }
+}
+
+.calendar-submit-button {
+    height: 40px;
+    margin: 0 auto;
+    &:not(:hover) {
+        background: #2f54eb;
+    }
+}
+
 @media screen and (max-width: 600px) {
     #sider {
         display: none;
@@ -93,7 +110,7 @@
     #sider-mobile {
         display: block;
         position: fixed;
-        z-index: 10;
+        z-index: 100;
         & > * {
             padding-top: 0;
         }
