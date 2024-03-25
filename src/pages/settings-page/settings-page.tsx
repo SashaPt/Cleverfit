@@ -14,7 +14,7 @@ import { TariffCard } from './components/tariff-card/tariff-card';
 import tariffFree from '/tariff_free.png';
 import tariffPro from '/tariff_pro.png';
 import { SettingsItems } from './components/settings-items/settings-items';
-import { selectUser, setTariffsList } from '@redux/profile/profileSlice';
+import { selectUser, setIsUserQueried, setTariffsList } from '@redux/profile/profileSlice';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import moment from 'moment';
 import { SettingsDrawer } from './components/settings-drawer/settings-drawer';
@@ -44,6 +44,11 @@ export const SettingsPage: React.FC = () => {
         dispatch(setAccessToken(''));
         dispatch(push(Paths.AUTH));
     };
+
+    useEffect(() => {
+        dispatch(setIsUserQueried(true));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         updateTariffs();
