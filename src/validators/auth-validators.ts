@@ -4,7 +4,7 @@ import {
     LOWER_CASE_REGEX,
     NUMBERS_REGEX,
     UPPER_CASE_REGEX,
-} from '../../../constants/constants';
+} from '../constants/constants';
 
 export const validateEmail = (_rule: Rule, value: string) => {
     const emailRegex = EMAIL_REGEX;

@@ -1,0 +1,133 @@
+.settings-page {
+    background: #f5f5f5;
+}
+
+.settings-content {
+    background: unset;
+}
+
+.settings-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+    position: relative;
+    min-height: calc(100vh - 136px);
+}
+.settings-back-button {
+    background: transparent !important;
+    font-size: 20px;
+    height: 38px;
+    padding-left: 0;
+    .anticon + span {
+        margin-left: 16px;
+    }
+}
+
+.settings-title {
+    font-weight: 500;
+    font-size: 20px;
+    color: #262626;
+    margin-bottom: 16px;
+}
+
+.settings-cards {
+    width: 505px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 25px;
+    row-gap: 12px;
+}
+
+.settings-pro-disabled {
+    filter: grayscale(1) opacity(0.4);
+}
+
+.settings-card-action {
+    color: #030852;
+    cursor: default;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .anticon {
+        margin-left: 8px;
+    }
+}
+
+.settings-tariff-button {
+    height: 40px;
+}
+
+.settings-buttons {
+    margin-top: 96px;
+}
+
+.settings-feedbacks-button {
+    margin-left: 8px;
+}
+
+.settings-modal {
+    width: 539px !important;
+    max-width: calc(100% - 32px);
+    .ant-modal-close {
+        top: 24px;
+        right: 24px;
+    }
+    .ant-modal-close-x {
+        width: auto;
+        height: auto;
+    }
+    .ant-result {
+        padding: 64px 32px 24px;
+    }
+    .ant-result-title {
+        color: #262626;
+        font-weight: 500;
+    }
+    .ant-result-subtitle {
+        color: #8c8c8c;
+    }
+}
+
+.settings-modal-note {
+    text-align: center;
+    color: #8c8c8c;
+    padding: 0 32px 56px;
+}
+
+@media screen and (max-width: 600px) {
+    .settings-page {
+        main ._container {
+            padding: 0;
+        }
+    }
+    .settings-container {
+        border-radius: 0;
+        padding: 16px 24px;
+        margin-bottom: 42px;
+    }
+    .settings-back-button {
+        font-size: 14px;
+        height: 30px;
+    }
+
+    .settings-buttons {
+        margin-top: 20px;
+    }
+    .settings-feedbacks-button {
+        margin: 16px auto 0;
+        width: 100%;
+    }
+
+    .settings-modal {
+        .ant-result {
+            padding: 32px 16px 24px;
+        }
+    }
+
+    .settings-modal-note {
+        padding: 0 16px 32px;
+    }
+}

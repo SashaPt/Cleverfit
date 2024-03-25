@@ -7,6 +7,9 @@ import { PrivateRoute } from './privateRoute';
 import { Result, ResultPage } from '@pages/result-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { CalendarPage } from '@pages/calendar-page';
+import { ProfilePage } from '@pages/profile-page';
+import { SettingsPage } from '@pages/settings-page';
+import { ErrorPage } from '@pages/error-page';
 
 export const routes = (
     <Routes>
@@ -14,6 +17,8 @@ export const routes = (
             <Route path={Paths.MAIN} element={<MainPage />} />
             <Route path={Paths.FEEDBACKS} element={<FeedbacksPage />} />
             <Route path={Paths.CALENDAR} element={<CalendarPage />} />
+            <Route path={Paths.PROFILE} element={<ProfilePage />} />
+            <Route path={Paths.SETTINGS} element={<SettingsPage />} />
         </Route>
 
         <Route path='/' element={<Navigate to={Paths.MAIN} />} />
@@ -52,5 +57,7 @@ export const routes = (
                 element={<Result {...results.resultChangeSuccess} />}
             />
         </Route>
+
+        <Route path='*' element={<ErrorPage />} />
     </Routes>
 );

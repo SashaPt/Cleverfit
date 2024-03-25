@@ -14,6 +14,13 @@
             cursor: default;
         }
     }
+    .header-inline {
+        display: flex;
+        align-items: center;
+        .ant-breadcrumb {
+            font-size: 20px;
+        }
+    }
 
     .header-content {
         display: flex;
@@ -39,6 +46,18 @@
 
 @media screen and (max-width: 900px) {
     #header {
+
+        .header-inline {
+            display: block;
+            .ant-breadcrumb {
+                font-size: 14px;
+            }
+            .settings-btn .anticon {
+                display: inline-flex;
+                margin-right: 10px;
+            }
+        }
+
         .header-title {
             font-size: min(2.878vw, 24px);
             font-weight: 500;

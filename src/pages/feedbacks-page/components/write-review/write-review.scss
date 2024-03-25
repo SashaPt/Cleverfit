@@ -1,14 +1,6 @@
 .write-review-button,
 .write-review-submit-button {
     height: 40px;
-    &:not([disabled]):not(:hover) {
-        background: #2f54eb;
-        border-color: #2f54eb;
-    }
-    &:not([disabled]):hover {
-        background: #85a5ff;
-        border-color: #597ef7;
-    }
 }
 
 .ant-modal-mask {
@@ -106,7 +98,6 @@
         .ant-modal-footer {
             padding: 0 16px 32px;
             margin-top: -32px;
-          
         }
     }
 }

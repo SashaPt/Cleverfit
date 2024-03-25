@@ -54,9 +54,7 @@
 .feedbacks-submit-button {
     height: 40px;
     margin: 0 auto;
-    &:not(:hover) {
-        background: #2f54eb;
-    }
+
 }
 
 @media screen and (max-width: 600px) {

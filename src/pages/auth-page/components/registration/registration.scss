@@ -10,18 +10,6 @@
         margin: 0 auto 48px;
     }
 
-    .ant-form-item-explain,
-    .ant-form-item-extra {
-        color: #8c8c8c;
-        transition: none !important;
-        animation-duration: 0s !important;
-        & > * {
-            animation-duration: 0s !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            transition: none !important;
-        }
-    }
     .ant-form-item {
         margin-bottom: 32px;
     }

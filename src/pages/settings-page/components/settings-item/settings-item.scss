@@ -1,0 +1,52 @@
+.settings-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.settings-item-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #262626;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+}
+
+.settings-item-text {
+    width: fit-content;
+}
+
+.settings-item-name-disabled {
+    color: #bfbfbf;
+}
+
+.ant-tooltip-arrow {
+    margin-left: -14px;
+}
+
+@media screen and (max-width: 600px) {
+    .settings-item {
+        gap: 80px;
+        .anticon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ant-switch {
+            border-radius: 16px;
+            min-width: 28px;
+            width: 28px;
+            height: 16px;
+        }
+        .ant-switch-handle {
+            width: 12px;
+            height: 12px;
+        }
+        .ant-switch-checked .ant-switch-handle {
+            left: calc(100% - 12px - 2px);
+        }
+    }
+}

@@ -1,0 +1,121 @@
+.settings-drawer {
+    & > .ant-drawer-content-wrapper {
+        width: 408px !important;
+        max-width: 100%;
+    }
+    .ant-drawer-header {
+        padding: 24px 32px 16px;
+        border: none;
+    }
+    .ant-drawer-header-title {
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+    .ant-drawer-title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #262626;
+    }
+    .ant-drawer-close {
+        margin: 0;
+    }
+    .ant-drawer-mask {
+        background: transparent;
+    }
+    .ant-drawer-body {
+        padding: 24px 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.settings-pro-activated {
+    background: #f0f5ff;
+    margin: 0 32px 24px;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #030852;
+}
+
+.settings-options {
+    padding: 24px 32px 0;
+}
+.settings-options-items {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+}
+.settings-options-item {
+    width: 56px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    &:not(.settings-options-item-pro) {
+        background: #f0f0f0;
+        color: #262626;
+    }
+    &.settings-options-item-pro {
+        background: #f0f5ff;
+        color: #1d39c4;
+    }
+}
+.settings-options-list {
+    padding-right: 16px;
+    margin: 24px 0 86px;
+    .ant-list-item {
+        border: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        gap: 52.5px;
+
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+    .ant-list-item-meta-title {
+        margin: 0;
+        letter-spacing: -0.07px;
+        color: #262626;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .settings-drawer {
+        & > .ant-drawer-content-wrapper {
+            margin-top: 85px;
+        }
+        .ant-drawer-header {
+            padding: 24px 16px 16px;
+        }
+    }
+
+    .settings-pro-activated {
+        background: #f0f5ff;
+        margin: 0 32px 24px;
+        padding: 14px 0;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        color: #030852;
+    }
+
+    .settings-options {
+        padding: 0 16px 0;
+    }
+
+    .settings-options-list {
+        margin: 12px 0 33px;
+        .ant-list-item {
+            gap: 44.5px;
+
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+        }
+    }
+}

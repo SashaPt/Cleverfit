@@ -1,0 +1,28 @@
+.tariff-card {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    flex-grow: 1;
+    .ant-card-actions {
+        min-height: 95px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.tariff-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tariff-details-button {
+    padding: 0;
+    height: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .tariff-card{
+        .ant-card-actions {
+            min-height: 64px;
+        }
+    }
+}
