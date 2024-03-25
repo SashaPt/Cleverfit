@@ -93,6 +93,11 @@ export const ProfilePage: React.FC = () => {
         }
     }, [profileForm, user]);
 
+    useEffect(() => {
+        dispatch(setIsUserQueried(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <>
             <Layout className='profile-page'>
