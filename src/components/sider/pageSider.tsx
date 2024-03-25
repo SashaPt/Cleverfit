@@ -31,7 +31,6 @@ import {
 import { useLazyGetUserQuery } from '../../services/profileApi';
 import {
     selectIsUserQueried,
-    selectUser,
     setImage,
     setIsUserQueried,
     setUser,
@@ -65,7 +64,6 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
 
     const isCalendarQueried = useAppSelector(selectIsCalendarQueried);
     const isUserQueried = useAppSelector(selectIsUserQueried);
-    const user = useAppSelector(selectUser);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [getTrainings, { isLoading: isCalendarLoading }] = useLazyGetUserTrainingsQuery();
     const [getUser] = useLazyGetUserQuery();
@@ -117,11 +115,9 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
     }, [isCalendarQueried]);
 
     useEffect(() => {
-        if (!user) {
-            dispatch(setIsUserQueried(true));
-        }
+        dispatch(setIsUserQueried(true));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user]);
+    }, []);
 
     useEffect(() => {
         if (isUserQueried) {

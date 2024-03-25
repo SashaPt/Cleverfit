@@ -24,6 +24,7 @@ export const MainPage: React.FC = () => {
 
     useEffect(() => {
         dispatch(setIsUserQueried(true));
+        console.log('re');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
