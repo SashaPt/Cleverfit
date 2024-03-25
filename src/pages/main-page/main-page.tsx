@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setIsCalendarQueried } from '@redux/calendar/calendarSlice';
 import { push } from 'redux-first-history';
 import { Paths } from '../../routes/paths';
+import { setIsUserQueried } from '@redux/profile/profileSlice';
 const { Content } = Layout;
 const { Text, Title } = Typography;
 
@@ -19,6 +20,11 @@ export const MainPage: React.FC = () => {
 
     useEffect(() => {
         setIsLoading(false);
+    }, []);
+
+    useEffect(() => {
+        dispatch(setIsUserQueried(true));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
