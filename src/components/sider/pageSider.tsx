@@ -121,7 +121,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
 
     useEffect(() => {
         if (isUserQueried) {
-            setTimeout(() => queryUser(), 1);
+            setTimeout(() => queryUser(), 100);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isUserQueried]);
