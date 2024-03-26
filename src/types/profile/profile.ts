@@ -22,8 +22,8 @@ export type UserData = {
     email: string;
     firstName: string;
     lastName: string;
-    birthday: string;
     imgSrc: string;
+    birthday?: string;
     password?: string;
     readyForJointTraining?: boolean;
     sendNotification?: boolean;

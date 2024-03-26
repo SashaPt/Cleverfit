@@ -1,69 +1,71 @@
 import './settings-drawer.scss';
 import React from 'react';
-import moment from 'moment';
 import { Drawer, List } from 'antd';
-import { CheckCircleFilled, CheckCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { CheckCircleFilled, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { selectUser } from '@redux/profile/profileSlice';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { SettingsTariffsForm } from '../settings-tariffs-form/settings-tariffs-form';
+import { ModalProps } from '../../../../types/common/common';
+import { useDateFormat } from '@hooks/useDateFormat';
+import { useParseDate } from '@hooks/useParseDate';
+import { DM_FORMAT } from '@constants/constants';
+
+const settingsOptionsData = [
+    {
+        title: 'Статистика за месяц',
+        free: true,
+        pro: true,
+    },
+    {
+        title: 'Статистика за всё время',
+        free: false,
+        pro: true,
+    },
+    {
+        title: 'Совместные тренировки',
+        free: true,
+        pro: true,
+    },
+    {
+        title: 'Участие в марафонах',
+        free: false,
+        pro: true,
+    },
+    {
+        title: 'Приложение iOS',
+        free: false,
+        pro: true,
+    },
+    {
+        title: 'Приложение Android',
+        free: false,
+        pro: true,
+    },
+    {
+        title: 'Индивидуальный Chat GPT',
+        free: false,
+        pro: true,
+    },
+];
 
 export const SettingsDrawer: React.FC<{
-    isOpen: boolean;
-    onClose: () => void;
+    modalProps: ModalProps;
     setModalOpen: () => void;
-}> = ({ isOpen, onClose, setModalOpen }) => {
+}> = ({ modalProps, setModalOpen }) => {
     const user = useAppSelector(selectUser);
-
-    const settingsOptionsData = [
-        {
-            title: 'Статистика за месяц',
-            free: true,
-            pro: true,
-        },
-        {
-            title: 'Статистика за всё время',
-            free: false,
-            pro: true,
-        },
-        {
-            title: 'Совместные тренировки',
-            free: true,
-            pro: true,
-        },
-        {
-            title: 'Участие в марафонах',
-            free: false,
-            pro: true,
-        },
-        {
-            title: 'Приложение iOS',
-            free: false,
-            pro: true,
-        },
-        {
-            title: 'Приложение Android',
-            free: false,
-            pro: true,
-        },
-        {
-            title: 'Индивидуальный Chat GPT',
-            free: false,
-            pro: true,
-        },
-    ];
+    const experiedDate = useDateFormat(useParseDate(user?.tariff?.expired || ''), DM_FORMAT);
     return (
         <Drawer
             className='settings-drawer'
-            open={isOpen}
-            onClose={onClose}
+            open={modalProps.isOpen}
+            onClose={modalProps.onCloseClick}
             destroyOnClose={true}
             data-test-id='tariff-sider'
             title='Сравнить тарифы'
         >
             {user?.tariff && (
                 <div className='settings-pro-activated'>
-                    Ваш PRO tarif активен до{' '}
-                    {moment(new Date(Date.parse(user.tariff.expired || ''))).format('DD.MM')}
+                    Ваш PRO tarif активен до {experiedDate}
                 </div>
             )}
             <div className='settings-options'>
@@ -72,14 +74,7 @@ export const SettingsDrawer: React.FC<{
                     <div className='settings-options-item settings-options-item-pro'>
                         PRO
                         {user?.tariff ? (
-                            <CheckCircleOutlined
-                                style={{
-                                    color: '#52c41a',
-                                    fontSize: '14px',
-                                    marginRight: '-7px',
-                                    marginLeft: '4px',
-                                }}
-                            />
+                            <CheckCircleOutlined className='settings-options-item-icon' />
                         ) : (
                             ''
                         )}
@@ -94,25 +89,26 @@ export const SettingsDrawer: React.FC<{
                             <List.Item.Meta title={item.title} />
 
                             {item.free ? (
-                                <CheckCircleFilled style={{ color: '#262626', fontSize: '18px' }} />
+                                <CheckCircleFilled className='settings-options-list-icon-check' />
                             ) : (
-                                <ClockCircleOutlined
-                                    style={{ color: '#bfbfbf', fontSize: '18px' }}
-                                />
+                                <CloseCircleOutlined className='settings-options-list-icon-close' />
                             )}
 
                             {item.pro ? (
-                                <CheckCircleFilled style={{ color: '#262626', fontSize: '18px' }} />
+                                <CheckCircleFilled className='settings-options-list-icon-check' />
                             ) : (
-                                <ClockCircleOutlined
-                                    style={{ color: '#bfbfbf', fontSize: '18px' }}
-                                />
+                                <CloseCircleOutlined className='settings-options-list-icon-close' />
                             )}
                         </List.Item>
                     )}
                 />
             </div>
-            {!user?.tariff && <SettingsTariffsForm setModalOpen={setModalOpen} setDrawerClose={onClose}/>}
+            {!user?.tariff && (
+                <SettingsTariffsForm
+                    setModalOpen={setModalOpen}
+                    setDrawerClose={modalProps.onCloseClick}
+                />
+            )}
         </Drawer>
     );
 };

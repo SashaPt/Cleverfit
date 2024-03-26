@@ -7,28 +7,28 @@
 }
 
 .settings-container {
-    background: #fff;
+    background: var(--color-background);
     border-radius: 8px;
-    padding: 24px;
-    margin-top: 24px;
+    padding: var(--padding-l);
+    margin-top: var(--margin-l);
     position: relative;
     min-height: calc(100vh - 136px);
 }
 .settings-back-button {
     background: transparent !important;
-    font-size: 20px;
+    font-size: var(--fs-l);
     height: 38px;
     padding-left: 0;
     .anticon + span {
-        margin-left: 16px;
+        margin-left: var(--margin-m);
     }
 }
 
 .settings-title {
     font-weight: 500;
-    font-size: 20px;
-    color: #262626;
-    margin-bottom: 16px;
+    font-size: var(--fs-l);
+    color: var(--color-black);
+    margin-bottom: var(--margin-m);
 }
 
 .settings-cards {
@@ -47,12 +47,12 @@
 .settings-card-action {
     color: #030852;
     cursor: default;
-    font-size: 16px;
+    font-size: var(--fs-m);
     display: flex;
     align-items: center;
     justify-content: center;
     .anticon {
-        margin-left: 8px;
+        margin-left: var(--margin-xxs);
     }
 }
 
@@ -65,7 +65,7 @@
 }
 
 .settings-feedbacks-button {
-    margin-left: 8px;
+    margin-left: var(--margin-xxs);
 }
 
 .settings-modal {
@@ -80,21 +80,21 @@
         height: auto;
     }
     .ant-result {
-        padding: 64px 32px 24px;
+        padding: 64px var(--padding-xl) var(--padding-l);
     }
     .ant-result-title {
-        color: #262626;
+        color: var(--color-black);
         font-weight: 500;
     }
     .ant-result-subtitle {
-        color: #8c8c8c;
+        color: var(--color-text-gray);
     }
 }
 
 .settings-modal-note {
     text-align: center;
-    color: #8c8c8c;
-    padding: 0 32px 56px;
+    color: var(--color-text-gray);
+    padding: 0 var(--padding-xl) 56px;
 }
 
 @media screen and (max-width: 600px) {
@@ -105,11 +105,11 @@
     }
     .settings-container {
         border-radius: 0;
-        padding: 16px 24px;
+        padding: var(--padding-m) var(--padding-l);
         margin-bottom: 42px;
     }
     .settings-back-button {
-        font-size: 14px;
+        font-size: var(--fs-s);
         height: 30px;
     }
 
@@ -117,17 +117,17 @@
         margin-top: 20px;
     }
     .settings-feedbacks-button {
-        margin: 16px auto 0;
+        margin: var(--margin-m) auto 0;
         width: 100%;
     }
 
     .settings-modal {
         .ant-result {
-            padding: 32px 16px 24px;
+            padding: var(--padding-xl) var(--padding-m) var(--padding-l);
         }
     }
 
     .settings-modal-note {
-        padding: 0 16px 32px;
+        padding: 0 var(--padding-m) var(--padding-xl);
     }
 }

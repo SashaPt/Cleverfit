@@ -87,7 +87,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
             dispatch(setUser(resp));
             dispatch(setImage(resp.imgSrc || ''));
         } catch (error) {
-            console.log(error);
+            return;
         } finally {
             setIsUserQueried(false);
         }

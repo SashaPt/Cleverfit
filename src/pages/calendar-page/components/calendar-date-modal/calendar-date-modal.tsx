@@ -4,15 +4,24 @@ import { CloseOutlined } from '@ant-design/icons';
 import { Button, Modal } from 'antd';
 import type { Moment } from 'moment';
 import { selectIsMobile, selectModalLeft, selectModalTop } from '@redux/calendar/calendarSlice';
+import { ModalProps } from '../../../../types/common/common';
+import { DATE_FORMAT } from '@constants/constants';
 
-export const CalendarDateModal: React.FC<{
-    isOpen: boolean;
-    onCloseClick: () => void;
+type CalendarDateModalProps = {
+    modalProps: ModalProps;
     onCreateClick: () => void;
     disabled: boolean;
     currentDate: Moment;
     children: JSX.Element;
-}> = ({ isOpen, onCloseClick, onCreateClick, disabled, currentDate, children }) => {
+};
+
+export const CalendarDateModal: React.FC<CalendarDateModalProps> = ({
+    modalProps,
+    onCreateClick,
+    disabled,
+    currentDate,
+    children,
+}) => {
     const top = useAppSelector(selectModalTop);
     const left = useAppSelector(selectModalLeft);
     const isMobile = useAppSelector(selectIsMobile);
@@ -20,21 +29,21 @@ export const CalendarDateModal: React.FC<{
     return (
         <Modal
             className='calendar-date-modal'
-            open={isOpen}
+            open={modalProps.isOpen}
             data-test-id='modal-create-training'
             mask={false}
             maskClosable={false}
             closable={false}
             getContainer={'.calendar-modals'}
-            onCancel={onCloseClick}
+            onCancel={modalProps.onCloseClick}
             style={!isMobile ? { top, left } : {}}
             title={
                 <div className='calendar-date-modal-header'>
-                    <div>Тренировки на {currentDate.format('DD.MM.YYYY')}</div>{' '}
+                    <div>Тренировки на {currentDate.format(DATE_FORMAT)}</div>{' '}
                     <Button
                         className='calendar-modal-close-button'
                         data-test-id='modal-create-training-button-close'
-                        onClick={onCloseClick}
+                        onClick={modalProps.onCloseClick}
                         icon={<CloseOutlined style={{ fontSize: '12px' }} />}
                     />
                 </div>

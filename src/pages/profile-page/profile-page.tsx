@@ -16,6 +16,7 @@ import { useUpdateUserMutation } from '../../services/profileApi';
 import { UserData } from '../../types/profile/profile';
 import { ProfileErrorModal } from './components/profile-error-modal/profile-error-modal';
 import { useDispatch } from 'react-redux';
+import { DATE_FORMAT } from '@constants/constants';
 
 moment.updateLocale('ru', {
     week: {
@@ -74,7 +75,7 @@ export const ProfilePage: React.FC = () => {
             email,
             firstName,
             lastName,
-            birthday,
+            birthday: birthday ? birthday : undefined,
             password: password ? password : undefined,
             imgSrc: userImage,
         });
@@ -92,11 +93,6 @@ export const ProfilePage: React.FC = () => {
             });
         }
     }, [profileForm, user]);
-
-    useEffect(() => {
-        dispatch(setIsUserQueried(true));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     return (
         <>
@@ -154,7 +150,7 @@ export const ProfilePage: React.FC = () => {
                                                     <DatePicker
                                                         placeholder='Дата рождения'
                                                         locale={locale}
-                                                        format='DD.MM.YYYY'
+                                                        format={DATE_FORMAT}
                                                         data-test-id='profile-birthday'
                                                     />
                                                 </Form.Item>
@@ -254,8 +250,10 @@ export const ProfilePage: React.FC = () => {
                                     />
                                 )}
                                 <ProfileErrorModal
-                                    isOpen={isErrorModalOpen}
-                                    onCloseClick={() => setIsErrorModalOpen(false)}
+                                    modalProps={{
+                                        isOpen: isErrorModalOpen,
+                                        onCloseClick: () => setIsErrorModalOpen(false),
+                                    }}
                                     isToSave={true}
                                 />
                             </div>

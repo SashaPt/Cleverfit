@@ -14,12 +14,14 @@ import { TariffCard } from './components/tariff-card/tariff-card';
 import tariffFree from '/tariff_free.png';
 import tariffPro from '/tariff_pro.png';
 import { SettingsItems } from './components/settings-items/settings-items';
-import { selectUser, setIsUserQueried, setTariffsList } from '@redux/profile/profileSlice';
+import { selectUser, setTariffsList } from '@redux/profile/profileSlice';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import moment from 'moment';
 import { SettingsDrawer } from './components/settings-drawer/settings-drawer';
 import { useLazyGetTariffsQuery } from '../../services/profileApi';
 import { setAccessToken } from '@redux/auth/authSlice';
+import { useDateFormat } from '@hooks/useDateFormat';
+import { useParseDate } from '@hooks/useParseDate';
+import { DM_FORMAT } from '@constants/constants';
 
 export const SettingsPage: React.FC = () => {
     const location = useLocation();
@@ -29,6 +31,8 @@ export const SettingsPage: React.FC = () => {
     const [getTariffs] = useLazyGetTariffsQuery();
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const experiedDate = useDateFormat(useParseDate(user?.tariff?.expired || ''), DM_FORMAT);
 
     const updateTariffs = async () => {
         try {
@@ -44,11 +48,6 @@ export const SettingsPage: React.FC = () => {
         dispatch(setAccessToken(''));
         dispatch(push(Paths.AUTH));
     };
-
-    useEffect(() => {
-        dispatch(setIsUserQueried(true));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     useEffect(() => {
         updateTariffs();
@@ -120,6 +119,7 @@ export const SettingsPage: React.FC = () => {
                                                     type='primary'
                                                     data-test-id='activate-tariff-btn'
                                                     className='settings-tariff-button'
+                                                    onClick={() => setIsDrawerOpen(true)}
                                                 >
                                                     Активировать
                                                 </Button>
@@ -127,12 +127,7 @@ export const SettingsPage: React.FC = () => {
                                                 <div className='settings-card-action'>
                                                     активен
                                                     <br />
-                                                    до{' '}
-                                                    {moment(
-                                                        new Date(
-                                                            Date.parse(user.tariff.expired || ''),
-                                                        ),
-                                                    ).format('DD.MM')}
+                                                    до {experiedDate}
                                                 </div>
                                             ),
                                         ]}
@@ -150,8 +145,10 @@ export const SettingsPage: React.FC = () => {
                                     </Button>
                                 </div>
                                 <SettingsDrawer
-                                    isOpen={isDrawerOpen}
-                                    onClose={() => setIsDrawerOpen(false)}
+                                    modalProps={{
+                                        isOpen: isDrawerOpen,
+                                        onCloseClick: () => setIsDrawerOpen(false),
+                                    }}
                                     setModalOpen={() => setIsModalOpen(true)}
                                 />
                             </div>

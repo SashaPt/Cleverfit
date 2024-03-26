@@ -27,7 +27,7 @@ export const SettingsTariffsForm: React.FC<{
             setDrawerClose();
             setModalOpen();
         } catch (error) {
-            console.log(error);
+            return;
         }
     };
 

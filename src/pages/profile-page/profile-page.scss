@@ -11,28 +11,24 @@
 }
 
 .profile-container {
-    background: #fff;
+    background: var(--color-background);
     border-radius: 8px;
-    padding: 24px;
-    margin-top: 24px;
+    padding: var(--padding-l);
+    margin-top: var(--margin-l);
     position: relative;
     min-height: calc(100vh - 138px);
 }
 
-.profile-form {
-    padding-bottom: 30px;
-}
-
 .profile-block {
     max-width: 480px;
-    margin-bottom: 24px;
+    margin-bottom: var(--margin-l);
 }
 
 .profile-subtitle {
     font-weight: 500;
-    font-size: 16px;
-    color: #262626;
-    margin-bottom: 24px;
+    font-size: var(--fs-m);
+    color: var(--color-black);
+    margin-bottom: var(--margin-l);
 }
 
 .profile-form-block {
@@ -45,7 +41,7 @@
 }
 
 .profile-input-wrapper {
-    margin-bottom: 16px;
+    margin-bottom: var(--margin-m);
     width: 100%;
     .ant-input,
     .ant-picker {
@@ -62,31 +58,31 @@
 
 .profile-info {
     .profile-input-wrapper:first-child {
-        margin-bottom: 32px;
+        margin-bottom: var(--margin-xl);
     }
     .profile-input-wrapper:nth-child(2) {
         margin-bottom: 46px;
     }
     .ant-form-item-explain-error {
-        font-size: 12px;
+        font-size: var(--fs-xs);
     }
 }
 
 .profile-button-submit {
     height: 40px;
-    font-size: 16px;
+    font-size: var(--fs-m);
     margin-top: 30px;
 }
 
 .profile-alert {
     width: 395px;
-    max-width: 100%;
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
+    max-width: calc(100% - 256px);
+    position: fixed;
+    bottom: 50px;
+    left: calc(50% + 104px);
     transform: translateX(-50%);
     .ant-alert-message {
-        color: #262626;
+        color: var(--color-black);
     }
 }
 
@@ -100,11 +96,9 @@
         margin-bottom: 36px;
     }
     .profile-container {
-        padding: 16px 24px;
+        padding: var(--padding-m) var(--padding-l);
     }
-    .profile-form {
-        padding-bottom: 0;
-    }
+
     .profile-form-block {
         flex-direction: column-reverse;
         gap: 0;
@@ -121,6 +115,6 @@
     .profile-alert {
         max-width: calc(100% - 48px);
         bottom: 48px;
-    
+        left: 50%;
     }
 }

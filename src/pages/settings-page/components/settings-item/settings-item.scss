@@ -7,9 +7,9 @@
 }
 
 .settings-item-name {
-    font-size: 14px;
+    font-size: var(--fs-s);
     font-weight: 700;
-    color: #262626;
+    color: var(--color-black);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -21,7 +21,7 @@
 }
 
 .settings-item-name-disabled {
-    color: #bfbfbf;
+    color: var(--color-text-lightgray);
 }
 
 .ant-tooltip-arrow {
@@ -32,7 +32,7 @@
     .settings-item {
         gap: 80px;
         .anticon {
-            font-size: 16px;
+            font-size: var(--fs-m);
             flex-shrink: 0;
         }
         .ant-switch {

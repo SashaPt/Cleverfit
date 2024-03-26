@@ -13,16 +13,16 @@
     width: 539px !important;
     max-width: 100% !important;
     .ant-modal-title {
-        color: #262626;
+        color: var(--color-black);
     }
 
     .ant-modal-close-x {
         line-height: 54px !important;
-        font-size: 14px;
+        font-size: var(--fs-s);
     }
 
     .ant-form-item {
-        margin-bottom: 16px;
+        margin-bottom: var(--margin-m);
         &:last-child {
             margin-bottom: 0;
         }
@@ -33,7 +33,7 @@
     }
 
     .ant-modal-footer {
-        padding: 10px 24px;
+        padding: var(--padding-xs) var(--padding-l);
     }
 }
 
@@ -81,22 +81,22 @@
         width: 328px !important;
 
         .ant-modal-header {
-            padding: 16px;
+            padding: var(--padding-m);
         }
 
         .ant-modal-body {
-            padding: 24px 16px;
+            padding: var(--padding-l) var(--padding-m);
         }
 
         .ant-modal-footer {
-            padding: 10px 16px;
+            padding: var(--padding-xs) var(--padding-m);
         }
     }
 
     .write-review-success-modal,
     .write-review-error-modal {
         .ant-modal-footer {
-            padding: 0 16px 32px;
+            padding: 0 var(--padding-m) var(--padding-xl);
             margin-top: -32px;
         }
     }

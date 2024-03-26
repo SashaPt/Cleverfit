@@ -1,3 +1,4 @@
+import './exercises-fields.scss';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectCheckedIndexes, setCheckedIndexes } from '@redux/calendar/calendarSlice';
 import { CalendarAction } from '../../../../types/calendar/calendar';
@@ -14,7 +15,7 @@ export const ExercisesFields: React.FC<{
     const checkedIndexes = useAppSelector(selectCheckedIndexes);
     const dispatch = useDispatch();
     return (
-        <div className='form-fields'>
+        <div className='form-fields exercises-form-fields'>
             <div className='form-line'>
                 <Form.Item name={[field.name, 'name']} className='form-exercise-input'>
                     <Input

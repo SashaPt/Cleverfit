@@ -4,7 +4,7 @@ import { Button, Upload, UploadFile, UploadProps } from 'antd';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectUser, selectUserImage, setImage } from '@redux/profile/profileSlice';
+import { selectUserImage, setImage } from '@redux/profile/profileSlice';
 import { ProfileErrorModal } from '../profile-error-modal/profile-error-modal';
 import { useDispatch } from 'react-redux';
 import { selectIsMobile } from '@redux/calendar/calendarSlice';
@@ -17,7 +17,6 @@ export const UploadImage: React.FC<{
     const [upload] = useUploadMutation();
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [fileList, setFileList] = useState<UploadFile[]>([]);
-    const user = useAppSelector(selectUser);
     const dispatch = useDispatch();
     const userImage = useAppSelector(selectUserImage);
     const isMobile = useAppSelector(selectIsMobile);
@@ -26,14 +25,22 @@ export const UploadImage: React.FC<{
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const uploadImage = async (options: any) => {
-        const { onSuccess, onError, file } = options;
+        const { file } = options;
         const fmData = new FormData();
         fmData.append('file', file);
         try {
             const resp = await upload(fmData).unwrap();
-            dispatch(setImage(`https://training-api.clevertec.ru${resp.url}`));
-            onSuccess('Ok');
+            const imgUrl = `https://training-api.clevertec.ru${resp.url}`;
+            dispatch(setImage(imgUrl));
             setSuccess();
+            setFileList([
+                {
+                    uid: file.uid,
+                    name: file.name,
+                    url: imgUrl,
+                    thumbUrl: imgUrl,
+                },
+            ]);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             if (
@@ -42,7 +49,6 @@ export const UploadImage: React.FC<{
             ) {
                 setIsErrorModalOpen(true);
             }
-            onError(error);
             setError();
             setFileList([
                 {
@@ -85,18 +91,17 @@ export const UploadImage: React.FC<{
     );
 
     useEffect(() => {
-        if (user && user.imgSrc) {
+        if (userImage) {
             setFileList([
                 {
                     uid: '-1',
                     name: 'image.png',
-                    status: 'done',
-                    url: user.imgSrc,
-                    thumbUrl: user.imgSrc,
+                    url: userImage,
+                    thumbUrl: userImage,
                 },
             ]);
         }
-    }, [user]);
+    }, [userImage]);
 
     return (
         <>
@@ -123,8 +128,10 @@ export const UploadImage: React.FC<{
                 </Upload>
             </div>
             <ProfileErrorModal
-                isOpen={isErrorModalOpen}
-                onCloseClick={() => setIsErrorModalOpen(false)}
+                modalProps={{
+                    isOpen: isErrorModalOpen,
+                    onCloseClick: () => setIsErrorModalOpen(false),
+                }}
             />
         </>
     );

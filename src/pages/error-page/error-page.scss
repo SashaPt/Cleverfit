@@ -11,10 +11,10 @@
 }
 
 .error-container {
-    margin: 24px 0 42px;
-    background: #fff;
+    margin: var(--margin-l) 0 42px;
+    background:  var(--color-background);
     border-radius: 8px;
-    padding: 24px;
+    padding: var(--padding-l);
     min-height: calc(100vh - 66px);
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
 
     .ant-result-title {
         font-weight: 500;
-        color: #262626;
+        color: var(--color-black);
     }
 
     .ant-btn {

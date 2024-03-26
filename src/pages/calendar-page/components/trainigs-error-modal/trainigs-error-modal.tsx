@@ -1,36 +1,38 @@
 import './trainigs-error-modal.scss';
 import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import { ModalProps } from '../../../../types/common/common';
 import { Button, Card, Modal } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 
 export const TrainingsErrorModal: React.FC<{
-    isOpen: boolean;
-    onCloseClick: () => void;
+    modalProps: ModalProps;
     onRefreshClick: () => void;
     isToSave?: boolean;
-}> = ({ isOpen, onCloseClick, onRefreshClick, isToSave }) => {
+}> = ({ modalProps, onRefreshClick, isToSave }) => {
     return (
         <Modal
             className={`trainings-error-modal ${isToSave ? 'trainings-error-modal-save' : ''}`}
-            open={isOpen}
+            open={modalProps.isOpen}
             footer={null}
             centered={true}
             width={'fit-content'}
             closable={false}
-            bodyStyle={ { padding: 0 } }
+            bodyStyle={{ padding: 0 }}
         >
-            {!isToSave && <Button
-                data-test-id='modal-error-user-training-button-close'
-                className='trainings-error-modal-close'
-                style={{
-                    position: 'absolute',
-                    top: '20px',
-                    right: '28px',
-                    zIndex: 2,
-                }}
-                onClick={onCloseClick}
-                icon={<CloseOutlined style={{fontSize: '12px'}}/>}
-            />}
+            {!isToSave && (
+                <Button
+                    data-test-id='modal-error-user-training-button-close'
+                    className='trainings-error-modal-close'
+                    style={{
+                        position: 'absolute',
+                        top: '20px',
+                        right: '28px',
+                        zIndex: 2,
+                    }}
+                    onClick={modalProps.onCloseClick}
+                    icon={<CloseOutlined style={{ fontSize: '12px' }} />}
+                />
+            )}
             <Card
                 className='trainings-error-modal-card'
                 bordered={false}
