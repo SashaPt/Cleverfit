@@ -1,9 +1,9 @@
 .trainigs-items {
     &-modal {
         margin-top: 14px;
-        padding: 16px 0;
+        padding: var(--padding-m) 0;
         .trainigs-item:not(:last-child) {
-            margin-bottom: 8px;
+            margin-bottom: var(--margin-xxs);
         }
     }
 }
@@ -16,12 +16,12 @@
 }
 
 .trainigs-items-subtitle {
-    color: #8c8c8c;
+    color: var(--color-text-gray);
 }
 
 .trainigs-items-image {
     display: block;
-    margin: 32px auto 16px;
+    margin: var(--margin-xl) auto var(--margin-m);
 }
 
 .trainigs-items-edit,
@@ -38,6 +38,6 @@
 @media screen and (max-width: 900px) {
     .trainigs-item-name,
     .ant-badge-status-text {
-        font-size: 12px;
+        font-size: var(--fs-xs);
     }
 }

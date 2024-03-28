@@ -209,8 +209,10 @@ export const CalendarPage: React.FC = () => {
                         <div className='calendar-modals'>
                             {isDateModalOpen && (
                                 <CalendarDateModal
-                                    isOpen={isDateModalOpen}
-                                    onCloseClick={() => setIsDateModalOpen(false)}
+                                    modalProps={{
+                                        isOpen: isDateModalOpen,
+                                        onCloseClick: () => setIsDateModalOpen(false),
+                                    }}
                                     onCreateClick={() => {
                                         setIsDateModalOpen(false);
                                         setIsDate2ModalOpen(true);
@@ -235,8 +237,10 @@ export const CalendarPage: React.FC = () => {
                             {isDate2ModalOpen && (
                                 <CalendarDateModalCreate
                                     date={currentDate}
-                                    isOpen={isDate2ModalOpen}
-                                    onCloseClick={resetModal}
+                                    modalProps={{
+                                        isOpen: isDate2ModalOpen,
+                                        onCloseClick: resetModal,
+                                    }}
                                     onBackClick={() => {
                                         resetModal();
                                         setIsDateModalOpen(true);
@@ -261,21 +265,27 @@ export const CalendarPage: React.FC = () => {
                         </div>
                         <CalendarDrawer
                             date={currentDate}
-                            isOpen={isDrawerOpen}
-                            onClose={() => setIsDrawerOpen(false)}
+                            modalProps={{
+                                isOpen: isDrawerOpen,
+                                onCloseClick: () => setIsDrawerOpen(false),
+                            }}
                             toDelete={() => setIsDelete(true)}
                         />
                         <TrainingsErrorModal
-                            isOpen={isErrorModalOpen}
-                            onCloseClick={() => setIsErrorModalOpen(false)}
+                            modalProps={{
+                                isOpen: isErrorModalOpen,
+                                onCloseClick: () => setIsErrorModalOpen(false),
+                            }}
                             onRefreshClick={() => {
                                 setIsErrorModalOpen(false);
                                 getTrainingsList();
                             }}
                         ></TrainingsErrorModal>
                         <TrainingsErrorModal
-                            isOpen={isErrorSaveModalOpen}
-                            onCloseClick={() => setIsErrorSaveModalOpen(false)}
+                            modalProps={{
+                                isOpen: isErrorSaveModalOpen,
+                                onCloseClick: () => setIsErrorSaveModalOpen(false),
+                            }}
                             onRefreshClick={() => {
                                 setIsErrorSaveModalOpen(false);
                             }}

@@ -7,3 +7,6 @@ export const FEEDBACKS_LIMIT = 4;
 
 export const CALENDAR_MODAL_WIDTH = 264;
 export const CALENDAR_CELL_MARGIN = 4;
+
+export const DATE_FORMAT = 'DD.MM.YYYY';
+export const DM_FORMAT = 'DD.MM';

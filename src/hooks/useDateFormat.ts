@@ -1,3 +1,4 @@
+import { DATE_FORMAT, DM_FORMAT } from '@constants/constants';
 import { useMemo } from 'react';
 
 const addZero = (val: number) => {
@@ -8,14 +9,18 @@ const addZero = (val: number) => {
     }
 };
 
-export const useDateFormat = (date: Date) => {
+export const useDateFormat = (date: Date | null, format?: string) => {
     const formated = useMemo(() => {
         if (date) {
-            return `${addZero(date.getDate())}.${addZero(date.getMonth() + 1)}.${addZero(
-                date.getUTCFullYear(),
-            )}`;
+            if (!format || format === DATE_FORMAT) {
+                return `${addZero(date.getDate())}.${addZero(date.getMonth() + 1)}.${addZero(
+                    date.getUTCFullYear(),
+                )}`;
+            } else if (format == DM_FORMAT) {
+                return `${addZero(date.getDate())}.${addZero(date.getMonth() + 1)}`;
+            }
         }
         return '';
-    }, [date]);
+    }, [date, format]);
     return formated;
 };

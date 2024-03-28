@@ -12,8 +12,6 @@
     position: absolute;
     z-index: 50;
     padding: 0;
-    transition: unset !important;
-    animation-duration: 0s !important;
 
     .ant-modal-header {
         padding: 16px 12px 4px;
@@ -21,9 +19,9 @@
     }
 
     .ant-modal-title {
-        font-size: 14px;
+        font-size: var(--font-size-x);
         font-weight: 700;
-        color: #262626;
+        color: var(--color-black);
     }
 
     .ant-modal-body {
@@ -36,7 +34,7 @@
     }
 
     .ant-modal-close-x {
-        font-size: 12px;
+        font-size: var(--font-size-xs);
         width: auto;
         height: auto;
         margin: 17px 16px 0 0;
@@ -68,14 +66,6 @@
 
 .calendar-date-modal-button {
     height: 40px;
-    &:not([disabled]):not(:hover) {
-        background: #2f54eb;
-        border-color: #2f54eb;
-    }
-    &:not([disabled]):hover {
-        background: #85a5ff;
-        border-color: #597ef7;
-    }
 }
 
 @media screen and (max-width: 600px) {

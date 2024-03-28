@@ -21,13 +21,14 @@ import { useForm } from 'antd/lib/form/Form';
 import { Exercise } from '../../../../types/calendar/calendar';
 import { useCurrentExercises } from '@hooks/useCurrentData';
 import { useEffect } from 'react';
+import { ModalProps } from '../../../../types/common/common';
+import { DATE_FORMAT } from '@constants/constants';
 
 export const CalendarDrawer: React.FC<{
     date: Moment;
-    isOpen: boolean;
-    onClose: () => void;
+    modalProps: ModalProps;
     toDelete: () => void;
-}> = ({ date, isOpen, onClose, toDelete }) => {
+}> = ({ date, modalProps, toDelete }) => {
     const currentTraining = useAppSelector(selectCurrentTraining);
     const action = useAppSelector(selectCalendarAction);
     const userTrainings = useAppSelector(selectCalendarResponse);
@@ -39,7 +40,7 @@ export const CalendarDrawer: React.FC<{
     const [drawerForm] = useForm();
 
     const onDrawerClose = () => {
-        onClose();
+        modalProps.onCloseClick();
 
         const values = drawerForm.getFieldValue('exercises');
 
@@ -93,7 +94,7 @@ export const CalendarDrawer: React.FC<{
             }
             closable={false}
             onClose={onDrawerClose}
-            open={isOpen}
+            open={modalProps.isOpen}
             extra={
                 <Button
                     data-test-id='modal-drawer-right-button-close'
@@ -109,7 +110,7 @@ export const CalendarDrawer: React.FC<{
                     editable={false}
                     keys={[{ name: currentTraining, _id: editedId?._id || '' }]}
                 />
-                <div>{date.format('DD.MM.YYYY')}</div>
+                <div>{date.format(DATE_FORMAT)}</div>
             </div>
             <Form layout='vertical' className='calendar-drawer-form' form={drawerForm}>
                 <Form.List

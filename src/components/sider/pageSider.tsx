@@ -28,6 +28,13 @@ import {
     setIsCalendarQueried,
     setCalendarResponse,
 } from '@redux/calendar/calendarSlice';
+import { useLazyGetUserQuery } from '../../services/profileApi';
+import {
+    selectIsUserQueried,
+    setImage,
+    setIsUserQueried,
+    setUser,
+} from '@redux/profile/profileSlice';
 const { Sider } = Layout;
 
 const ExitSvg = () => (
@@ -54,10 +61,13 @@ const ExitIcon = (props: Partial<CustomIconComponentProps>) => (
 export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => {
     const [collapsed, setCollapsed] = useState(false);
     const [collapsedMobile, setCollapsedMobile] = useState(true);
-    const dispatch = useDispatch();
+
     const isCalendarQueried = useAppSelector(selectIsCalendarQueried);
+    const isUserQueried = useAppSelector(selectIsUserQueried);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [getTrainings, { isLoading: isCalendarLoading }] = useLazyGetUserTrainingsQuery();
+    const [getUser] = useLazyGetUserQuery();
+    const dispatch = useDispatch();
 
     const queryCalendar = async () => {
         try {
@@ -71,9 +81,23 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         }
     };
 
+    const queryUser = async () => {
+        try {
+            const resp = await getUser(null).unwrap();
+            dispatch(setUser(resp));
+            dispatch(setImage(resp.imgSrc || ''));
+        } catch (error) {
+            return;
+        } finally {
+            setIsUserQueried(false);
+        }
+    };
+
     const onClick: MenuProps['onClick'] = (e) => {
         if (e.key == 'calendar') {
             dispatch(setIsCalendarQueried(true));
+        } else if (e.key == 'profile') {
+            dispatch(push(Paths.PROFILE));
         }
     };
 
@@ -89,6 +113,18 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isCalendarQueried]);
+
+    useEffect(() => {
+        dispatch(setIsUserQueried(true));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (isUserQueried) {
+            setTimeout(() => queryUser(), 100);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isUserQueried]);
 
     return (
         <>
@@ -133,7 +169,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                 label: 'Достижения',
                             },
                             {
-                                key: '4',
+                                key: 'profile',
                                 icon: <IdcardOutlined />,
                                 label: 'Профиль',
                             },
@@ -190,7 +226,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                 label: 'Достижения',
                             },
                             {
-                                key: '4',
+                                key: 'profile',
                                 label: 'Профиль',
                             },
                         ]}

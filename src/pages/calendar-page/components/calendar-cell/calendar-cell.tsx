@@ -2,7 +2,6 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     selectCalendarResponse,
     selectIsMobile,
-    setIsMobile,
     setModalLeft,
     setModalTop,
 } from '@redux/calendar/calendarSlice';
@@ -12,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { TrainingsItems } from '../trainings-items/trainings-items';
 import { CALENDAR_MODAL_WIDTH } from '@constants/constants';
 import { useCurrentTrainings } from '@hooks/useCurrentData';
+import { useMobile } from '@hooks/useMobile';
 
 export const CalendarCell: React.FC<{
     date: Moment;
@@ -22,6 +22,8 @@ export const CalendarCell: React.FC<{
     const userData = useAppSelector(selectCalendarResponse);
     const currentTrainings = useCurrentTrainings(date, userData);
     const dispatch = useDispatch();
+
+    useMobile();
 
     const isToday =
         date.date() == moment().date() &&
@@ -56,11 +58,6 @@ export const CalendarCell: React.FC<{
     useEffect(() => {
         const handleResize = () => {
             if (currentCellElement) setPosition(currentCellElement);
-            if (window.innerWidth <= 600) {
-                dispatch(setIsMobile(true));
-            } else {
-                dispatch(setIsMobile(false));
-            }
         };
         handleResize();
 

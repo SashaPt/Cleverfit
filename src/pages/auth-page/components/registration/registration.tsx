@@ -4,7 +4,7 @@ import './registration.scss';
 import logoAuth from '/logo_auth.svg';
 import { GooglePlusOutlined } from '@ant-design/icons';
 import { FormTabs } from '../form-tabs/form-tabs';
-import { validateEmail, validatePassword } from '../../validators/auth-validators';
+import { validateEmail, validatePassword } from '../../../../validators/auth-validators';
 import { RegistrationData } from '../../../../types/auth/auth';
 import useForm from 'antd/lib/form/hooks/useForm';
 import { useRegisterMutation } from '../../../../services/authApi';

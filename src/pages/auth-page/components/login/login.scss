@@ -2,38 +2,30 @@
     width: 539px;
     max-width: 100%;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-    background: #fff;
+    background: var(--color-background);
     border-radius: 2px;
     padding: 64px 85.5px 142px;
 
     .logo {
-        margin: 0 auto 48px;
+        margin: 0 auto var(--margin-xxl);
     }
 
     .login-form-forgot:not([disabled]):not(:hover) {
-        color: #2f54eb;
-    }
-
-    .login-form-button:not([disabled]) {
-        background-color: #2f54eb;
-    }
-
-    .login-form-button:not([disabled]):hover {
-        background-color: #597ef7;
+        color: var(--color-primary-button-blue);
     }
 
     .login-form-google:not([disabled]):hover {
-        color: #597ef7;
-        border-color: #597ef7;
+        color: var(--color-link-blue-hover);
+        border-color: var(--color-link-blue-hover);
     }
 
     .ant-checkbox-inner,
     .ant-checkbox-checked .ant-checkbox-inner {
-        border-color: #2f54eb;
+        border-color: var(--color-primary-button-blue);
     }
 
     .ant-form-item {
-        margin-bottom: 32px;
+        margin-bottom: var(--margin-xl);
     }
 
     .ant-input-wrapper,
@@ -42,28 +34,28 @@
     }
 
     .ant-input-group-addon {
-        color: #262626;
+        color: var(--color-black);
     }
 
     .ant-input-group-wrapper-status-error .ant-input-group-addon {
-        border-right-color: #d9d9d9;
+        border-right-color: var(--color-border-gray);
     }
     .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
     .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
-        border-left-color: #d9d9d9;
+        border-left-color: var(--color-border-gray);
     }
 
     .ant-input {
-        padding: 10px 11px;
-        color: #262626;
+        padding: var(--padding-xs) 11px;
+        color: var(--color-black);
     }
 
     .ant-form-item-explain-error {
-        font-size: 12px;
+        font-size: var(--fs-xs);
     }
 
     .form-item-container {
-        margin-bottom: 24px;
+        margin-bottom: var(--margin-l);
         .ant-form-item-control-input {
             min-height: unset;
         }
@@ -76,7 +68,7 @@
     }
 
     .login-form-button-wrapper {
-        margin-bottom: 16px;
+        margin-bottom: var(--margin-m);
     }
 
     .login-form-forgot {
@@ -85,31 +77,31 @@
     }
 
     .login-form-google {
-        color: #262626;
+        color: var(--color-black);
     }
 }
 
 @media screen and (max-width: 600px) {
     .login-form {
-        padding: 32px 16px 92px;
+        padding: var(--padding-xl) var(--padding-m) 92px;
 
         .logo {
             height: 50px;
-            margin: 0 auto 32px;
+            margin: 0 auto var(--margin-xl);
         }
 
         .login-form-forgot {
             padding: 0 7px;
             height: 18px;
-            font-size: 14px;
+            font-size: var(--fs-s);
         }
 
         .login-form-button {
-            font-size: 14px;
+            font-size: var(--fs-s);
         }
 
         .login-form-google {
-            font-size: 14px;
+            font-size: var(--fs-s);
             .anticon {
                 display: none;
             }

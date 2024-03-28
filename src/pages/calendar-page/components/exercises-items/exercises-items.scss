@@ -6,16 +6,16 @@
     width: unset;
 }
 .exercises-items {
-    padding: 16px 0;
+    padding: var(--padding-m) 0;
 }
 .exercises-item {
     display: flex;
     &:not(:last-child) {
-        margin-bottom: 8px;
+        margin-bottom: var(--margin-xxs);
     }
     &-name {
         margin-right: auto;
         white-space: nowrap;
-        color:  #8c8c8c;
+        color:  var(--color-text-gray);
     }
 }

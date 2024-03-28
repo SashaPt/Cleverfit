@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding-top: 24px;
+    padding-top: var(--padding-l);
     padding-bottom: 42px;
     gap: 20px;
 }
@@ -23,18 +23,18 @@
     }
 
     .ant-card-meta-detail > div:not(:last-child) {
-        margin-bottom: 48px;
+        margin-bottom: var(--margin-xxl);
     }
 
     .ant-card-meta-title {
-        font-size: 24px;
+        font-size: var(--fs-xs);
         white-space: unset;
-        color: #061178;
+        color: var(--color-blue);
         overflow: visible;
     }
 
     .ant-card-meta-description {
-        color: #8c8c8c;
+        color: var(--color-text-gray);
         max-width: 521px;
         margin: 0 auto;
     }
@@ -42,14 +42,14 @@
 
 @media screen and (max-width: 600px) {
     .no-feedbacks-wrapper {
-        padding: 24px 16px 0;
+        padding: var(--padding-l) var(--padding-m) 0;
         justify-content: flex-start;
         gap: 48px;
         min-height: calc(100vh - 50px);
     }
 
     .no-feedbacks-card {
-        padding: 48px 32px;
+        padding: 48px var(--padding-xl);
 
         .ant-card-meta-description {
             max-width: 264px;

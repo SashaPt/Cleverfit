@@ -16,4 +16,6 @@ export enum Paths {
     SUCCESS_CHANGE_PASSWORD = 'success-change-password',
     FEEDBACKS = '/feedbacks',
     CALENDAR = '/calendar',
+    PROFILE = '/profile',
+    SETTINGS = '/settings',
 }

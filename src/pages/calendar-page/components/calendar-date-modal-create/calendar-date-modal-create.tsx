@@ -18,11 +18,11 @@ import {
 import { Button, Modal, Select } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useCurrentTrainingsNames } from '@hooks/useCurrentData';
+import { ModalProps } from '../../../../types/common/common';
 
 export const CalendarDateModalCreate: React.FC<{
-    isOpen: boolean;
+    modalProps: ModalProps
     date: Moment;
-    onCloseClick: () => void;
     onBackClick: () => void;
     onAddClick: () => void;
     onSaveClick: () => void;
@@ -30,9 +30,8 @@ export const CalendarDateModalCreate: React.FC<{
     saveLoading: boolean;
     children?: JSX.Element;
 }> = ({
-    isOpen,
+    modalProps,
     date,
-    onCloseClick,
     onBackClick,
     onAddClick,
     onSaveClick,
@@ -54,13 +53,13 @@ export const CalendarDateModalCreate: React.FC<{
         <Modal
             className='calendar-date-modal calendar-date-modal-create'
             data-test-id='modal-create-exercise'
-            open={isOpen}
+            open={modalProps.isOpen}
             mask={false}
             maskClosable={false}
             closable={false}
             getContainer={'.calendar-modals'}
             onCancel={() => {
-                onCloseClick();
+                modalProps.onCloseClick();
                 dispatch(setSelected(selectDefault));
             }}
             style={!isMobile ? { top, left } : {}}

@@ -1,3 +1,41 @@
+:root {
+    --color-black: #262626;
+    --color-blue: #061178;
+    --color-primary-button-blue: #2f54eb;
+    --color-primary-button-blue-hover: #85a5ff;
+    --color-primary-button-blue-hover-border: #85a5ff;
+    --color-link-blue-hover: #597ef7;
+    --color-text-blue: #177ddc;
+    --color-text-gray: #8c8c8c;
+    --color-text-lightgray: #bfbfbf;
+    --color-border-gray: #d9d9d9;
+    --color-background: #fff;
+    --color-background-light: #f0f0f0;
+    --color-background-lightblue: #f0f5ff;
+
+    --fs-xs: 12px;
+    --fs-s: 14px;
+    --fs-m: 16px;
+    --fs-l: 20px;
+    --fs-xl: 24px;
+
+    --margin-xxs: 8px;
+    --margin-xs: 10px;
+    --margin-s: 12px;
+    --margin-m: 16px;
+    --margin-l: 24px;
+    --margin-xl: 32px;
+    --margin-xxl: 48px;
+
+    --padding-xxs: 8px;
+    --padding-xs: 10px;
+    --padding-s: 12px;
+    --padding-m: 16px;
+    --padding-l: 24px;
+    --padding-xl: 32px;
+    
+}
+
 @font-face {
     font-family: Inter;
     font-display: swap;
@@ -22,6 +60,10 @@
     font-style: normal;
 }
 
+* {
+    animation-duration: 0s !important;
+}
+
 *,
 h1 {
     padding: 0;
@@ -43,8 +85,9 @@ body {
     min-height: 100vh;
     max-width: 1440px;
     margin: 0 auto;
+    color: var(--color-black);
     font-family: Inter, sans-serif;
-    font-size: 16px;
+    font-size: var(--fs-m);
     font-style: normal;
     line-height: 130% !important;
     -webkit-tap-highlight-color: transparent;
@@ -77,19 +120,37 @@ svg {
 }
 
 ::selection {
-    background: #061178;
-    color: #fff;
+    background: var(--color-blue);
+    color: var(--color-background);
 }
 
 ._container {
     max-width: 100%;
-    padding: 0 24px;
+    padding: 0 var(--padding-l);
     margin: 0 auto;
 }
 
-.ant-modal-wrap,
-.ant-modal-mask,
-.ant-modal {
-    animation-duration: 0s !important;
+.ant-form-item-explain,
+.ant-form-item-extra {
+    color: var(--color-text-gray);
+}
+
+.ant-form-item-explain,
+.ant-form-item-extra,
+.ant-form-item-explain > *,
+.ant-form-item-extra > * {
+    opacity: 1;
+    visibility: visible;
+    transform: unset;
     transition: unset !important;
+}
+
+.ant-btn-primary:not([disabled]):not(:hover) {
+    background: var(--color-primary-button-blue);
+    border-color: var(--color-primary-button-blue);
+}
+
+.ant-btn-primary:not([disabled]):hover {
+    background: var(--color-primary-button-blue-hover);
+    border-color: var(--color-primary-button-blue-hover-border);
 }

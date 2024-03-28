@@ -8,6 +8,9 @@ import { PageFooter } from '@components/footer/pageFooter';
 import { Loader } from '@components/loader/loader';
 import { useDispatch } from 'react-redux';
 import { setIsCalendarQueried } from '@redux/calendar/calendarSlice';
+import { push } from 'redux-first-history';
+import { Paths } from '../../routes/paths';
+import { setIsUserQueried } from '@redux/profile/profileSlice';
 const { Content } = Layout;
 const { Text, Title } = Typography;
 
@@ -17,6 +20,11 @@ export const MainPage: React.FC = () => {
 
     useEffect(() => {
         setIsLoading(false);
+    }, []);
+
+    useEffect(() => {
+        dispatch(setIsUserQueried(true));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -82,7 +90,9 @@ export const MainPage: React.FC = () => {
                                                     icon={<CalendarOutlined />}
                                                     className='card-btn'
                                                     data-test-id='menu-button-calendar'
-                                                    onClick={() => dispatch(setIsCalendarQueried(true))}
+                                                    onClick={() =>
+                                                        dispatch(setIsCalendarQueried(true))
+                                                    }
                                                 >
                                                     Календарь
                                                 </Button>,
@@ -99,6 +109,8 @@ export const MainPage: React.FC = () => {
                                                     type='text'
                                                     icon={<IdcardOutlined />}
                                                     className='card-btn'
+                                                    onClick={() => dispatch(push(Paths.PROFILE))}
+                                                    data-test-id='menu-button-profile'
                                                 >
                                                     Профиль
                                                 </Button>,

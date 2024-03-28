@@ -1,17 +1,24 @@
 #header {
-    padding: 16px 0;
-    background: #f0f5ff;
+    padding: var(--padding-m) 0;
+    background: var(--color-background-lightblue);
     height: unset;
 
     .ant-breadcrumb {
-        color: #8c8c8c;
+        color: var(--color-text-gray);
         a {
-            color: #8c8c8c;
+            color: var(--color-text-gray);
         }
         li:last-child,
         li:last-child a {
-            color: #262626;
+            color: var(--color-black);
             cursor: default;
+        }
+    }
+    .header-inline {
+        display: flex;
+        align-items: center;
+        .ant-breadcrumb {
+            font-size: var(--fs-l);
         }
     }
 
@@ -20,11 +27,11 @@
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
-        padding-top: 8px;
+        padding-top: var(--padding-xxs);
     }
 
     .header-title {
-        color: #262626;
+        color: var(--color-black);
         padding: 6px 0px;
         font-weight: 700;
         margin: 0;
@@ -33,14 +40,25 @@
 
     .settings-btn {
         width: max-content;
-       margin-left: auto;
+        margin-left: auto;
     }
 }
 
 @media screen and (max-width: 900px) {
     #header {
+        .header-inline {
+            display: block;
+            .ant-breadcrumb {
+                font-size: var(--fs-s);
+            }
+            .settings-btn .anticon {
+                display: inline-flex;
+                margin-right: var(--margin-xs);
+            }
+        }
+
         .header-title {
-            font-size: min(2.878vw, 24px);
+            font-size: min(2.878vw, var(--fs-xl));
             font-weight: 500;
         }
 
@@ -62,7 +80,7 @@
         }
 
         .header-title {
-            font-size: min(5.556vw, 20px);
+            font-size: min(5.556vw, var(--fs-l));
         }
 
         .settings-btn {
@@ -72,12 +90,12 @@
         .settings-btn .anticon {
             display: flex;
             justify-content: center;
-            border: 1px solid #d9d9d9;
+            border: 1px solid var(--color-border-gray);
             border-radius: 50%;
             width: 32px;
             height: 32px;
             box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
-            background: #fff;
+            background: var(--color-background);
         }
 
         .settings-btn > .anticon + span {

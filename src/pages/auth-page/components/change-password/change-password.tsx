@@ -4,7 +4,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAccessToken, selectPassword, setPassword } from '@redux/auth/authSlice';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Paths } from '../../../../routes/paths';
-import { validatePassword } from '@pages/auth-page/validators/auth-validators';
+import { validatePassword } from '../../../../validators/auth-validators';
 import { useForm } from 'antd/lib/form/Form';
 import Title from 'antd/lib/typography/Title';
 import { useEffect, useState } from 'react';
