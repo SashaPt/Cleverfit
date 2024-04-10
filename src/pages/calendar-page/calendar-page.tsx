@@ -45,6 +45,7 @@ import { ExercisesItems } from './components/exercises-items/exercises-items';
 import { CalendarCell } from './components/calendar-cell/calendar-cell';
 import { CalendarDrawer } from './components/calendar-drawer/calendar-drawer';
 import { SELECT_DEFAULT } from '@constants/constants';
+import { isArrayWithItems } from '@utils/utils';
 
 moment.updateLocale('ru', {
     week: {
@@ -135,11 +136,10 @@ export const CalendarPage: React.FC = () => {
             name: currentTraining,
             date: currentDate.toJSON(),
             exercises,
-           
         };
         const past = currentDate.isSameOrBefore(moment());
         if ((action === 'toAdd' && !editedId) || (editedId && editedId?.name !== currentTraining)) {
-            if (exercises.length) {
+            if (isArrayWithItems(exercises)) {
                 try {
                     await createTraining(data).unwrap();
                     dispatch(setIsCalendarQueried(true));
@@ -149,7 +149,7 @@ export const CalendarPage: React.FC = () => {
                 }
             }
         } else {
-            const body = { ...data,  parameters: editedId?.parameters };
+            const body = { ...data, parameters: editedId?.parameters };
             if (past) {
                 body.isImplementation = true;
             }
@@ -180,7 +180,7 @@ export const CalendarPage: React.FC = () => {
     };
 
     useEffect(() => {
-        if (!trainingsList.length) {
+        if (!isArrayWithItems(trainingsList)) {
             getTrainingsList();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

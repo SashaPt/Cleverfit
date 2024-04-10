@@ -16,7 +16,7 @@
     }
 
     .ant-card-meta-detail {
-        margin: var(--margin-l) auto;
+        margin: var(--spacing-l) auto;
         text-align: center;
         width: 100%;
         & > *:not(:last-child) {
@@ -44,7 +44,7 @@
 
     &.include-check-back-button,
     &.include-check-retry-button {
-        padding: 64px var(--padding-xl) 56px;
+        padding: 64px var(--spacing-xl) 56px;
         .result-button {
             width: max-content;
             max-width: 100%;
@@ -54,7 +54,7 @@
 
 @media screen and (max-width: 600px) {
     .result {
-        padding: var(--padding-xl) var(--padding-m);
+        padding: var(--spacing-xl) var(--spacing-m);
         width: 328px;
     }
 }

@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 import type { Moment } from 'moment';
-import {  TrainingsSuccess } from '../types/calendar/calendar';
+import { TrainingsSuccess } from '../types/calendar/calendar';
 import moment from 'moment';
+import { isArrayWithItems } from '@utils/utils';
 
 const getCurrentData = (date: Moment | null, data: TrainingsSuccess[]) => {
-    if (data.length && date) {
+    if (isArrayWithItems(data) && date) {
         return [...data].filter((item) => {
             return typeof item.date === 'string'
                 ? date.date() === moment(new Date(Date.parse(item.date))).date() &&
@@ -36,7 +37,11 @@ export const useCurrentTrainingsNames = (date: Moment | null, data: TrainingsSuc
     return trainings;
 };
 
-export const useCurrentExercises = (date: Moment | null, data: TrainingsSuccess[], training: string) => {
+export const useCurrentExercises = (
+    date: Moment | null,
+    data: TrainingsSuccess[],
+    training: string,
+) => {
     const exercises = useMemo(() => {
         if (training) {
             const current = getCurrentData(date, data);

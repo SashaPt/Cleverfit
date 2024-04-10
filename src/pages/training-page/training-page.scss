@@ -13,8 +13,8 @@
 .training-container {
     background: var(--color-background);
     border-radius: 8px;
-    padding: var(--padding-l);
-    margin-top: var(--margin-l);
+    padding: var(--spacing-l);
+    margin-top: var(--spacing-l);
     margin-bottom: 42px;
     height: calc(100vh - 156px);
     &-m {
@@ -32,7 +32,7 @@
         overflow-y: auto;
         overflow-x: hidden;
         margin-right: -18px;
-        padding-right: var(--padding-xs);
+        padding-right: var(--spacing-xs);
         &::-webkit-scrollbar {
             width: 8px;
         }
@@ -43,7 +43,7 @@
     }
     .ant-tabs-nav-list {
         width: 100%;
-        padding-right: var(--padding-xl);
+        padding-right: var(--spacing-xl);
         justify-content: space-between;
     }
     .ant-tabs-nav {
@@ -51,7 +51,7 @@
     }
     .ant-tabs-tab {
         padding-bottom: 0;
-        margin: 0 var(--margin-s);
+        margin: 0 var(--spacing-s);
     }
     .ant-tabs-tab-btn {
         font-weight: 500;
@@ -80,7 +80,7 @@
         margin-left: 4px;
     }
     .ant-badge-count {
-        padding: 0px var(--padding-xxs);
+        padding: 0px var(--spacing-xxs);
         min-width: 24px;
         height: 16px;
         display: flex;
@@ -102,14 +102,14 @@
     .training-tabs {
         .ant-tabs-content-holder {
             margin-right: -16px;
-            padding-right: var(--padding-xxs);
+            padding-right: var(--spacing-xxs);
         }
         .ant-tabs-nav-list {
             padding: 0;
             flex: 1;
         }
         .ant-tabs-nav {
-            margin: 0 var(--padding-s) 29px;
+            margin: 0 var(--spacing-s) 29px;
         }
         .ant-tabs-tab {
             padding: 19px 0 14px;
@@ -136,7 +136,7 @@
         }
     }
     .training-container {
-        padding: var(--padding-m) var(--padding-s);
+        padding: var(--spacing-m) var(--spacing-s);
     }
 
     .training-tabs {

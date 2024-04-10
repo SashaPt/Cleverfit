@@ -1,7 +1,7 @@
 .confirm-card {
     width: 539px;
     max-width: 100%;
-    padding: 64px var(--padding-xl) 56px;
+    padding: 64px var(--spacing-xl) 56px;
     .ant-card-body {
         padding: 0;
     }
@@ -17,7 +17,7 @@
     }
 
     .ant-card-meta-detail {
-        margin: var(--margin-l) auto;
+        margin: var(--spacing-l) auto;
         text-align: center;
         width: 100%;
         & > *:not(:last-child) {
@@ -44,7 +44,7 @@
     .vi__character {
         border: 1px solid var(--color-border-gray);
         border-radius: 2px;
-        padding: 5px var(--padding-s);
+        padding: 5px var(--spacing-s);
         font-size: var(--fs-s);
         line-height: 130%;
         color: var(--color-black);
@@ -68,7 +68,7 @@
 
 @media screen and (max-width: 600px) {
     .confirm-card {
-        padding: var(--padding-xl) var(--padding-m);
+        padding: var(--spacing-xl) var(--spacing-m);
         .vi__container {
             width: 280px;
             gap: 8px;

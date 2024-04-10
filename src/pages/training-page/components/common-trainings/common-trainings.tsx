@@ -19,6 +19,7 @@ import { SearchPartners } from '../search-partners/search-partners';
 import { usePopularType } from '@hooks/usePopularType';
 import { selectCalendarResponse } from '@redux/calendar/calendarSlice';
 import { Invitations } from '../invitations/invitations';
+import { PARTNERS_LIMIT } from '@constants/constants';
 
 export const CommonTrainings: React.FC<{ onCreateClick: () => void }> = ({ onCreateClick }) => {
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
@@ -59,8 +60,8 @@ export const CommonTrainings: React.FC<{ onCreateClick: () => void }> = ({ onCre
             {isLoading && <Loader />}
             {!isSearch ? (
                 <div className='common-trainings'>
-                    {partners.length < 4 && <Invitations />}
-                    {partners.length < 4 && <CommonTrainingsBanner />}
+                    {partners.length < PARTNERS_LIMIT && <Invitations />}
+                    {partners.length < PARTNERS_LIMIT && <CommonTrainingsBanner />}
                     <CommonPartners />
                     <TrainingsErrorModal
                         modalProps={{

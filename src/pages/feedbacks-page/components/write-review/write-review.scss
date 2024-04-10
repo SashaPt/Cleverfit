@@ -22,7 +22,7 @@
     }
 
     .ant-form-item {
-        margin-bottom: var(--margin-m);
+        margin-bottom: var(--spacing-m);
         &:last-child {
             margin-bottom: 0;
         }
@@ -33,7 +33,7 @@
     }
 
     .ant-modal-footer {
-        padding: var(--padding-xs) var(--padding-l);
+        padding: var(--spacing-xs) var(--spacing-l);
     }
 }
 
@@ -81,22 +81,22 @@
         width: 328px !important;
 
         .ant-modal-header {
-            padding: var(--padding-m);
+            padding: var(--spacing-m);
         }
 
         .ant-modal-body {
-            padding: var(--padding-l) var(--padding-m);
+            padding: var(--spacing-l) var(--spacing-m);
         }
 
         .ant-modal-footer {
-            padding: var(--padding-xs) var(--padding-m);
+            padding: var(--spacing-xs) var(--spacing-m);
         }
     }
 
     .write-review-success-modal,
     .write-review-error-modal {
         .ant-modal-footer {
-            padding: 0 var(--padding-m) var(--padding-xl);
+            padding: 0 var(--spacing-m) var(--spacing-xl);
             margin-top: -32px;
         }
     }

@@ -58,7 +58,7 @@ export const FeedbacksPage: React.FC = () => {
                 setHeight(`${heightEl}px`);
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemsRef]);
 
     useEffect(() => {
@@ -89,10 +89,8 @@ export const FeedbacksPage: React.FC = () => {
                                         style={{ maxHeight: isItemsCollapsed ? 'unset' : height }}
                                     >
                                         {sortedFeedbacks.map((feedback, index) => {
-                                            if (isItemsCollapsed) {
-                                                if (index >= FEEDBACKS_LIMIT) {
-                                                    return;
-                                                }
+                                            if (isItemsCollapsed && index >= FEEDBACKS_LIMIT) {
+                                                return;
                                             }
                                             return <Feedback key={feedback.id} {...feedback} />;
                                         })}

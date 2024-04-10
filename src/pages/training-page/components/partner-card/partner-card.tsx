@@ -16,6 +16,7 @@ import {
 import { useDeleteInviteMutation } from '../../../../services/trainingApi';
 import { Loader } from '@components/loader/loader';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { PARTNERS_LIMIT } from '@constants/constants';
 
 export const PartnerCard: React.FC<{
     partner: TrainingPartner;
@@ -82,7 +83,7 @@ export const PartnerCard: React.FC<{
                                     disabled={
                                         partner.status === 'pending' ||
                                         partner.status === 'rejected' ||
-                                        pendingPartners.length + partners.length >= 4
+                                        pendingPartners.length + partners.length >= PARTNERS_LIMIT
                                     }
                                     onClick={() => {
                                         dispatch(setCalendarAction('toInvite'));

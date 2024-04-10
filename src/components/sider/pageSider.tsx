@@ -48,6 +48,7 @@ import {
     setMyInvites,
     setPartners,
 } from '@redux/training/trainingSlice';
+import { PARTNERS_LIMIT } from '@constants/constants';
 const { Sider } = Layout;
 
 const ExitSvg = () => (
@@ -223,7 +224,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                 key: 'training',
                                 icon: (
                                     <>
-                                        {partners.length < 4 && myInvites.length ? (
+                                        {partners.length < PARTNERS_LIMIT && myInvites.length ? (
                                             <Badge
                                                 data-test-id='notification-about-joint-training'
                                                 count={myInvites.length}
@@ -295,7 +296,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                 key: 'training',
                                 label: (
                                     <>
-                                        {partners.length < 4 && myInvites.length ? (
+                                        {partners.length < PARTNERS_LIMIT && myInvites.length ? (
                                             <Badge
                                                 data-test-id='notification-about-joint-training'
                                                 count={myInvites.length}

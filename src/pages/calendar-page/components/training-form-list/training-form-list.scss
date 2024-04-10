@@ -7,12 +7,12 @@
     }
     .ant-input,
     .ant-input-number-input {
-        padding: 1px var(--padding-xxs);
+        padding: 1px var(--spacing-xxs);
         height: 24px;
     }
 
     .form-actions {
-        margin-top: var(--margin-l);
+        margin-top: var(--spacing-l);
         border-radius: 0 0 6px 6px;
         display: flex;
         align-items: center;

@@ -22,7 +22,7 @@
 
     .footer-card {
         .ant-card-body {
-            padding: var(--padding-s) var(--padding-l);
+            padding: var(--spacing-s) var(--spacing-l);
         }
         .ant-card-meta {
             margin: 0;
@@ -42,7 +42,7 @@
 @media screen and (max-width: 600px) {
     #footer {
         ._container {
-            padding: 0 var(--padding-m);
+            padding: 0 var(--spacing-m);
         }
         
         .footer-content {

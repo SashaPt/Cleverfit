@@ -25,7 +25,7 @@ export const InvitationCard: React.FC<{
     const dispatch = useDispatch();
 
     const formatedTraining = useTrainingName(invite.training.name);
-    const isName = !!(invite.from.firstName || invite.from.lastName); 
+    const isName = !!(invite.from.firstName || invite.from.lastName);
 
     const onAcceptClick = async () => {
         onButtonClick();
@@ -60,6 +60,7 @@ export const InvitationCard: React.FC<{
     const onOpen = (e: React.MouseEvent<HTMLElement>) => {
         setCurrentCellElement(e.currentTarget);
         setPosition(e.currentTarget);
+        onShowInfoClick();
     };
 
     useEffect(() => {
@@ -92,7 +93,9 @@ export const InvitationCard: React.FC<{
                     avatar={<Avatar src={invite.from.imageSrc} icon={<UserOutlined />} />}
                     title={
                         <>
-                            {isName ? `${invite.from.firstName} ${invite.from.lastName}` :  'Пользователь'}
+                            {isName
+                                ? `${invite.from.firstName} ${invite.from.lastName}`
+                                : 'Пользователь'}
                         </>
                     }
                 />
@@ -102,14 +105,7 @@ export const InvitationCard: React.FC<{
                         Привет, я ищу партнёра для совместных {formatedTraining}. Ты хочешь
                         присоединиться ко мне на следующих тренировках?
                     </div>
-                    <Button
-                        type='link'
-                        onClick={(e) => {
-                            onOpen(e);
-                            onShowInfoClick();
-                        }}
-                        className='invitation-card-button'
-                    >
+                    <Button type='link' onClick={onOpen} className='invitation-card-button'>
                         Посмотреть детали тренировки
                     </Button>
                 </div>

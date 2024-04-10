@@ -2,9 +2,10 @@ import { useMemo } from 'react';
 import { Exercise, TrainingsSuccess } from '../types/calendar/calendar';
 import { useAppSelector } from './typed-react-redux-hooks';
 import { selectTrainingsList } from '@redux/calendar/calendarSlice';
+import { isArrayWithItems } from '@utils/utils';
 
 const getItemSum = (exercises: Exercise[]) => {
-    if (exercises.length) {
+    if (isArrayWithItems(exercises)) {
         return [...exercises]
             .map((ex) => ex.approaches * ex.replays * (ex.weight || 1))
             .reduce((pr, cur) => (pr = pr + cur), 0);
@@ -17,7 +18,7 @@ export const usePopularType = (array: TrainingsSuccess[]) => {
     const trainingsList = useAppSelector(selectTrainingsList);
 
     const popularType = useMemo(() => {
-        if (array.length) {
+        if (isArrayWithItems(array)) {
             const sums = [...array].map((item) => {
                 return { name: item.name, sum: getItemSum([...item.exercises]) };
             });

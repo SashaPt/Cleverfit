@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     gap: 159px;
-    margin-bottom: var(--margin-l);
+    margin-bottom: var(--spacing-l);
     .ant-input-group {
         max-width: 484px;
     }
@@ -24,7 +24,7 @@
         display: flex;
     }
     & > .anticon + span {
-        margin-left: var(--margin-m);
+        margin-left: var(--spacing-m);
     }
 }
 
@@ -94,7 +94,7 @@
 
 @media screen and (max-width: 600px) {
     .search-partners {
-        padding: 0 var(--padding-s);
+        padding: 0 var(--spacing-s);
     }
     .search-partners-line {
         flex-direction: column;

@@ -6,6 +6,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { PartnerCard } from '../partner-card/partner-card';
 import { PartnerModal } from '../partner-modal/partner-modal';
 import { TrainingPartner } from '../../../../types/training/training';
+import { isArrayWithItems } from '@utils/utils';
 const { Title } = Typography;
 
 export const CommonPartners: React.FC = () => {
@@ -19,7 +20,7 @@ export const CommonPartners: React.FC = () => {
                 <Title level={4} className='common-partners-title'>
                     Мои партнёры по тренировкам
                 </Title>
-                {!partners.length ? (
+                {!isArrayWithItems(partners) ? (
                     <div className='common-partners-empty'>
                         У вас пока нет партнёров для совместных тренировок
                     </div>

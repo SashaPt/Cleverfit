@@ -136,7 +136,7 @@
         width: 296px;
     }
     .ant-picker-date-panel .ant-picker-body {
-        padding: var(--padding-m) 20px;
+        padding: var(--spacing-m) 20px;
     }
     .ant-picker-footer {
         height: 38px;
@@ -181,11 +181,11 @@
             width: unset;
         }
         .ant-picker-calendar-header .ant-picker-calendar-mode-switch {
-            margin: 0 0 0 var(--margin-xxs);
+            margin: 0 0 0 var(--spacing-xxs);
         }
         .ant-radio-button-wrapper {
             height: 20px;
-            padding: 1px var(--padding-xxs);
+            padding: 1px var(--spacing-xxs);
         }
 
         .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
@@ -197,7 +197,7 @@
         }
 
         .ant-picker-calendar .ant-picker-panel .ant-picker-body {
-            padding: var(--padding-xxs);
+            padding: var(--spacing-xxs);
         }
     }
 }

@@ -3,7 +3,7 @@
         width: 408px !important;
     }
     .ant-drawer-header {
-        padding: var(--padding-l) var(--padding-xl) var(--padding-m);
+        padding: var(--spacing-l) var(--spacing-xl) var(--spacing-m);
         border: none;
     }
 
@@ -17,7 +17,7 @@
         background: transparent;
     }
     .ant-drawer-body {
-        padding: 0 var(--padding-xl) var(--padding-l);
+        padding: 0 var(--spacing-xl) var(--spacing-l);
     }
 }
 
@@ -27,7 +27,7 @@
     align-items: center;
     font-size: var(--fs-s);
     color: var(--color-text-gray);
-    padding-bottom: var(--padding-xxs);
+    padding-bottom: var(--spacing-xxs);
 }
 
 @media screen and (max-width: 600px) {
@@ -46,11 +46,11 @@
         }
 
         .ant-drawer-header {
-            padding: var(--padding-l) var(--padding-m) var(--padding-m);
+            padding: var(--spacing-l) var(--spacing-m) var(--spacing-m);
         }
 
         .ant-drawer-body {
-            padding: 0 var(--padding-m) var(--padding-l);
+            padding: 0 var(--spacing-m) var(--spacing-l);
         }
     }
 }

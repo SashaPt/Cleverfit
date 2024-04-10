@@ -22,7 +22,7 @@ import { TrainingDrawer } from './components/training-drawer/training-drawer';
 import { Marathons } from './components/marathons/marathons';
 import { TrainingInfoModal } from './components/training-info-modal/training-info-modal';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { SELECT_DEFAULT } from '@constants/constants';
+import { PARTNERS_LIMIT, SELECT_DEFAULT } from '@constants/constants';
 import { CommonTrainings } from './components/common-trainings/common-trainings';
 import { selectMyInvites, selectPartners } from '@redux/training/trainingSlice';
 
@@ -113,9 +113,10 @@ export const TrainingPage: React.FC = () => {
                                             label: (
                                                 <>
                                                     Совместные тренировки
-                                                    {partners.length < 4 && !!myInvites.length && (
-                                                        <Badge count={myInvites.length} />
-                                                    )}
+                                                    {partners.length < PARTNERS_LIMIT &&
+                                                        !!myInvites.length && (
+                                                            <Badge count={myInvites.length} />
+                                                        )}
                                                 </>
                                             ),
                                             key: '2',

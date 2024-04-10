@@ -1,17 +1,17 @@
 .calendar-date-modal-create {
     .ant-modal-header {
-        padding: var(--padding-xs) var(--padding-s);
+        padding: var(--spacing-xs) var(--spacing-s);
         border: none;
     }
     .ant-modal-body {
         box-shadow: inset 0 1px 0 0 var(--color-background-light);
     }
     .ant-modal-footer {
-        padding: var(--padding-s);
+        padding: var(--spacing-s);
     }
 
     .ant-modal-footer .ant-btn + .ant-btn:not(.ant-dropdown-trigger) {
-        margin: var(--margin-xxs) auto 0;
+        margin: var(--spacing-xxs) auto 0;
     }
 
     .calendar-date-modal-header {

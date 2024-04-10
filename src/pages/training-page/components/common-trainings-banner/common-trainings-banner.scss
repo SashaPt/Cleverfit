@@ -2,7 +2,7 @@
     background: var(--color-background-lightgray);
     text-align: center;
     .ant-card-body {
-        padding: var(--padding-xl) var(--padding-l) var(--padding-l);
+        padding: var(--spacing-xl) var(--spacing-l) var(--spacing-l);
     }
     .ant-card-meta {
         margin: 0;
@@ -13,20 +13,20 @@
         white-space: unset;
     }
     .ant-card-meta-detail > div:not(:last-child) {
-        margin-bottom: var(--margin-xl);
+        margin-bottom: var(--spacing-xl);
     }
     .ant-card-meta-description {
         color: var(--color-text-gray);
     }
     .ant-card-actions {
         background: var(--color-background-lightgray);
-        padding: var(--padding-m) 88px;
+        padding: var(--spacing-m) 88px;
     }
     .ant-card-actions > li {
         margin: 0;
         &:not(:last-child) {
             border: none;
-            margin-right: var(--margin-m);
+            margin-right: var(--spacing-m);
         }
     }
 }
@@ -68,10 +68,10 @@
 @media screen and (max-width: 600px) {
     .common-trainings-banner {
         .ant-card-body {
-            padding: var(--padding-xl) var(--padding-xxs) var(--padding-l);
+            padding: var(--spacing-xl) var(--spacing-xxs) var(--spacing-l);
         }
         .ant-card-actions {
-            padding: var(--padding-m) 0;
+            padding: var(--spacing-m) 0;
         }
     }
 }

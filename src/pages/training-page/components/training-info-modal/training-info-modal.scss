@@ -19,11 +19,11 @@
     margin: 0;
     transform-origin: unset !important;
     .ant-modal-header {
-        padding: var(--padding-m) var(--padding-s);
+        padding: var(--spacing-m) var(--spacing-s);
         border: none;
     }
     .ant-modal-title {
-        font-size: var(--font-size-x);
+        font-size: var(--fs-x);
         color: var(--color-black);
     }
     .ant-modal-close {
@@ -35,7 +35,7 @@
         height: unset;
     }
     .ant-modal-body {
-        padding: 0 var(--padding-s);
+        padding: 0 var(--spacing-s);
         min-height: 131px;
         max-height: 200px;
         overflow-y: auto;
@@ -43,11 +43,11 @@
         scrollbar-width: thin;
     }
     .ant-modal-footer {
-        padding: var(--padding-s);
+        padding: var(--spacing-s);
     }
 
     .ant-modal-footer .ant-btn + .ant-btn:not(.ant-dropdown-trigger) {
-        margin: var(--margin-xxs) auto 0;
+        margin: var(--spacing-xxs) auto 0;
     }
 
     .training-info-modal-header {
@@ -85,7 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: var(--margin-l);
+    margin-top: var(--spacing-l);
     .line-period {
         font-size: var(--fs-m);
         font-weight: 500;

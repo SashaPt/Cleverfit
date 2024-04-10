@@ -14,18 +14,18 @@
     padding: 0;
 
     .ant-modal-header {
-        padding: 16px 12px 4px;
+        padding: var(--spacing-m) var(--spacing-s) 4px;
         border: none;
     }
 
     .ant-modal-title {
-        font-size: var(--font-size-x);
+        font-size: var(--fs-x);
         font-weight: 700;
         color: var(--color-black);
     }
 
     .ant-modal-body {
-        padding: 0 12px;
+        padding: 0 var(--spacing-s);
         min-height: 91px;
         max-height: 200px;
         overflow-y: auto;
@@ -34,10 +34,10 @@
     }
 
     .ant-modal-close-x {
-        font-size: var(--font-size-xs);
+        font-size: var(--fs-xs);
         width: auto;
         height: auto;
-        margin: 17px 16px 0 0;
+        margin: 17px var(--spacing-m) 0 0;
     }
 
     .calendar-date-modal-header {
@@ -45,7 +45,7 @@
     }
 
     .ant-modal-footer {
-        padding: 12px;
+        padding: var(--spacing-s);
     }
 }
 

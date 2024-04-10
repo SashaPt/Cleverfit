@@ -4,7 +4,7 @@
         max-width: 100%;
     }
     .ant-drawer-header {
-        padding: var(--padding-l) var(--padding-xl) var(--padding-m);
+        padding: var(--spacing-l) var(--spacing-xl) var(--spacing-m);
         border: none;
     }
     .ant-drawer-header-title {
@@ -33,8 +33,8 @@
 }
 
 .training-drawer-inner {
-    padding: var(--padding-l) var(--padding-xl) 0;
-    margin-bottom: var(--margin-l);
+    padding: var(--spacing-l) var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-l);
 }
 
 .training-drawer-form {
@@ -49,7 +49,7 @@
     }
     .ant-input,
     .ant-input-number-input {
-        padding: 1px var(--padding-xxs);
+        padding: 1px var(--spacing-xxs);
         height: 24px;
     }
 }
@@ -58,7 +58,7 @@
     &.ant-select:not(.ant-select-customize-input) .ant-select-selector,
     &.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
         .ant-select-selector {
-        padding: 4px var(--padding-m) 4px var(--padding-s);
+        padding: 4px var(--spacing-m) 4px var(--spacing-s);
         color: var(--color-black);
         height: 28px;
         display: flex;
@@ -118,7 +118,7 @@
     align-items: center;
     justify-content: space-between;
     column-gap: 32px;
-    margin: var(--margin-l) 0 0;
+    margin: var(--spacing-l) 0 0;
 }
 
 .training-drawer-picker,
@@ -134,12 +134,12 @@
 }
 
 .training-drawer-repeat-select {
-    margin-top: var(--margin-xxs);
+    margin-top: var(--spacing-xxs);
 }
 
 .training-drawer-form-footer {
     box-shadow: inset 0 1px 0 0 var(--color-background-light);
-    padding: var(--padding-s) var(--padding-xl);
+    padding: var(--spacing-s) var(--spacing-xl);
     margin-top: auto;
     .ant-btn {
         height: 40px;
@@ -152,7 +152,7 @@
             margin-top: 85px;
         }
         .ant-drawer-header {
-            padding: var(--padding-l) var(--padding-m) var(--padding-m);
+            padding: var(--spacing-l) var(--spacing-m) var(--spacing-m);
         }
         .ant-drawer-content {
             border-radius: 24px 24px 0 0;
@@ -161,19 +161,19 @@
         }
     }
     .training-drawer-inner {
-        padding: 0 var(--padding-m) var(--padding-l);
-        margin-bottom: var(--margin-l);
+        padding: 0 var(--spacing-m) var(--spacing-l);
+        margin-bottom: var(--spacing-l);
         & > *:last-child {
             margin-top: -8px;
         }
     }
 
     .training-drawer-line {
-        margin: var(--margin-m) 0 0;
+        margin: var(--spacing-m) 0 0;
         column-gap: 24px;
     }
 
     .training-drawer-form-footer {
-        padding: var(--padding-s) var(--padding-m);
+        padding: var(--spacing-s) var(--spacing-m);
     }
 }

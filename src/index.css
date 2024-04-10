@@ -14,7 +14,6 @@
     --color-background-lightblue: #f0f5ff;
     --color-background-lightgray: #fafafa;
     --color-background-gray: #f5f5f5;
-    
 
     --fs-xs: 12px;
     --fs-s: 14px;
@@ -22,20 +21,13 @@
     --fs-l: 20px;
     --fs-xl: 24px;
 
-    --margin-xxs: 8px;
-    --margin-xs: 10px;
-    --margin-s: 12px;
-    --margin-m: 16px;
-    --margin-l: 24px;
-    --margin-xl: 32px;
-    --margin-xxl: 48px;
-
-    --padding-xxs: 8px;
-    --padding-xs: 10px;
-    --padding-s: 12px;
-    --padding-m: 16px;
-    --padding-l: 24px;
-    --padding-xl: 32px;
+    --spacing-xxs: 8px;
+    --spacing-xs: 10px;
+    --spacing-s: 12px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
 }
 
 @font-face {
@@ -128,7 +120,7 @@ svg {
 
 ._container {
     max-width: 100%;
-    padding: 0 var(--padding-l);
+    padding: 0 var(--spacing-l);
     margin: 0 auto;
 }
 

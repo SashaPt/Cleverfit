@@ -17,18 +17,14 @@ const repeatSelectOptions = [
 
 export const useSelectOptions = (value: number, options?: SelectOption[]) => {
     const label = useMemo(() => {
-        if (value) {
-            if (options?.length) {
-                return (
-                    [...options].filter((options) => options.value === value)?.[0]?.label || value
-                );
-            }
-            return (
-                [...repeatSelectOptions].filter((options) => options.value === value)?.[0]?.label ||
-                value
-            );
+        if (!value) return value;
+        if (options?.length) {
+            return [...options].filter((options) => options.value === value)?.[0]?.label || value;
         }
-        return value;
+        return (
+            [...repeatSelectOptions].filter((options) => options.value === value)?.[0]?.label ||
+            value
+        );
     }, [options, value]);
     return label;
 };

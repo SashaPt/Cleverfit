@@ -40,7 +40,11 @@ export const TrainingsSelect: React.FC<{ date: Moment | null; bordered?: boolean
     }, [currentTrainings, date, trainingsList]);
 
     useEffect(() => {
-        if (bordered && action !=="toEdit" && !options.find((option) => option.value === selected)) {
+        if (
+            bordered &&
+            action !== 'toEdit' &&
+            !options.find((option) => option.value === selected)
+        ) {
             dispatch(setSelected(SELECT_DEFAULT));
         }
     }, [action, bordered, dispatch, options, selected]);
@@ -50,12 +54,14 @@ export const TrainingsSelect: React.FC<{ date: Moment | null; bordered?: boolean
             className={`trainings-select ${!bordered ? 'trainings-select-unbordered' : ''}`}
             data-test-id='modal-create-exercise-select'
             defaultValue={SELECT_DEFAULT}
-            disabled={bordered && action ==="toEdit"}
+            disabled={bordered && action === 'toEdit'}
             options={options}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onChange={(value, option: any) => {
+            onChange={(
+                value,
+                option: { label: string; value: string } | { label: string; value: string }[],
+            ) => {
                 dispatch(setSelected(value));
-                dispatch(setCurrentTraining(option?.label));
+                dispatch(setCurrentTraining(!Array.isArray(option) ? option.label : ''));
                 if (value) {
                     dispatch(setEditedTraining(null));
                 }

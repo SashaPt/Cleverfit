@@ -45,10 +45,8 @@ export const Invitations: React.FC = () => {
                         itemLayout='horizontal'
                         dataSource={myInvites}
                         renderItem={(item, index) => {
-                            if (isItemsCollapsed) {
-                                if (index >= 1) {
-                                    return;
-                                }
+                            if (isItemsCollapsed && index >= 1) {
+                                return;
                             }
                             return (
                                 <InvitationCard

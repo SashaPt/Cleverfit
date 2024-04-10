@@ -24,14 +24,12 @@ export const TrainingFormList: React.FC = () => {
                 name='exercises'
                 initialValue={
                     exercises.length
-                        ? exercises.map((exercise) => {
-                              return {
-                                  name: exercise.name,
-                                  approaches: exercise.approaches,
-                                  weight: exercise.weight,
-                                  replays: exercise.replays,
-                              };
-                          })
+                        ? exercises.map((exercise) => ({
+                              name: exercise.name,
+                              approaches: exercise.approaches,
+                              weight: exercise.weight,
+                              replays: exercise.replays,
+                          }))
                         : [
                               {
                                   name: '',
@@ -57,7 +55,7 @@ export const TrainingFormList: React.FC = () => {
                                 <Button
                                     type='text'
                                     className='form-button-add'
-                                    onClick={() => add()}
+                                    onClick={add}
                                     icon={<PlusOutlined />}
                                 >
                                     Добавить ещё
