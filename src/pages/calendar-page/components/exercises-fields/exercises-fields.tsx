@@ -24,7 +24,7 @@ export const ExercisesFields: React.FC<{
                         readOnly={action === 'toLook'}
                     />
                 </Form.Item>
-                {action === 'toEdit' && (
+                {(action === 'toEdit' || action === 'toInvite') && (
                     <Form.Item name={[field.name, 'check']} className='form-check'>
                         <Checkbox
                             checked={checked}

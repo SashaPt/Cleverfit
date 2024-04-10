@@ -16,8 +16,9 @@ export const ExercisesItems: React.FC<{
     date: Moment;
     exercises?: Exercise[];
     isDelete: boolean;
-    onEditClick: () => void;
-}> = ({ date, exercises, isDelete, onEditClick }) => {
+    isFromInvite?: boolean;
+    onEditClick?: () => void;
+}> = ({ date, exercises, isDelete, onEditClick, isFromInvite }) => {
     const userData = useAppSelector(selectCalendarResponse);
     const currentTraining = useAppSelector(selectCurrentTraining);
     const currentExercises = useCurrentExercises(date, userData, currentTraining);
@@ -30,22 +31,30 @@ export const ExercisesItems: React.FC<{
                 {items.map((item, index) => (
                     <div className='exercises-item' key={item._id || index}>
                         <div className='exercises-item-name'>{item.name}</div>
-                        <Button
-                            className='exercises-items-edit'
-                            data-test-id={`modal-update-training-edit-button${index}`}
-                            onClick={() => {
-                                dispatch(setEditedExercise(item));
-                                onEditClick();
-                            }}
-                            icon={
-                                <EditOutlined
-                                    style={{
-                                        fontSize: '18px',
-                                        color: '#2f54eb',
-                                    }}
-                                />
-                            }
-                        />
+                        {onEditClick && (
+                            <Button
+                                className='exercises-items-edit'
+                                data-test-id={`modal-update-training-edit-button${index}`}
+                                onClick={() => {
+                                    dispatch(setEditedExercise(item));
+                                    onEditClick();
+                                }}
+                                icon={
+                                    <EditOutlined
+                                        style={{
+                                            fontSize: '18px',
+                                            color: '#2f54eb',
+                                        }}
+                                    />
+                                }
+                            />
+                        )}
+                        {isFromInvite && (
+                            <div className='exercises-item-val'>
+                                {item.approaches} х {item.weight ? `(${item.weight} кг) х ` : ''}
+                                {item.replays}
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

@@ -13,7 +13,7 @@ import { Loader } from '@components/loader/loader';
 import { WriteReview } from './components/write-review/write-review';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAdded } from '@redux/feedbacks/feedbacksSlice';
-import { useSorted } from '@hooks/useSorted';
+import { useSortedFeedbacks } from '@hooks/useSorted';
 import { useDispatch } from 'react-redux';
 import { push } from 'redux-first-history';
 import { Paths } from '../../routes/paths';
@@ -49,7 +49,7 @@ export const FeedbacksPage: React.FC = () => {
         }
     };
 
-    const sortedFeedbacks = useSorted(feedbacks || []);
+    const sortedFeedbacks = useSortedFeedbacks(feedbacks || []);
 
     useEffect(() => {
         if (isSuccess && itemsRef && itemsRef.current) {

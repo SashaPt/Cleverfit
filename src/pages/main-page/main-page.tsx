@@ -7,7 +7,7 @@ import { PageSider } from '@components/sider/pageSider';
 import { PageFooter } from '@components/footer/pageFooter';
 import { Loader } from '@components/loader/loader';
 import { useDispatch } from 'react-redux';
-import { setIsCalendarQueried } from '@redux/calendar/calendarSlice';
+import { setIsCalendarQueried, setPathToNavigate } from '@redux/calendar/calendarSlice';
 import { push } from 'redux-first-history';
 import { Paths } from '../../routes/paths';
 import { setIsUserQueried } from '@redux/profile/profileSlice';
@@ -73,6 +73,11 @@ export const MainPage: React.FC = () => {
                                                     type='text'
                                                     icon={<HeartFilled />}
                                                     className='card-btn'
+                                                    data-test-id='menu-button-training'
+                                                    onClick={() => {
+                                                        dispatch(setIsCalendarQueried(true));
+                                                        dispatch(setPathToNavigate(Paths.TRAINING));
+                                                    }}
                                                 >
                                                     Тренировки
                                                 </Button>,
@@ -90,9 +95,10 @@ export const MainPage: React.FC = () => {
                                                     icon={<CalendarOutlined />}
                                                     className='card-btn'
                                                     data-test-id='menu-button-calendar'
-                                                    onClick={() =>
-                                                        dispatch(setIsCalendarQueried(true))
-                                                    }
+                                                    onClick={() => {
+                                                        dispatch(setIsCalendarQueried(true));
+                                                        dispatch(setPathToNavigate(Paths.CALENDAR));
+                                                    }}
                                                 >
                                                     Календарь
                                                 </Button>,

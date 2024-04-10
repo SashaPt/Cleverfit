@@ -44,6 +44,7 @@ import { useDispatch } from 'react-redux';
 import { ExercisesItems } from './components/exercises-items/exercises-items';
 import { CalendarCell } from './components/calendar-cell/calendar-cell';
 import { CalendarDrawer } from './components/calendar-drawer/calendar-drawer';
+import { SELECT_DEFAULT } from '@constants/constants';
 
 moment.updateLocale('ru', {
     week: {
@@ -134,6 +135,7 @@ export const CalendarPage: React.FC = () => {
             name: currentTraining,
             date: currentDate.toJSON(),
             exercises,
+           
         };
         const past = currentDate.isSameOrBefore(moment());
         if ((action === 'toAdd' && !editedId) || (editedId && editedId?.name !== currentTraining)) {
@@ -147,7 +149,7 @@ export const CalendarPage: React.FC = () => {
                 }
             }
         } else {
-            const body = { ...data };
+            const body = { ...data,  parameters: editedId?.parameters };
             if (past) {
                 body.isImplementation = true;
             }
@@ -217,6 +219,7 @@ export const CalendarPage: React.FC = () => {
                                         setIsDateModalOpen(false);
                                         setIsDate2ModalOpen(true);
                                         dispatch(setExercises([...currentExercises]));
+                                        dispatch(setSelected(SELECT_DEFAULT));
                                     }}
                                     disabled={
                                         currentDate.isSameOrBefore(moment()) ||

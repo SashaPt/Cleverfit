@@ -10,3 +10,5 @@ export const CALENDAR_CELL_MARGIN = 4;
 
 export const DATE_FORMAT = 'DD.MM.YYYY';
 export const DM_FORMAT = 'DD.MM';
+
+export const SELECT_DEFAULT = 'Выбор типа тренировки';

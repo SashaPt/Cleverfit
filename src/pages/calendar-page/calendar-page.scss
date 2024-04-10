@@ -73,6 +73,86 @@
         align-items: center;
     }
 }
+.ant-picker-calendar-mini,
+.ant-picker-dropdown {
+    .ant-picker-content {
+        height: unset;
+        tr {
+            height: 30px;
+            display: flex;
+            gap: 6px;
+        }
+    }
+    .ant-picker-content th,
+    .ant-picker-content td {
+        height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+    .ant-picker-calendar-date-value {
+        line-height: 24px !important;
+        position: relative;
+        z-index: 2;
+    }
+    .ant-picker-cell-in-view.ant-picker-cell-selected {
+        .ant-picker-cell-inner {
+            color: var(--color-black);
+            background: unset;
+        }
+    }
+    .ant-picker-cell-in-view.ant-picker-cell-today {
+        .ant-picker-cell-inner {
+            border: 1px solid var(--color-primary-button-blue);
+            border-radius: 2px;
+        }
+    }
+    .ant-picker-cell .ant-picker-cell-inner {
+        width: 100%;
+    }
+    .calendar-cell-full::before,
+    .ant-picker-cell-in-view.ant-picker-cell-today
+        .calendar-cell-full.ant-picker-cell-inner::before {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: -6px;
+        z-index: 1;
+        height: 24px;
+        transform: translateY(-50%);
+        transition: all 0.3s;
+        content: '';
+        width: calc(100% + 12px);
+        background: var(--color-background-lightblue);
+    }
+}
+.ant-picker-dropdown {
+    .ant-picker-header {
+        height: 40px;
+        align-items: center;
+    }
+    .ant-picker-date-panel {
+        width: 296px;
+    }
+    .ant-picker-date-panel .ant-picker-body {
+        padding: var(--padding-m) 20px;
+    }
+    .ant-picker-footer {
+        height: 38px;
+    }
+    .ant-picker-today-btn {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.ant-picker-cell .ant-picker-cell-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media screen and (max-width: 900px) {
     .calendar-container .ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date {
@@ -118,55 +198,6 @@
 
         .ant-picker-calendar .ant-picker-panel .ant-picker-body {
             padding: var(--padding-xxs);
-        }
-        .ant-picker-calendar-mini .ant-picker-content {
-            height: unset;
-            tr {
-                height: 30px;
-                display: flex;
-                gap: 6px;
-            }
-        }
-        .ant-picker-content th,
-        .ant-picker-content td {
-            height: 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
-        .ant-picker-calendar-date-value {
-            line-height: 24px !important;
-            position: relative;
-            z-index: 2;
-        }
-        .ant-picker-cell-in-view.ant-picker-cell-selected {
-            .ant-picker-cell-inner {
-                color: var(--color-black);
-                background: unset;
-            }
-        }
-        .ant-picker-cell-in-view.ant-picker-cell-today {
-            .ant-picker-cell-inner {
-                border: 1px solid var(--color-primary-button-blue);
-                border-radius: 2px;
-            }
-        }
-        .ant-picker-cell .ant-picker-cell-inner {
-            width: 100%;
-        }
-        .calendar-cell-full::before {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            left: -6px;
-            z-index: 1;
-            height: 24px;
-            transform: translateY(-50%);
-            transition: all 0.3s;
-            content: '';
-            width: calc(100% + 12px);
-            background: var(--color-background-lightblue);
         }
     }
 }

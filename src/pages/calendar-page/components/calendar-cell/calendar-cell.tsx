@@ -15,8 +15,9 @@ import { useMobile } from '@hooks/useMobile';
 
 export const CalendarCell: React.FC<{
     date: Moment;
-    onCellClick: () => void;
-}> = ({ date, onCellClick }) => {
+    onCellClick?: () => void;
+    small?: boolean
+}> = ({ date, onCellClick, small }) => {
     const [currentCellElement, setCurrentElement] = useState<HTMLElement>();
     const isMobile = useAppSelector(selectIsMobile);
     const userData = useAppSelector(selectCalendarResponse);
@@ -29,6 +30,8 @@ export const CalendarCell: React.FC<{
         date.date() == moment().date() &&
         date.month() == moment().month() &&
         date.year() == moment().year();
+
+        
 
     const setPosition = (target: HTMLElement) => {
         const topEl = target.getBoundingClientRect().top + window.scrollY;
@@ -47,11 +50,14 @@ export const CalendarCell: React.FC<{
     };
 
     const onCalendarCellClick = (e: React.MouseEvent<HTMLElement>) => {
-        if (!isMobile || e.currentTarget.closest('.ant-picker-cell-in-view')) {
+        if (!small && (!isMobile  || e.currentTarget.closest('.ant-picker-cell-in-view'))) {
             e.stopPropagation();
             setCurrentElement(e.currentTarget);
             setPosition(e.currentTarget);
-            onCellClick();
+            onCellClick && onCellClick();
+        }
+        if (small && date.isSameOrBefore(moment())) {
+            e.stopPropagation();
         }
     };
 
@@ -72,13 +78,13 @@ export const CalendarCell: React.FC<{
             onClick={onCalendarCellClick}
             className={` ant-picker-cell-inner ant-picker-calendar-date ${
                 isToday ? 'ant-picker-calendar-date-today' : ''
-            } ${currentTrainings.length ? 'calendar-cell-full' : 'calendar-cell-empty'}`}
+            } ${currentTrainings.length ? 'calendar-cell-full' : 'calendar-cell-empty'} ${small && date.isSameOrBefore(moment())  ? 'calendar-cell-previous' : ''}`}
         >
             <>
                 <div className='ant-picker-calendar-date-value'>
-                    {!isMobile ? date.format('DD') : date.format('D')}
+                    {!isMobile && !small ? date.format('DD') : date.format('D')}
                 </div>
-                {!isMobile && (
+                {!isMobile && !small && (
                     <div className='ant-picker-calendar-date-content'>
                         <TrainingsItems date={date} editable={false} />
                     </div>
