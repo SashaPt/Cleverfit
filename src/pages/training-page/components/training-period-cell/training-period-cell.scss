@@ -1,0 +1,30 @@
+.training-table-period {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-black);
+}
+
+.training-table-edit {
+    padding: 0 0 0 var(--spacing-s);
+    border: none;
+    width: auto;
+    height: auto;
+    margin: -7px 0;
+    transform: translateX(100%);
+    .anticon {
+        font-size: 28px;
+    }
+    &[disabled],
+    &[disabled]:hover,
+    &:hover {
+        background: transparent;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .training-table-edit{
+        transform: unset;
+        padding-right: 6px;
+    }
+}

@@ -13,22 +13,23 @@
 .profile-container {
     background: var(--color-background);
     border-radius: 8px;
-    padding: var(--padding-l);
-    margin-top: var(--margin-l);
+    padding: var(--spacing-l);
+    margin-top: var(--spacing-l);
+    margin-bottom: 42px;
     position: relative;
     min-height: calc(100vh - 138px);
 }
 
 .profile-block {
     max-width: 480px;
-    margin-bottom: var(--margin-l);
+    margin-bottom: var(--spacing-l);
 }
 
 .profile-subtitle {
     font-weight: 500;
     font-size: var(--fs-m);
     color: var(--color-black);
-    margin-bottom: var(--margin-l);
+    margin-bottom: var(--spacing-l);
 }
 
 .profile-form-block {
@@ -41,7 +42,7 @@
 }
 
 .profile-input-wrapper {
-    margin-bottom: var(--margin-m);
+    margin-bottom: var(--spacing-m);
     width: 100%;
     .ant-input,
     .ant-picker {
@@ -58,7 +59,7 @@
 
 .profile-info {
     .profile-input-wrapper:first-child {
-        margin-bottom: var(--margin-xl);
+        margin-bottom: var(--spacing-xl);
     }
     .profile-input-wrapper:nth-child(2) {
         margin-bottom: 46px;
@@ -96,7 +97,7 @@
         margin-bottom: 36px;
     }
     .profile-container {
-        padding: var(--padding-m) var(--padding-l);
+        padding: var(--spacing-m) var(--spacing-l);
     }
 
     .profile-form-block {

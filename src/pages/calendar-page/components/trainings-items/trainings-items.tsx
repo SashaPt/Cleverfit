@@ -4,7 +4,7 @@ import type { Moment } from 'moment';
 import empty from '/empty.svg';
 import { Badge, Button } from 'antd';
 import { EditFilled, EditOutlined } from '@ant-design/icons';
-import { CalendarColors } from '@pages/calendar-page/calendar-colors';
+import { getColor } from '@pages/calendar-page/calendar-colors';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     selectCalendarResponse,
@@ -27,21 +27,6 @@ export const TrainingsItems: React.FC<{
     const currentTrainings = useCurrentTrainings(date, userData);
     const dispatch = useDispatch();
 
-    const getColor = (name: string) => {
-        switch (name) {
-            case 'Ноги':
-                return CalendarColors.RED;
-            case 'Силовая':
-                return CalendarColors.YELLOW;
-            case 'Руки':
-                return CalendarColors.BLUE;
-            case 'Грудь':
-                return CalendarColors.GREEN;
-            case 'Спина':
-                return CalendarColors.ORANGE;
-        }
-    };
-
     const dateModalContentEmpty = (
         <>
             <div className='trainigs-items-subtitle'>Нет активных тренировок</div>
@@ -61,7 +46,7 @@ export const TrainingsItems: React.FC<{
                                 color={getColor(item.name)}
                                 text={item.name}
                                 className='trainigs-item-name'
-                                style={{ color: '#8c8c8c' }}
+                                style={{ color: editable ? '#262626' : '#8c8c8c' }}
                             />
                         </div>
                     ))}

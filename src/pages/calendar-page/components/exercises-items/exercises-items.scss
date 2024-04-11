@@ -6,16 +6,20 @@
     width: unset;
 }
 .exercises-items {
-    padding: var(--padding-m) 0;
+    padding: var(--spacing-m) 0;
 }
 .exercises-item {
     display: flex;
     &:not(:last-child) {
-        margin-bottom: var(--margin-xxs);
+        margin-bottom: var(--spacing-xxs);
     }
     &-name {
         margin-right: auto;
         white-space: nowrap;
         color:  var(--color-text-gray);
     }
+}
+.exercises-item-val {
+    font-size: var(--fs-xs);
+    color: var(--color-primary-button-blue);
 }

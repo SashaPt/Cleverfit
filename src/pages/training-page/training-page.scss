@@ -1,0 +1,151 @@
+.training-page {
+    background: url('/main_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.training-content {
+    background: unset;
+}
+
+.training-container {
+    background: var(--color-background);
+    border-radius: 8px;
+    padding: var(--spacing-l);
+    margin-top: var(--spacing-l);
+    margin-bottom: 42px;
+    height: calc(100vh - 156px);
+    &-m {
+        background: url('/marathon_bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+.training-tabs {
+    height: 100%;
+    .ant-tabs-content-holder {
+        height: calc(100% - 80px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-right: -18px;
+        padding-right: var(--spacing-xs);
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: var(--color-text-lightgray);
+            border-radius: 99px;
+        }
+    }
+    .ant-tabs-nav-list {
+        width: 100%;
+        padding-right: var(--spacing-xl);
+        justify-content: space-between;
+    }
+    .ant-tabs-nav {
+        margin-bottom: 36px;
+    }
+    .ant-tabs-tab {
+        padding-bottom: 0;
+        margin: 0 var(--spacing-s);
+    }
+    .ant-tabs-tab-btn {
+        font-weight: 500;
+        font-size: min(var(--fs-xl), 2vw);
+        color: var(--color-black);
+        &:hover {
+            color: var(--color-link-blue-hover);
+        }
+    }
+    & > .ant-tabs-nav .ant-tabs-nav-operations,
+    & > div > .ant-tabs-nav .ant-tabs-nav-operations,
+    & > .ant-tabs-nav .ant-tabs-nav-wrap::before,
+    & > div > .ant-tabs-nav .ant-tabs-nav-wrap::before,
+    & > .ant-tabs-nav .ant-tabs-nav-wrap::after,
+    & > div > .ant-tabs-nav .ant-tabs-nav-wrap::after {
+        display: none;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: var(--color-primary-button-blue);
+    }
+    .ant-tabs-ink-bar {
+        background: var(--color-primary-button-blue);
+    }
+
+    .ant-badge {
+        margin-left: 4px;
+    }
+    .ant-badge-count {
+        padding: 0px var(--spacing-xxs);
+        min-width: 24px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-shadow: unset;
+        * {
+            display: flex;
+            height: unset;
+        }
+    }
+    .ant-tabs-content {
+        position: unset;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .training-tabs {
+        .ant-tabs-content-holder {
+            margin-right: -16px;
+            padding-right: var(--spacing-xxs);
+        }
+        .ant-tabs-nav-list {
+            padding: 0;
+            flex: 1;
+        }
+        .ant-tabs-nav {
+            margin: 0 var(--spacing-s) 29px;
+        }
+        .ant-tabs-tab {
+            padding: 19px 0 14px;
+            margin: 0 3px;
+        }
+        .ant-tabs-tab-btn {
+            font-size: var(--fs-s);
+            font-weight: 400;
+        }
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .training-tabs {
+        .ant-tabs-nav-list {
+            width: auto;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .training-content {
+        main ._container {
+            padding: 0;
+        }
+    }
+    .training-container {
+        padding: var(--spacing-m) var(--spacing-s);
+    }
+
+    .training-tabs {
+        .ant-tabs-content-holder {
+            margin-right: -8px;
+            padding-right: 0;
+        }
+        .ant-tabs-nav {
+            margin: 0 0 25px;
+        }
+    }
+}

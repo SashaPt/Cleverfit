@@ -3,7 +3,7 @@
         width: 408px !important;
     }
     .ant-drawer-header {
-        padding: var(--padding-l) var(--padding-xl) var(--padding-m);
+        padding: var(--spacing-l) var(--spacing-xl) var(--spacing-m);
         border: none;
     }
 
@@ -17,7 +17,7 @@
         background: transparent;
     }
     .ant-drawer-body {
-        padding: 0 var(--padding-xl) var(--padding-l);
+        padding: 0 var(--spacing-xl) var(--spacing-l);
     }
 }
 
@@ -27,42 +27,7 @@
     align-items: center;
     font-size: var(--fs-s);
     color: var(--color-text-gray);
-    padding-bottom: var(--padding-xxs);
-}
-
-.calendar-drawer-form {
-    .ant-form-item {
-        margin-bottom: 0;
-    }
-    .ant-form-item-control-input {
-        min-height: unset;
-    }
-    .ant-input,
-    .ant-input-number-input {
-        padding: 1px var(--padding-xxs);
-        height: 24px;
-    }
-
-    .form-actions {
-        margin-top: var(--margin-l);
-        border-radius: 0 0 6px 6px;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        background: var(--color-background-light);
-        .form-button-add,
-        .form-button-remove {
-            width: 50%;
-            height: 40px;
-            background: transparent;
-        }
-        .form-button-add {
-            color: var(--color-primary-button-blue);
-            &:hover {
-                color: var(--color-link-blue-hover);
-            }
-        }
-    }
+    padding-bottom: var(--spacing-xxs);
 }
 
 @media screen and (max-width: 600px) {
@@ -81,11 +46,11 @@
         }
 
         .ant-drawer-header {
-            padding: var(--padding-l) var(--padding-m) var(--padding-m);
+            padding: var(--spacing-l) var(--spacing-m) var(--spacing-m);
         }
 
         .ant-drawer-body {
-            padding: 0 var(--padding-m) var(--padding-l);
+            padding: 0 var(--spacing-m) var(--spacing-l);
         }
     }
 }

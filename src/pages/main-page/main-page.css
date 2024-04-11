@@ -17,7 +17,7 @@
 .main-container {
     max-width: 100%;
     width: 752px;
-    padding: var(--padding-l) 0 0;
+    padding: var(--spacing-l) 0 0;
 }
 
 .main-page .ant-layout-content {
@@ -41,7 +41,7 @@
 }
 
 .main-cards {
-    margin-top: var(--margin-xxs);
+    margin-top: var(--spacing-xxs);
     width: 100%;
     display: grid;
     gap: 16px;
@@ -60,7 +60,7 @@
 
 .main-cards .ant-card-head-title {
     text-align: center;
-    padding: var(--padding-s) var(--padding-l);
+    padding: var(--spacing-s) var(--spacing-l);
     color: var(--color-black);
     white-space: unset;
     text-overflow: unset;
@@ -92,14 +92,14 @@
 
 @media screen and (max-width: 600px) {
     .main-page .ant-layout-content {
-        padding-bottom: var(--padding-l);
+        padding-bottom: var(--spacing-l);
     }
     .main-page .ant-layout-content ._container {
-        padding: 0 var(--padding-m);
+        padding: 0 var(--spacing-m);
     }
 
     .main-card .ant-card-body {
-        padding: var(--padding-m);
+        padding: var(--spacing-m);
     }
 
     .main-cards {

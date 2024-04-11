@@ -1,28 +1,25 @@
 import './calendar-drawer.scss';
-
 import type { Moment } from 'moment';
 import { Button, Drawer, Form } from 'antd';
-import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     selectCalendarAction,
     selectCalendarResponse,
-    selectCheckedIndexes,
     selectCurrentTraining,
     selectEditedTraining,
     selectExercises,
-    setCheckedIndexes,
     setExercises,
 } from '@redux/calendar/calendarSlice';
 import { useDispatch } from 'react-redux';
 import { TrainingsItems } from '../trainings-items/trainings-items';
-import { ExercisesFields } from '../exercises-fields/exercises-fields';
 import { useForm } from 'antd/lib/form/Form';
 import { Exercise } from '../../../../types/calendar/calendar';
 import { useCurrentExercises } from '@hooks/useCurrentData';
 import { useEffect } from 'react';
 import { ModalProps } from '../../../../types/common/common';
 import { DATE_FORMAT } from '@constants/constants';
+import { TrainingFormList } from '../training-form-list/training-form-list';
 
 export const CalendarDrawer: React.FC<{
     date: Moment;
@@ -34,7 +31,6 @@ export const CalendarDrawer: React.FC<{
     const userTrainings = useAppSelector(selectCalendarResponse);
     const currentExercises = useCurrentExercises(date, userTrainings, currentTraining);
     const editedId = useAppSelector(selectEditedTraining);
-    const checkedIndexes = useAppSelector(selectCheckedIndexes);
     const exercises = useAppSelector(selectExercises);
     const dispatch = useDispatch();
     const [drawerForm] = useForm();
@@ -113,67 +109,7 @@ export const CalendarDrawer: React.FC<{
                 <div>{date.format(DATE_FORMAT)}</div>
             </div>
             <Form layout='vertical' className='calendar-drawer-form' form={drawerForm}>
-                <Form.List
-                    name='exercises'
-                    initialValue={
-                        exercises.length
-                            ? exercises.map((exercise) => {
-                                  return {
-                                      name: exercise.name,
-                                      approaches: exercise.approaches,
-                                      weight: exercise.weight,
-                                      replays: exercise.replays,
-                                  };
-                              })
-                            : [
-                                  {
-                                      name: '',
-                                      approaches: 1,
-                                      weight: 0,
-                                      replays: 1,
-                                  },
-                              ]
-                    }
-                >
-                    {(fields, { add, remove }) => (
-                        <>
-                            {fields.map((field, index) => (
-                                <ExercisesFields
-                                    field={field}
-                                    index={index}
-                                    action={action}
-                                    key={field.key}
-                                />
-                            ))}
-                            {action !== 'toLook' && (
-                                <div className='form-actions'>
-                                    <Button
-                                        type='text'
-                                        className='form-button-add'
-                                        onClick={() => add()}
-                                        icon={<PlusOutlined />}
-                                    >
-                                        Добавить ещё
-                                    </Button>
-                                    {action === 'toEdit' && (
-                                        <Button
-                                            type='text'
-                                            className='form-button-remove'
-                                            icon={<MinusOutlined />}
-                                            disabled={!checkedIndexes.length}
-                                            onClick={() => {
-                                                remove([...checkedIndexes]);
-                                                dispatch(setCheckedIndexes([]));
-                                            }}
-                                        >
-                                            Удалить
-                                        </Button>
-                                    )}
-                                </div>
-                            )}
-                        </>
-                    )}
-                </Form.List>
+                <TrainingFormList/>
             </Form>
         </Drawer>
     );

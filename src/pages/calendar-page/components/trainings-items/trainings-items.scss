@@ -1,9 +1,9 @@
 .trainigs-items {
     &-modal {
         margin-top: 14px;
-        padding: var(--padding-m) 0;
+        padding: var(--spacing-m) 0;
         .trainigs-item:not(:last-child) {
-            margin-bottom: var(--margin-xxs);
+            margin-bottom: var(--spacing-xxs);
         }
     }
 }
@@ -21,7 +21,7 @@
 
 .trainigs-items-image {
     display: block;
-    margin: var(--margin-xl) auto var(--margin-m);
+    margin: var(--spacing-xl) auto var(--spacing-m);
 }
 
 .trainigs-items-edit,

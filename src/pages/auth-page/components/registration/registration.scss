@@ -7,11 +7,11 @@
     padding: 64px 85.5px;
 
     .logo {
-        margin: 0 auto var(--margin-xxl);
+        margin: 0 auto var(--spacing-xxl);
     }
 
     .ant-form-item {
-        margin-bottom: var(--margin-xl);
+        margin-bottom: var(--spacing-xl);
     }
 
     .ant-input-wrapper,
@@ -32,7 +32,7 @@
     }
 
     .ant-input {
-        padding: var(--padding-xs) 11px;
+        padding: var(--spacing-xs) 11px;
         color: var(--color-black);
     }
 
@@ -46,7 +46,7 @@
     }
 
     .registration-form-button-wrapper {
-        margin-bottom: var(--margin-m);
+        margin-bottom: var(--spacing-m);
     }
 
     .registration-form-google {
@@ -56,11 +56,11 @@
 
 @media screen and (max-width: 600px) {
     .registration-form {
-        padding: var(--padding-xl) var(--padding-m) 92px;
+        padding: var(--spacing-xl) var(--spacing-m) 92px;
 
         .logo {
             height: 50px;
-            margin: 0 auto var(--margin-xl);
+            margin: 0 auto var(--spacing-xl);
         }
 
         .registration-form-button {

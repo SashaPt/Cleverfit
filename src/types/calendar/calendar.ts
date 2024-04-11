@@ -1,5 +1,6 @@
 export type CalendarState = {
     queried: boolean;
+    pathToNavigate: string;
     response: TrainingsSuccess[];
     trainingsList: TrainingsList[];
     checkedIndexes: number[];
@@ -14,7 +15,7 @@ export type CalendarState = {
     calendarAction: CalendarAction;
 };
 
-export type CalendarAction = 'toAdd' | 'toEdit' | 'toLook';
+export type CalendarAction = 'toAdd' | 'toEdit' | 'toLook' | 'toInvite';
 
 export type Exercise = {
     name: string;
@@ -25,7 +26,7 @@ export type Exercise = {
     _id?: string;
 };
 
-type Parameters = {
+export type Parameters = {
     repeat?: boolean;
     period?: number;
     jointTraining?: boolean;

@@ -2,6 +2,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     selectCalendarResponse,
     selectIsMobile,
+    setCurrentTraining,
     setModalLeft,
     setModalTop,
 } from '@redux/calendar/calendarSlice';
@@ -12,11 +13,14 @@ import { TrainingsItems } from '../trainings-items/trainings-items';
 import { CALENDAR_MODAL_WIDTH } from '@constants/constants';
 import { useCurrentTrainings } from '@hooks/useCurrentData';
 import { useMobile } from '@hooks/useMobile';
+import { isArrayWithItems } from '@utils/utils';
+import classNames from 'classnames';
 
 export const CalendarCell: React.FC<{
     date: Moment;
-    onCellClick: () => void;
-}> = ({ date, onCellClick }) => {
+    onCellClick?: () => void;
+    small?: boolean;
+}> = ({ date, onCellClick, small }) => {
     const [currentCellElement, setCurrentElement] = useState<HTMLElement>();
     const isMobile = useAppSelector(selectIsMobile);
     const userData = useAppSelector(selectCalendarResponse);
@@ -47,13 +51,24 @@ export const CalendarCell: React.FC<{
     };
 
     const onCalendarCellClick = (e: React.MouseEvent<HTMLElement>) => {
-        if (!isMobile || e.currentTarget.closest('.ant-picker-cell-in-view')) {
+        dispatch(setCurrentTraining(''));
+        if (!small && (!isMobile || e.currentTarget.closest('.ant-picker-cell-in-view'))) {
             e.stopPropagation();
             setCurrentElement(e.currentTarget);
             setPosition(e.currentTarget);
-            onCellClick();
+            onCellClick && onCellClick();
+        }
+        if (small && date.isSameOrBefore(moment())) {
+            e.stopPropagation();
         }
     };
+
+    const cellClass = classNames({
+        'ant-picker-cell-inner ant-picker-calendar-date': true,
+        'ant-picker-calendar-date-today': isToday,
+        'calendar-cell-previous': small && date.isSameOrBefore(moment()),
+        'calendar-cell-full': isArrayWithItems(currentTrainings),
+    });
 
     useEffect(() => {
         const handleResize = () => {
@@ -68,17 +83,12 @@ export const CalendarCell: React.FC<{
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentCellElement]);
     return (
-        <div
-            onClick={onCalendarCellClick}
-            className={` ant-picker-cell-inner ant-picker-calendar-date ${
-                isToday ? 'ant-picker-calendar-date-today' : ''
-            } ${currentTrainings.length ? 'calendar-cell-full' : 'calendar-cell-empty'}`}
-        >
+        <div onClick={onCalendarCellClick} className={cellClass}>
             <>
                 <div className='ant-picker-calendar-date-value'>
-                    {!isMobile ? date.format('DD') : date.format('D')}
+                    {!isMobile && !small ? date.format('DD') : date.format('D')}
                 </div>
-                {!isMobile && (
+                {!isMobile && !small && (
                     <div className='ant-picker-calendar-date-content'>
                         <TrainingsItems date={date} editable={false} />
                     </div>

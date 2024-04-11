@@ -11,10 +11,10 @@
 }
 
 .error-container {
-    margin: var(--margin-l) 0 42px;
+    margin: var(--spacing-l) 0 42px;
     background:  var(--color-background);
     border-radius: 8px;
-    padding: var(--padding-l);
+    padding: var(--spacing-l);
     min-height: calc(100vh - 66px);
     display: flex;
     align-items: center;

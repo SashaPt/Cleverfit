@@ -3,25 +3,21 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import moment, { Moment } from 'moment';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import {
-    selectCalendarResponse,
     selectCurrentTraining,
     selectIsMobile,
     selectModalLeft,
     selectModalTop,
-    selectSelected,
-    selectTrainingsList,
     setCalendarAction,
-    setCurrentTraining,
-    setEditedTraining,
     setSelected,
 } from '@redux/calendar/calendarSlice';
-import { Button, Modal, Select } from 'antd';
+import { Button, Modal } from 'antd';
 import { useDispatch } from 'react-redux';
-import { useCurrentTrainingsNames } from '@hooks/useCurrentData';
 import { ModalProps } from '../../../../types/common/common';
+import { TrainingsSelect } from '../trainings-select/trainings-select';
+import { SELECT_DEFAULT} from '@constants/constants';
 
 export const CalendarDateModalCreate: React.FC<{
-    modalProps: ModalProps
+    modalProps: ModalProps;
     date: Moment;
     onBackClick: () => void;
     onAddClick: () => void;
@@ -40,11 +36,6 @@ export const CalendarDateModalCreate: React.FC<{
     children,
 }) => {
     const currentTraining = useAppSelector(selectCurrentTraining);
-    const trainingsList = useAppSelector(selectTrainingsList);
-    const userTrainings = useAppSelector(selectCalendarResponse);
-    const currentTrainings = useCurrentTrainingsNames(date, userTrainings);
-    const selectDefault = 'Выбор типа тренировки';
-    const selected = useAppSelector(selectSelected);
     const top = useAppSelector(selectModalTop);
     const left = useAppSelector(selectModalLeft);
     const isMobile = useAppSelector(selectIsMobile);
@@ -60,7 +51,7 @@ export const CalendarDateModalCreate: React.FC<{
             getContainer={'.calendar-modals'}
             onCancel={() => {
                 modalProps.onCloseClick();
-                dispatch(setSelected(selectDefault));
+                dispatch(setSelected(SELECT_DEFAULT));
             }}
             style={!isMobile ? { top, left } : {}}
             title={
@@ -70,28 +61,11 @@ export const CalendarDateModalCreate: React.FC<{
                         className='calendar-modal-close-button'
                         onClick={() => {
                             onBackClick();
-                            dispatch(setSelected(selectDefault));
+                            dispatch(setSelected(SELECT_DEFAULT));
                         }}
                         icon={<ArrowLeftOutlined style={{ fontSize: '16px' }} />}
                     />
-                    <Select
-                        data-test-id='modal-create-exercise-select'
-                        defaultValue={selectDefault}
-                        options={[...trainingsList]
-                            .filter((training) => !currentTrainings.has(training.name))
-                            .map((item) => {
-                                return { value: item.key, label: item.name };
-                            })}
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        onChange={(value, option: any) => {
-                            dispatch(setSelected(value));
-                            dispatch(setCurrentTraining(option?.label));
-                            if (value) {
-                                dispatch(setEditedTraining(null));
-                            }
-                        }}
-                        value={selected}
-                    />
+                    <TrainingsSelect date={date} />
                 </div>
             }
             footer={[
@@ -117,7 +91,7 @@ export const CalendarDateModalCreate: React.FC<{
                     }}
                     onClick={() => {
                         onSaveClick();
-                        dispatch(setSelected(selectDefault));
+                        dispatch(setSelected(SELECT_DEFAULT));
                     }}
                 >
                     {date.isSameOrBefore(moment()) ? 'Сохранить изменения' : 'Сохранить'}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Menu, Button, Space, MenuProps, Modal } from 'antd';
+import { Layout, Menu, Button, Space, MenuProps, Modal, Badge } from 'antd';
 import logoBig from '/logo_big.svg';
 import logoSmart from '/logo_smart.svg';
 import logoMobile from '/logo_mobile.svg';
@@ -27,6 +27,8 @@ import {
     selectIsCalendarQueried,
     setIsCalendarQueried,
     setCalendarResponse,
+    setPathToNavigate,
+    selectPathToNavigate,
 } from '@redux/calendar/calendarSlice';
 import { useLazyGetUserQuery } from '../../services/profileApi';
 import {
@@ -35,6 +37,18 @@ import {
     setIsUserQueried,
     setUser,
 } from '@redux/profile/profileSlice';
+import { useLazyGetInviteQuery, useLazyGetPartnersQuery } from '../../services/trainingApi';
+import {
+    selectIsMyInvitesQueried,
+    selectIsPartnersQueried,
+    selectMyInvites,
+    selectPartners,
+    setIsMyInvitesQueried,
+    setIsPartnersQueried,
+    setMyInvites,
+    setPartners,
+} from '@redux/training/trainingSlice';
+import { PARTNERS_LIMIT } from '@constants/constants';
 const { Sider } = Layout;
 
 const ExitSvg = () => (
@@ -61,19 +75,25 @@ const ExitIcon = (props: Partial<CustomIconComponentProps>) => (
 export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => {
     const [collapsed, setCollapsed] = useState(false);
     const [collapsedMobile, setCollapsedMobile] = useState(true);
-
     const isCalendarQueried = useAppSelector(selectIsCalendarQueried);
     const isUserQueried = useAppSelector(selectIsUserQueried);
+    const isMyInvitesQueried = useAppSelector(selectIsMyInvitesQueried);
+    const isPartnersQueried = useAppSelector(selectIsPartnersQueried);
+    const pathToNavigate = useAppSelector(selectPathToNavigate);
+    const myInvites = useAppSelector(selectMyInvites);
+    const partners = useAppSelector(selectPartners);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [getTrainings, { isLoading: isCalendarLoading }] = useLazyGetUserTrainingsQuery();
     const [getUser] = useLazyGetUserQuery();
+    const [getInvitation] = useLazyGetInviteQuery();
+    const [getPartners] = useLazyGetPartnersQuery();
     const dispatch = useDispatch();
 
     const queryCalendar = async () => {
         try {
             const resp = await getTrainings(null).unwrap();
             dispatch(setCalendarResponse(resp));
-            dispatch(push(Paths.CALENDAR));
+            dispatch(push(pathToNavigate));
         } catch (error) {
             setIsErrorModalOpen(true);
         } finally {
@@ -93,11 +113,37 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         }
     };
 
+    const queryInvitations = async () => {
+        try {
+            const resp = await getInvitation(null).unwrap();
+            dispatch(setMyInvites(resp));
+        } catch (error) {
+            return;
+        } finally {
+            dispatch(setIsMyInvitesQueried(false));
+        }
+    };
+
+    const queryPartners = async () => {
+        try {
+            const resp = await getPartners(null).unwrap();
+            dispatch(setPartners(resp));
+        } catch (error) {
+            return;
+        } finally {
+            dispatch(setIsPartnersQueried(false));
+        }
+    };
+
     const onClick: MenuProps['onClick'] = (e) => {
         if (e.key == 'calendar') {
             dispatch(setIsCalendarQueried(true));
+            dispatch(setPathToNavigate(Paths.CALENDAR));
         } else if (e.key == 'profile') {
             dispatch(push(Paths.PROFILE));
+        } else if (e.key == 'training') {
+            dispatch(setIsCalendarQueried(true));
+            dispatch(setPathToNavigate(Paths.TRAINING));
         }
     };
 
@@ -116,6 +162,8 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
 
     useEffect(() => {
         dispatch(setIsUserQueried(true));
+        dispatch(setIsMyInvitesQueried(true));
+        dispatch(setIsPartnersQueried(true));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -125,6 +173,20 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isUserQueried]);
+
+    useEffect(() => {
+        if (isMyInvitesQueried) {
+            queryInvitations();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMyInvitesQueried]);
+
+    useEffect(() => {
+        if (isPartnersQueried) {
+            queryPartners();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isPartnersQueried]);
 
     return (
         <>
@@ -159,8 +221,21 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                 label: 'Календарь',
                             },
                             {
-                                key: '2',
-                                icon: <HeartFilled />,
+                                key: 'training',
+                                icon: (
+                                    <>
+                                        {partners.length < PARTNERS_LIMIT && myInvites.length ? (
+                                            <Badge
+                                                data-test-id='notification-about-joint-training'
+                                                count={myInvites.length}
+                                            >
+                                                <HeartFilled style={{ fontSize: '16px' }} />
+                                            </Badge>
+                                        ) : (
+                                            <HeartFilled />
+                                        )}
+                                    </>
+                                ),
                                 label: 'Тренировки',
                             },
                             {
@@ -218,8 +293,21 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                 label: 'Календарь',
                             },
                             {
-                                key: '2',
-                                label: 'Тренировки',
+                                key: 'training',
+                                label: (
+                                    <>
+                                        {partners.length < PARTNERS_LIMIT && myInvites.length ? (
+                                            <Badge
+                                                data-test-id='notification-about-joint-training'
+                                                count={myInvites.length}
+                                            >
+                                                Тренировки
+                                            </Badge>
+                                        ) : (
+                                            'Тренировки'
+                                        )}
+                                    </>
+                                ),
                             },
                             {
                                 key: '3',

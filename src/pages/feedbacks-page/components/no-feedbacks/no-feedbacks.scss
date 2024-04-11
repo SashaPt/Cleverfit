@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding-top: var(--padding-l);
+    padding-top: var(--spacing-l);
     padding-bottom: 42px;
     gap: 20px;
 }
@@ -23,7 +23,7 @@
     }
 
     .ant-card-meta-detail > div:not(:last-child) {
-        margin-bottom: var(--margin-xxl);
+        margin-bottom: var(--spacing-xxl);
     }
 
     .ant-card-meta-title {
@@ -42,14 +42,14 @@
 
 @media screen and (max-width: 600px) {
     .no-feedbacks-wrapper {
-        padding: var(--padding-l) var(--padding-m) 0;
+        padding: var(--spacing-l) var(--spacing-m) 0;
         justify-content: flex-start;
         gap: 48px;
         min-height: calc(100vh - 50px);
     }
 
     .no-feedbacks-card {
-        padding: 48px var(--padding-xl);
+        padding: 48px var(--spacing-xl);
 
         .ant-card-meta-description {
             max-width: 264px;

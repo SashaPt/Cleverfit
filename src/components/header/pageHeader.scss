@@ -1,5 +1,5 @@
 #header {
-    padding: var(--padding-m) 0;
+    padding: var(--spacing-m) 0;
     background: var(--color-background-lightblue);
     height: unset;
 
@@ -27,7 +27,7 @@
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
-        padding-top: var(--padding-xxs);
+        padding-top: var(--spacing-xxs);
     }
 
     .header-title {
@@ -53,7 +53,7 @@
             }
             .settings-btn .anticon {
                 display: inline-flex;
-                margin-right: var(--margin-xs);
+                margin-right: var(--spacing-xs);
             }
         }
 

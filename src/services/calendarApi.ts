@@ -28,7 +28,7 @@ export const calendarApi = createApi({
                 url: 'catalogs/training-list',
             }),
         }),
-        createTraining: builder.mutation<TrainingsSuccess[], TrainingData>({
+        createTraining: builder.mutation<TrainingsSuccess, TrainingData>({
             query: (body: TrainingData) => {
                 return {
                     url: 'training',
@@ -37,7 +37,7 @@ export const calendarApi = createApi({
                 };
             },
         }),
-        updateTraining: builder.mutation<TrainingsSuccess[], { body: TrainingData; id: string }>({
+        updateTraining: builder.mutation<TrainingsSuccess, { body: TrainingData; id: string }>({
             query: (arg: { body: TrainingData; id: string }) => {
                 return {
                     url: `training/${arg.id}`,

@@ -12,11 +12,11 @@
 .profile-error-modal-card {
     border-radius: 4px;
     width: 412px;
-    padding: var(--padding-xl) var(--padding-xl) var(--padding-l);
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-l);
     max-width: 100%;
     .ant-list-item-meta-title {
         font-size: var(--fs-m);
-        margin-bottom: var(--margin-xxs);
+        margin-bottom: var(--spacing-xxs);
         color: var(--color-black);
     }
 
@@ -26,7 +26,7 @@
 
     .ant-card-actions {
         border: none;
-        margin-top: var(--margin-l);
+        margin-top: var(--spacing-l);
     }
 
     .ant-card-actions > li {

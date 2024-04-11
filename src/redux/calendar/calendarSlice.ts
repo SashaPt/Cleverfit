@@ -10,6 +10,7 @@ import {
 
 const initialState: CalendarState = {
     queried: false,
+    pathToNavigate: '',
     response: [],
     trainingsList: [],
     checkedIndexes: [],
@@ -30,6 +31,9 @@ const calendarSlice = createSlice({
     reducers: {
         setIsCalendarQueried: (state, action: PayloadAction<boolean>) => {
             state.queried = action.payload;
+        },
+        setPathToNavigate: (state, action: PayloadAction<string>) => {
+            state.pathToNavigate = action.payload;
         },
         setCalendarResponse: (state, action: PayloadAction<TrainingsSuccess[]>) => {
             state.response = action.payload;
@@ -72,6 +76,7 @@ const calendarSlice = createSlice({
 
 export const {
     setIsCalendarQueried,
+    setPathToNavigate,
     setCalendarResponse,
     setTrainingsList,
     setCheckedIndexes,
@@ -88,6 +93,8 @@ export const {
 
 export const selectIsCalendarQueried = (state: { calendar: CalendarState }) =>
     state.calendar.queried;
+    export const selectPathToNavigate = (state: { calendar: CalendarState }) =>
+    state.calendar.pathToNavigate;
 export const selectCalendarResponse = (state: { calendar: CalendarState }) =>
     state.calendar.response;
 export const selectTrainingsList = (state: { calendar: CalendarState }) =>

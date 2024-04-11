@@ -13,7 +13,7 @@ import { Loader } from '@components/loader/loader';
 import { WriteReview } from './components/write-review/write-review';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAdded } from '@redux/feedbacks/feedbacksSlice';
-import { useSorted } from '@hooks/useSorted';
+import { useSortedFeedbacks } from '@hooks/useSorted';
 import { useDispatch } from 'react-redux';
 import { push } from 'redux-first-history';
 import { Paths } from '../../routes/paths';
@@ -49,7 +49,7 @@ export const FeedbacksPage: React.FC = () => {
         }
     };
 
-    const sortedFeedbacks = useSorted(feedbacks || []);
+    const sortedFeedbacks = useSortedFeedbacks(feedbacks || []);
 
     useEffect(() => {
         if (isSuccess && itemsRef && itemsRef.current) {
@@ -58,7 +58,7 @@ export const FeedbacksPage: React.FC = () => {
                 setHeight(`${heightEl}px`);
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemsRef]);
 
     useEffect(() => {
@@ -89,10 +89,8 @@ export const FeedbacksPage: React.FC = () => {
                                         style={{ maxHeight: isItemsCollapsed ? 'unset' : height }}
                                     >
                                         {sortedFeedbacks.map((feedback, index) => {
-                                            if (isItemsCollapsed) {
-                                                if (index >= FEEDBACKS_LIMIT) {
-                                                    return;
-                                                }
+                                            if (isItemsCollapsed && index >= FEEDBACKS_LIMIT) {
+                                                return;
                                             }
                                             return <Feedback key={feedback.id} {...feedback} />;
                                         })}

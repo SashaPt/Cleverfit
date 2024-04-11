@@ -4,7 +4,7 @@
         max-width: 100%;
     }
     .ant-drawer-header {
-        padding: var(--padding-l) var(--padding-xl) var(--padding-m);
+        padding: var(--spacing-l) var(--spacing-xl) var(--spacing-m);
         border: none;
     }
     .ant-drawer-header-title {
@@ -23,7 +23,7 @@
         background: transparent;
     }
     .ant-drawer-body {
-        padding: var(--padding-l) 0 0;
+        padding: var(--spacing-l) 0 0;
         display: flex;
         flex-direction: column;
     }
@@ -31,7 +31,7 @@
 
 .settings-pro-activated {
     background: var(--color-background-lightblue);
-    margin: 0 var(--margin-xl) var(--margin-l);
+    margin: 0 var(--spacing-xl) var(--spacing-l);
     padding: 14px 0;
     text-align: center;
     font-size: var(--fs-m);
@@ -40,7 +40,7 @@
 }
 
 .settings-options {
-    padding: var(--padding-l) var(--padding-xl) 0;
+    padding: var(--spacing-l) var(--spacing-xl) 0;
 }
 .settings-options-items {
     display: flex;
@@ -81,8 +81,8 @@
 }
 
 .settings-options-list {
-    padding-right: var(--padding-m);
-    margin: var(--margin-l) 0 86px;
+    padding-right: var(--spacing-m);
+    margin: var(--spacing-l) 0 86px;
     .ant-list-item {
         border: none;
         padding: 0;
@@ -91,7 +91,7 @@
         gap: 52.5px;
 
         &:not(:last-child) {
-            margin-bottom: var(--margin-m);
+            margin-bottom: var(--spacing-m);
         }
     }
     .ant-list-item-meta-title {
@@ -107,26 +107,26 @@
             margin-top: 85px;
         }
         .ant-drawer-header {
-            padding: var(--padding-l) var(--padding-m) var(--padding-m);
+            padding: var(--spacing-l) var(--spacing-m) var(--spacing-m);
         }
     }
 
     .settings-pro-activated {
-        margin: 0 var(--margin-m) var(--margin-l);
+        margin: 0 var(--spacing-m) var(--spacing-l);
         padding: 14px 0;
     }
 
     .settings-options {
-        padding: 0 var(--margin-m) 0;
+        padding: 0 var(--spacing-m) 0;
     }
 
     .settings-options-list {
-        margin: var(--margin-s) 0 33px;
+        margin: var(--spacing-s) 0 33px;
         .ant-list-item {
             gap: 44.5px;
 
             &:not(:last-child) {
-                margin-bottom: var(--margin-xxs);
+                margin-bottom: var(--spacing-xxs);
             }
         }
     }

@@ -1,0 +1,110 @@
+.training-modal-inv {
+    .ant-modal-wrap {
+        position: unset;
+        overflow: unset;
+    }
+}
+
+.ctraining-modal .ant-zoom-leave.ant-zoom-leave-active {
+    z-index: 1;
+}
+
+.training-info-modal {
+    width: 241px !important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 50;
+    padding: 0;
+    margin: 0;
+    transform-origin: unset !important;
+    .ant-modal-header {
+        padding: var(--spacing-m) var(--spacing-s);
+        border: none;
+    }
+    .ant-modal-title {
+        font-size: var(--fs-x);
+        color: var(--color-black);
+    }
+    .ant-modal-close {
+        top: 17px;
+        right: 12px;
+    }
+    .ant-modal-close-x {
+        width: unset;
+        height: unset;
+    }
+    .ant-modal-body {
+        padding: 0 var(--spacing-s);
+        min-height: 131px;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+    }
+    .ant-modal-footer {
+        padding: var(--spacing-s);
+    }
+
+    .ant-modal-footer .ant-btn + .ant-btn:not(.ant-dropdown-trigger) {
+        margin: var(--spacing-xxs) auto 0;
+    }
+
+    .training-info-modal-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: -4px;
+    }
+    .ant-badge {
+        margin-right: -6px;
+    }
+}
+.training-info-modal-inv {
+    width: 312px !important;
+    .ant-modal-body {
+        min-height: 151px;
+    }
+}
+
+.training-modal-close-button,
+.training-info-modal-close-button {
+    padding: 0;
+    background: transparent;
+    border: none;
+    height: auto;
+    z-index: 1;
+    width: unset;
+    flex-shrink: 0;
+}
+.training-info-modal-close-button {
+    margin-left: auto;
+}
+
+.training-info-modal-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--spacing-l);
+    .line-period {
+        font-size: var(--fs-m);
+        font-weight: 500;
+        color: var(--color-black);
+    }
+    .line-date {
+        color: var(--color-black);
+    }
+}
+@media screen and (max-width: 900px) {
+    .training-info-modal-inv {
+        margin-top: 170px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .training-info-modal {
+        width: 312px !important;
+        transform: translate(-50%, -50%) !important;
+        transform-origin: unset !important;
+        margin: 0;
+    }
+}

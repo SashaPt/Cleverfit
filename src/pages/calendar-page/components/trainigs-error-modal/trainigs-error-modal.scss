@@ -11,9 +11,9 @@
 .trainings-error-modal-save {
     .trainings-error-modal-card {
         width: 412px;
-        padding: var(--padding-xl) var(--padding-xl) var(--padding-l);
+        padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-l);
         .ant-card-actions {
-            margin-top: var(--margin-l);
+            margin-top: var(--spacing-l);
         }
     }
 
@@ -23,12 +23,12 @@
 }
 .trainings-error-modal-card {
     border-radius: 4px;
-    padding: var(--padding-m) var(--padding-l);
+    padding: var(--spacing-m) var(--spacing-l);
     width: 384px;
     max-width: 100%;
     .ant-list-item-meta-title {
         font-size: var(--fs-m);
-        margin-bottom: var(--margin-xxs);
+        margin-bottom: var(--spacing-xxs);
         color: var(--color-black);
     }
 
@@ -38,7 +38,7 @@
 
     .ant-card-actions {
         border: none;
-        margin-top: var(--margin-m);
+        margin-top: var(--spacing-m);
     }
 
     .ant-card-actions > li {

@@ -8,7 +8,7 @@
     justify-content: center;
 
     ._container {
-        padding: 0 16px;
+        padding: 0 var(--spacing-m);
         display: flex;
     }
 }
