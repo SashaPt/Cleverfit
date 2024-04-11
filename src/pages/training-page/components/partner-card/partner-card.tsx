@@ -17,6 +17,7 @@ import { useDeleteInviteMutation } from '../../../../services/trainingApi';
 import { Loader } from '@components/loader/loader';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { PARTNERS_LIMIT } from '@constants/constants';
+import classNames from 'classnames';
 
 export const PartnerCard: React.FC<{
     partner: TrainingPartner;
@@ -47,15 +48,17 @@ export const PartnerCard: React.FC<{
         }
     };
 
+    const cardClass = classNames({
+        'partner-card': true,
+        'partner-card-joint': isJoint,
+        'partner-card-rejected': partner.status === 'rejected',
+        'partner-card-modal': isInModal,
+    });
+
     return (
         <>
             {isLoading && <Loader />}
-            <Card
-                data-test-id={`joint-training-cards${index}`}
-                className={`partner-card ${isJoint ? 'partner-card-joint' : ''} ${
-                    partner.status === 'rejected' ? 'partner-card-rejected' : ''
-                } ${isInModal ? 'partner-card-modal' : ''}`}
-            >
+            <Card data-test-id={`joint-training-cards${index}`} className={cardClass}>
                 <Meta
                     title={name}
                     avatar={

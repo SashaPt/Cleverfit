@@ -20,10 +20,11 @@ export const Invitations: React.FC = () => {
         const check = (target: HTMLElement) => {
             if (
                 isModalOpen &&
-                !target.closest('.training-info-modal') &&
+                !target.closest('.training-info-modal-inv') &&
                 !target.closest('.invitation-card-button')
             ) {
                 setIsModalOpen(false);
+                setTrainigToShow(null);
             }
         };
         const onClick = (e: MouseEvent) => {

@@ -44,7 +44,11 @@ export const TrainingInfoModal: React.FC<{
 
     return (
         <>
-            <div className={`training-modal ${isFromInvite ? 'training-modal-inv' : ''}`}>
+            <div
+                className={`training-modal ${
+                    isFromInvite ? 'training-modal-inv' : 'training-modal-table'
+                }`}
+            >
                 {item && modalProps.isOpen && (
                     <Modal
                         className={`training-info-modal ${
@@ -54,7 +58,9 @@ export const TrainingInfoModal: React.FC<{
                         open={modalProps.isOpen}
                         mask={false}
                         closable={false}
-                        getContainer={'.training-modal'}
+                        getContainer={
+                            isFromInvite ? '.training-modal-inv' : '.training-modal-table'
+                        }
                         style={!isMobile ? { top, left } : {}}
                         bodyStyle={
                             isFromInvite
