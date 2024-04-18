@@ -29,26 +29,12 @@ import {
     setCalendarResponse,
     setPathToNavigate,
     selectPathToNavigate,
+    selectIsMobile,
 } from '@redux/calendar/calendarSlice';
-import { useLazyGetUserQuery } from '../../services/profileApi';
-import {
-    selectIsUserQueried,
-    setImage,
-    setIsUserQueried,
-    setUser,
-} from '@redux/profile/profileSlice';
-import { useLazyGetInviteQuery, useLazyGetPartnersQuery } from '../../services/trainingApi';
-import {
-    selectIsMyInvitesQueried,
-    selectIsPartnersQueried,
-    selectMyInvites,
-    selectPartners,
-    setIsMyInvitesQueried,
-    setIsPartnersQueried,
-    setMyInvites,
-    setPartners,
-} from '@redux/training/trainingSlice';
+import { selectMyInvites, selectPartners } from '@redux/training/trainingSlice';
 import { PARTNERS_LIMIT } from '@constants/constants';
+import { useInitQueries } from '@hooks/useInitQueries';
+import { useMobile } from '@hooks/useMobile';
 const { Sider } = Layout;
 
 const ExitSvg = () => (
@@ -76,18 +62,16 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
     const [collapsed, setCollapsed] = useState(false);
     const [collapsedMobile, setCollapsedMobile] = useState(true);
     const isCalendarQueried = useAppSelector(selectIsCalendarQueried);
-    const isUserQueried = useAppSelector(selectIsUserQueried);
-    const isMyInvitesQueried = useAppSelector(selectIsMyInvitesQueried);
-    const isPartnersQueried = useAppSelector(selectIsPartnersQueried);
+    const isMobile = useAppSelector(selectIsMobile);
     const pathToNavigate = useAppSelector(selectPathToNavigate);
     const myInvites = useAppSelector(selectMyInvites);
     const partners = useAppSelector(selectPartners);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [getTrainings, { isLoading: isCalendarLoading }] = useLazyGetUserTrainingsQuery();
-    const [getUser] = useLazyGetUserQuery();
-    const [getInvitation] = useLazyGetInviteQuery();
-    const [getPartners] = useLazyGetPartnersQuery();
     const dispatch = useDispatch();
+
+    useInitQueries();
+    useMobile();
 
     const queryCalendar = async () => {
         try {
@@ -101,40 +85,6 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         }
     };
 
-    const queryUser = async () => {
-        try {
-            const resp = await getUser(null).unwrap();
-            dispatch(setUser(resp));
-            dispatch(setImage(resp.imgSrc || ''));
-        } catch (error) {
-            return;
-        } finally {
-            setIsUserQueried(false);
-        }
-    };
-
-    const queryInvitations = async () => {
-        try {
-            const resp = await getInvitation(null).unwrap();
-            dispatch(setMyInvites(resp));
-        } catch (error) {
-            return;
-        } finally {
-            dispatch(setIsMyInvitesQueried(false));
-        }
-    };
-
-    const queryPartners = async () => {
-        try {
-            const resp = await getPartners(null).unwrap();
-            dispatch(setPartners(resp));
-        } catch (error) {
-            return;
-        } finally {
-            dispatch(setIsPartnersQueried(false));
-        }
-    };
-
     const onClick: MenuProps['onClick'] = (e) => {
         if (e.key == 'calendar') {
             dispatch(setIsCalendarQueried(true));
@@ -144,6 +94,17 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         } else if (e.key == 'training') {
             dispatch(setIsCalendarQueried(true));
             dispatch(setPathToNavigate(Paths.TRAINING));
+        } else if (e.key == 'achievements') {
+            dispatch(setIsCalendarQueried(true));
+            dispatch(setPathToNavigate(Paths.ACHIEVEMENTS));
+        }
+    };
+
+    const onTriggerClick = () => {
+        if (isMobile) {
+            setCollapsedMobile(!collapsedMobile);
+        } else {
+            setCollapsed(!collapsed);
         }
     };
 
@@ -160,50 +121,22 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isCalendarQueried]);
 
-    useEffect(() => {
-        dispatch(setIsUserQueried(true));
-        dispatch(setIsMyInvitesQueried(true));
-        dispatch(setIsPartnersQueried(true));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        if (isUserQueried) {
-            setTimeout(() => queryUser(), 100);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isUserQueried]);
-
-    useEffect(() => {
-        if (isMyInvitesQueried) {
-            queryInvitations();
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isMyInvitesQueried]);
-
-    useEffect(() => {
-        if (isPartnersQueried) {
-            queryPartners();
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isPartnersQueried]);
-
     return (
         <>
             {isCalendarLoading && <Loader />}
             <Sider
                 trigger={null}
                 collapsible
-                collapsed={collapsed}
+                collapsed={isMobile ? collapsedMobile : collapsed}
                 theme='light'
-                id='sider'
-                width={208}
-                collapsedWidth={64}
+                id={isMobile ? 'sider-mobile' : 'sider'}
+                width={isMobile ? 106 : 208}
+                collapsedWidth={isMobile ? 0 : 64}
             >
                 <div>
                     <Link to={Paths.MAIN}>
                         <img
-                            src={collapsed ? logoSmart : logoBig}
+                            src={isMobile ? logoMobile : collapsed ? logoSmart : logoBig}
                             className='logo'
                             alt='Cleverfit logo'
                         />
@@ -217,12 +150,12 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                         items={[
                             {
                                 key: 'calendar',
-                                icon: <CalendarOutlined />,
+                                icon: !isMobile && <CalendarOutlined />,
                                 label: 'Календарь',
                             },
                             {
                                 key: 'training',
-                                icon: (
+                                icon: !isMobile && (
                                     <>
                                         {partners.length < PARTNERS_LIMIT && myInvites.length ? (
                                             <Badge
@@ -236,65 +169,7 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                         )}
                                     </>
                                 ),
-                                label: 'Тренировки',
-                            },
-                            {
-                                key: '3',
-                                icon: <TrophyFilled />,
-                                label: 'Достижения',
-                            },
-                            {
-                                key: 'profile',
-                                icon: <IdcardOutlined />,
-                                label: 'Профиль',
-                            },
-                        ]}
-                    />
-                </div>
-                <Button
-                    type='text'
-                    icon={<ExitIcon />}
-                    className='exit-btn btn'
-                    style={{ color: '#262626', textAlign: 'left' }}
-                    onClick={onExitClick}
-                >
-                    Выход
-                </Button>
-                <Space
-                    className='trigger'
-                    data-test-id='sider-switch'
-                    onClick={() => setCollapsed(!collapsed)}
-                >
-                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {})}
-                </Space>
-            </Sider>
-            <Sider
-                trigger={null}
-                collapsible
-                collapsed={collapsedMobile}
-                theme='light'
-                id='sider-mobile'
-                width={106}
-                collapsedWidth={0}
-            >
-                <div>
-                    <Link to={Paths.MAIN}>
-                        <img src={logoMobile} className='logo' alt='Cleverfit logo' />
-                    </Link>
-                    <Menu
-                        theme='light'
-                        mode='inline'
-                        style={{ color: '#262626' }}
-                        defaultSelectedKeys={[`${menuActive}`]}
-                        onClick={onClick}
-                        items={[
-                            {
-                                key: 'calendar',
-                                label: 'Календарь',
-                            },
-                            {
-                                key: 'training',
-                                label: (
+                                label: isMobile ? (
                                     <>
                                         {partners.length < PARTNERS_LIMIT && myInvites.length ? (
                                             <Badge
@@ -307,14 +182,18 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                                             'Тренировки'
                                         )}
                                     </>
+                                ) : (
+                                    'Тренировки'
                                 ),
                             },
                             {
-                                key: '3',
-                                label: 'Достижения',
+                                key: 'achievements',
+                                icon: !isMobile && <TrophyFilled />,
+                                label: <div data-test-id='sidebar-achievements'>Достижения</div>,
                             },
                             {
                                 key: 'profile',
+                                icon: !isMobile && <IdcardOutlined />,
                                 label: 'Профиль',
                             },
                         ]}
@@ -322,21 +201,19 @@ export const PageSider: React.FC<{ menuActive?: string }> = ({ menuActive }) => 
                 </div>
                 <Button
                     type='text'
+                    icon={!isMobile && <ExitIcon />}
                     className='exit-btn btn'
-                    style={{ color: '#262626' }}
+                    style={{ color: '#262626', textAlign: isMobile ? 'center' : 'left' }}
                     onClick={onExitClick}
                 >
                     Выход
                 </Button>
                 <Space
-                    className='trigger trigger-mobile'
-                    data-test-id='sider-switch-mobile'
-                    onClick={() => setCollapsedMobile(!collapsedMobile)}
+                    className={`trigger ${isMobile ? 'trigger-mobile' : ''}`}
+                    data-test-id={isMobile ? 'sider-switch-mobile' : 'sider-switch'}
+                    onClick={onTriggerClick}
                 >
-                    {React.createElement(
-                        collapsedMobile ? MenuUnfoldOutlined : MenuFoldOutlined,
-                        {},
-                    )}
+                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {})}
                 </Space>
             </Sider>
             <Modal

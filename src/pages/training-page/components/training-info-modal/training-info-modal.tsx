@@ -14,8 +14,7 @@ import { ExercisesItems } from '@pages/calendar-page/components/exercises-items/
 import { useCurrentExercises } from '@hooks/useCurrentData';
 import { Badge, Button, Modal } from 'antd';
 import { ModalProps } from '../../../../types/common/common';
-import { getColor } from '@pages/calendar-page/calendar-colors';
-import { useMobile } from '@hooks/useMobile';
+import { getColor } from '@utils/calendar-colors';
 import { useDateFormat } from '@hooks/useDateFormat';
 import { useParseDate } from '@hooks/useParseDate';
 import { useSelectOptions } from '@hooks/useSelectOptions';
@@ -39,8 +38,6 @@ export const TrainingInfoModal: React.FC<{
     const date = useDateFormat(useParseDate(item?.date || ''));
 
     const period = useSelectOptions(item?.parameters?.period || 0);
-
-    useMobile();
 
     return (
         <>

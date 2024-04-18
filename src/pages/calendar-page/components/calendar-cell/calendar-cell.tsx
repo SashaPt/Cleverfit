@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import { TrainingsItems } from '../trainings-items/trainings-items';
 import { CALENDAR_MODAL_WIDTH } from '@constants/constants';
 import { useCurrentTrainings } from '@hooks/useCurrentData';
-import { useMobile } from '@hooks/useMobile';
 import { isArrayWithItems } from '@utils/utils';
 import classNames from 'classnames';
 
@@ -26,8 +25,6 @@ export const CalendarCell: React.FC<{
     const userData = useAppSelector(selectCalendarResponse);
     const currentTrainings = useCurrentTrainings(date, userData);
     const dispatch = useDispatch();
-
-    useMobile();
 
     const isToday =
         date.date() == moment().date() &&

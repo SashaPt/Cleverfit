@@ -8,7 +8,6 @@ import { selectUserImage, setImage } from '@redux/profile/profileSlice';
 import { ProfileErrorModal } from '../profile-error-modal/profile-error-modal';
 import { useDispatch } from 'react-redux';
 import { selectIsMobile } from '@redux/calendar/calendarSlice';
-import { useMobile } from '@hooks/useMobile';
 
 export const UploadImage: React.FC<{
     setError: () => void;
@@ -20,8 +19,6 @@ export const UploadImage: React.FC<{
     const dispatch = useDispatch();
     const userImage = useAppSelector(selectUserImage);
     const isMobile = useAppSelector(selectIsMobile);
-
-    useMobile();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const uploadImage = async (options: any) => {

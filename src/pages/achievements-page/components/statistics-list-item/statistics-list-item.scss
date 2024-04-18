@@ -1,0 +1,44 @@
+.statistics-list-item {
+    height: 32px;
+    display: grid;
+    grid-template-columns: auto 92px 1fr;
+    gap: 16px;
+    padding: 0;
+    &.ant-list-item {
+        border: none;
+    }
+    .statistics-list-badge-empty .ant-badge-count {
+        background: var(--color-background-lightblue);
+        color: var(--color-primary-button-blue);
+    }
+    .statistics-list-badge-popular .ant-badge-count {
+        background: #ff4d4f;
+        color: var(--color-background);
+    }
+
+    .ant-badge-count {
+        min-width: 16px;
+        height: 16px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: unset;
+        background: var(--color-primary-button-blue);
+        * {
+            display: flex;
+            height: unset;
+        }
+    }
+    .item-day {
+        color: var(--color-text-gray);
+    }
+    .item-value {
+        color: var(--color-black);
+        font-weight: 700;
+    }
+}
+
+.statistics-list-item-month:not(.statistics-list-item-popular) {
+    grid-template-columns: auto 77px 1fr;
+}

@@ -1,0 +1,27 @@
+.statistics-exercises {
+    margin-top: var(--spacing-l);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 150px;
+    row-gap: 24px;
+}
+
+.statistics-pie {
+    width: 520px;
+    height: 334px !important;
+    padding: 20px;
+    canvas {
+        height: 100% !important;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .statistics-pie {
+        width: 100%;
+        max-width: 530px;
+        height: 211px !important;
+        padding: 0;
+       
+    }
+}

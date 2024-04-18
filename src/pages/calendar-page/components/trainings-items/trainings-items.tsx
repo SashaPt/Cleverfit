@@ -1,10 +1,9 @@
 import './trainings-items.scss';
-// import { useCurrentTrainingsList } from '@hooks/useCurrentData';
 import type { Moment } from 'moment';
 import empty from '/empty.svg';
 import { Badge, Button } from 'antd';
 import { EditFilled, EditOutlined } from '@ant-design/icons';
-import { getColor } from '@pages/calendar-page/calendar-colors';
+import { getColor } from '@utils/calendar-colors';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     selectCalendarResponse,

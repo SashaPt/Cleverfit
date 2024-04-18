@@ -19,4 +19,5 @@ export enum Paths {
     PROFILE = '/profile',
     SETTINGS = '/settings',
     TRAINING = '/training',
+    ACHIEVEMENTS = '/achievements',
 }

@@ -28,7 +28,7 @@ export type Exercise = {
 
 export type Parameters = {
     repeat?: boolean;
-    period?: number;
+    period?: number | null;
     jointTraining?: boolean;
     participants?: string[];
 };

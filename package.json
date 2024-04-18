@@ -23,6 +23,7 @@
     "cy:e2e": "start-server-and-test start http-get://localhost:3000 cy:open-e2e"
   },
   "dependencies": {
+    "@ant-design/charts": "^2.0.3",
     "@ant-design/icons": "^4.8.1",
     "@reduxjs/toolkit": "^2.0.1",
     "@types/react-lottie": "^1.2.10",
