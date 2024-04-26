@@ -1,10 +1,5 @@
 # CleverFIT
 
-## Инструкция к спринту №7 https://docs.google.com/document/d/1yxZcrlBRO_YYSeQlgWZO6prLCmd7NU5A/edit?usp=sharing&ouid=107087056934021538327&rtpof=true&sd=true
-
-## Сыылка на проект Figma: https://www.figma.com/file/8FGrAaiG3waYxeRHNuskHB/maraphon-2024?type=design&node-id=100-3820&mode=design&t=h8QcGIvq2Ur3XODl-0
-## password: MARAPHON_frontend_2024
-
 ## Установка Node.js, npm, nvm, Yarn
 
 Эта инструкция предоставляет пошаговое руководство по установке Node.js, npm, nvm (Node Version Manager) и Yarn на вашем компьютере.
