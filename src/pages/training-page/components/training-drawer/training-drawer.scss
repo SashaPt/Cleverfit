@@ -1,0 +1,179 @@
+.training-drawer {
+    & > .ant-drawer-content-wrapper {
+        width: 408px !important;
+        max-width: 100%;
+    }
+    .ant-drawer-header {
+        padding: var(--spacing-l) var(--spacing-xl) var(--spacing-m);
+        border: none;
+    }
+    .ant-drawer-header-title {
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+    .ant-drawer-title {
+        font-size: var(--fs-l);
+        font-weight: 500;
+        color: var(--color-black);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .ant-drawer-close {
+        margin: 0;
+    }
+    .ant-drawer-mask {
+        background: transparent;
+    }
+    .ant-drawer-body {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.training-drawer-inner {
+    padding: var(--spacing-l) var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-l);
+}
+
+.training-drawer-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .ant-form-item {
+        margin-bottom: 0;
+    }
+    .ant-form-item-control-input {
+        min-height: unset;
+    }
+    .ant-input,
+    .ant-input-number-input {
+        padding: 1px var(--spacing-xxs);
+        height: 24px;
+    }
+}
+
+.training-drawer-repeat-select {
+    &.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+    &.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+        .ant-select-selector {
+        padding: 4px var(--spacing-m) 4px var(--spacing-s);
+        color: var(--color-black);
+        height: 28px;
+        display: flex;
+        align-items: center;
+    }
+
+    &.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+    &.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.training-drawer-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.training-drawer-partner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.training-drawer-partner-img {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-background-gray);
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .ant-avatar {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-black);
+        font-size: 18px;
+        background: var(--color-background-gray);
+    }
+}
+.training-drawer-partner-name {
+    width: min-content;
+    color: var(--color-black);
+}
+
+.training-drawer-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 32px;
+    margin: var(--spacing-l) 0 0;
+}
+
+.training-drawer-picker,
+.training-drawer-repeat-select {
+    width: 156px;
+}
+
+.training-drawer-check {
+    flex-shrink: 0;
+    .ant-checkbox + span {
+        padding-right: 0;
+    }
+}
+
+.training-drawer-repeat-select {
+    margin-top: var(--spacing-xxs);
+}
+
+.training-drawer-form-footer {
+    box-shadow: inset 0 1px 0 0 var(--color-background-light);
+    padding: var(--spacing-s) var(--spacing-xl);
+    margin-top: auto;
+    .ant-btn {
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .training-drawer {
+        & > .ant-drawer-content-wrapper {
+            margin-top: 85px;
+        }
+        .ant-drawer-header {
+            padding: var(--spacing-l) var(--spacing-m) var(--spacing-m);
+        }
+        .ant-drawer-content {
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+                0 6px 16px 0 rgba(0, 0, 0, 0.08);
+        }
+    }
+    .training-drawer-inner {
+        padding: 0 var(--spacing-m) var(--spacing-l);
+        margin-bottom: var(--spacing-l);
+        & > *:last-child {
+            margin-top: -8px;
+        }
+    }
+
+    .training-drawer-line {
+        margin: var(--spacing-m) 0 0;
+        column-gap: 24px;
+    }
+
+    .training-drawer-form-footer {
+        padding: var(--spacing-s) var(--spacing-m);
+    }
+}

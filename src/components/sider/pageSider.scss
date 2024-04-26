@@ -1,0 +1,169 @@
+#sider,
+#sider-mobile {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    height: 100vh;
+    position: sticky;
+    left: 0;
+    top: 0;
+
+    & > * {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 30px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    }
+
+    .logo {
+        height: 64px;
+    }
+
+    .ant-menu {
+        margin-top: 50px;
+        border: none !important;
+    }
+
+    .ant-menu-item {
+        margin: 0;
+        padding: 0px var(--spacing-m) !important;
+        height: 42px;
+        margin-bottom: var(--spacing-m);
+        display: flex;
+        align-items: center;
+    }
+
+    &.ant-layout-sider-collapsed .ant-menu-item {
+        padding: 0 var(--spacing-l) !important;
+    }
+
+    .ant-menu-item:not(.ant-menu-item-active):not(.ant-menu-item-selected) svg {
+        fill: var(--color-blue);
+    }
+
+    .ant-menu-item-icon {
+        font-size: var(--fs-m);
+        flex-shrink: 0;
+    }
+
+    .ant-badge {
+        color: unset;
+        margin-right: var(--spacing-xs);
+        flex-shrink: 0;
+    }
+
+    .ant-badge-count {
+        height: 16px;
+        min-width: 14px;
+        padding: 0 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-shadow: none;
+        * {
+            display: flex;
+            height: unset;
+        }
+    }
+
+    .ant-menu.ant-menu-inline-collapsed > .ant-menu-item .ant-badge + span {
+        display: inline-block;
+        opacity: 0;
+    }
+
+    .exit-btn {
+        margin: 0;
+        padding: 0px var(--spacing-m) !important;
+        height: 40px;
+        border-radius: 2px;
+        box-shadow: inset 0 1px 0 0 var(--color-background-light);
+    }
+
+    .ant-btn.exit-btn > .anticon + * {
+        margin-left: var(--spacing-xs);
+        padding: 4px 15px;
+        transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), margin 0.3s, color 0.3s;
+    }
+
+    &.ant-layout-sider-collapsed .ant-btn.exit-btn > .anticon + * {
+        opacity: 0;
+    }
+
+    .trigger {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(99%, -50%);
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='66' viewBox='0 0 20 66' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 -1.52588e-05L20 7.99998V58L0 66V-1.52588e-05Z' fill='white' /%3E%3C/svg%3E");
+        width: 20px;
+        height: 66px;
+        color: var(--color-text-gray);
+        justify-content: center;
+    }
+}
+
+#sider-mobile {
+    display: none;
+}
+
+.calendar-error-modal {
+    .ant-modal-footer {
+        padding: 0 var(--spacing-xl) 56px;
+        margin-top: -56px;
+        border: none;
+        display: flex;
+    }
+}
+
+.calendar-submit-button {
+    height: 40px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+    #sider {
+        display: none;
+    }
+    #sider-mobile {
+        display: block;
+        position: fixed;
+        z-index: 100;
+        & > * {
+            padding-top: 0;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .ant-menu {
+            margin-top: var(--spacing-m);
+        }
+
+        .ant-menu-item {
+            padding: 0px var(--spacing-xxs) !important;
+            margin-bottom: var(--spacing-xxs);
+        }
+         .ant-menu-item > .ant-menu-title-content,
+         .ant-menu-submenu-title > .ant-menu-title-content {
+           overflow: visible;
+        }
+        &.ant-layout-sider-collapsed .ant-menu-item {
+            padding: 0 var(--spacing-xxs) !important;
+        }
+
+        .trigger {
+            top: 24px;
+            transform: translate(99%, 0);
+            background-image: url("data:image/svg+xml,%3Csvg width='32' height='48' viewBox='0 0 32 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L32 5.81818V42.1818L0 48V0Z' fill='white' /%3E%3C/svg%3E");
+            width: 32px;
+            height: 48px;
+        }
+    }
+}

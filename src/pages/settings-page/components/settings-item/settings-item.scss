@@ -1,0 +1,52 @@
+.settings-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.settings-item-name {
+    font-size: var(--fs-s);
+    font-weight: 700;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+}
+
+.settings-item-text {
+    width: fit-content;
+}
+
+.settings-item-name-disabled {
+    color: var(--color-text-lightgray);
+}
+
+.ant-tooltip-arrow {
+    margin-left: -14px;
+}
+
+@media screen and (max-width: 600px) {
+    .settings-item {
+        gap: 80px;
+        .anticon {
+            font-size: var(--fs-m);
+            flex-shrink: 0;
+        }
+        .ant-switch {
+            border-radius: 16px;
+            min-width: 28px;
+            width: 28px;
+            height: 16px;
+        }
+        .ant-switch-handle {
+            width: 12px;
+            height: 12px;
+        }
+        .ant-switch-checked .ant-switch-handle {
+            left: calc(100% - 12px - 2px);
+        }
+    }
+}

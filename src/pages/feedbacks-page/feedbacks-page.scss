@@ -1,0 +1,75 @@
+.feedbacks-page {
+    background: url('/main_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.feedbacks-content {
+    background: unset;
+}
+
+.feedbacks-page .ant-space-item {
+    display: flex;
+}
+
+.feedbacks-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: var(--spacing-l) auto 132px;
+    max-height: calc(100vh - 294px);
+    overflow: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.feedbacks-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 48px;
+}
+
+.feedbacks-all-reviews-button {
+    font-size: var(--fs-m);
+    height: 40px;
+    &:not(:hover) {
+        color: var(--color-primary-button-blue);
+    }
+}
+
+.feedbacks-error-modal {
+    .ant-modal-footer {
+        padding: 0 var(--spacing-xl) 56px;
+        margin-top: -56px;
+        border: none;
+        display: flex;
+    }
+}
+
+.feedbacks-submit-button {
+    height: 40px;
+    margin: 0 auto;
+
+}
+
+@media screen and (max-width: 600px) {
+    .feedbacks-container {
+        padding: 0 var(--spacing-l);
+    }
+    .feedbacks-items {
+        gap: 16px;
+        margin: var(--spacing-l) auto var(--spacing-xxl);
+        max-height: calc(100vh - 260px);
+    }
+
+    .feedbacks-buttons {
+        flex-direction: column;
+        gap: 16px;
+        padding-bottom: 42px;
+    }
+}

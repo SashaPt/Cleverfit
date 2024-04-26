@@ -1,0 +1,15 @@
+.settings-items {
+    width: 505px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: var(--spacing-m) 0px;
+    margin: var(--spacing-l) 0;
+}
+@media screen and (max-width: 600px) {
+    .settings-items {
+        margin: 20px 0;
+        gap: 24px;
+    }
+}

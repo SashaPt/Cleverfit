@@ -1,0 +1,86 @@
+.profile-upload-image {
+    .ant-upload-list-item.ant-upload-list-item-uploading.ant-upload-list-item-list-type-picture-card
+        .ant-upload-list-item-thumbnail {
+        visibility: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        opacity: 1;
+    }
+    .ant-upload-list-item.ant-upload-list-item-uploading.ant-upload-list-item-list-type-picture-card
+        .ant-upload-list-item-thumbnail:after {
+        content: 'Загружаем';
+        visibility: visible;
+        display: block;
+        position: absolute;
+        top: 0;
+    }
+
+    .ant-upload-list-picture-card-container.ant-upload-animate-inline-leave {
+        display: none;
+    }
+
+    .ant-upload.ant-upload-select-picture-card {
+        width: unset;
+        height: unset;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+    }
+
+    .ant-upload-list-picture-card-container,
+    .ant-upload-list-item {
+        margin: 0;
+    }
+
+    .ant-upload-list-picture-card .ant-upload-list-item-thumbnail .anticon {
+        margin-top: var(--spacing-s);
+    }
+}
+.profile-upload {
+    background: #fafafa;
+    border: 1px dashed #d9d9d9;
+    border-radius: 2px;
+    padding: 14px 17px;
+    width: 104px;
+    height: 104px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-gray);
+}
+
+@media screen and (max-width: 600px) {
+    .profile-upload-image {
+        & > span {
+            display: flex;
+            flex-direction: column;
+        }
+        .ant-upload-list-picture .ant-upload-list-item-name {
+            opacity: 0;
+        }
+        .ant-upload.ant-upload-select {
+            width: 100%;
+        }
+        .ant-upload-list-picture .ant-upload-list-item-thumbnail,
+        .ant-upload-list-picture-card .ant-upload-list-item-thumbnail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .profile-upload-mobile {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: var(--fs-xs);
+        .ant-btn {
+            height: 40px;
+            flex-grow: 1;
+        }
+    }
+}

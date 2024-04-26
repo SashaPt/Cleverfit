@@ -1,0 +1,28 @@
+.training-marathons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 282px;
+    margin: 0 auto;
+    .training-marathons-title {
+        font-weight: 500;
+        color: var(--color-blue);
+        margin-bottom: var(--spacing-xxl);
+    }
+    .training-marathons-text {
+        color: var(--color-text-gray);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .training-marathons {
+        max-width: 380px;
+        padding-top: 351px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .training-marathons {
+        padding-top: 81px;
+    }
+}

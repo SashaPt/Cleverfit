@@ -1,0 +1,81 @@
+.confirm-card {
+    width: 539px;
+    max-width: 100%;
+    padding: 64px var(--spacing-xl) 56px;
+    .ant-card-body {
+        padding: 0;
+    }
+
+    .confirm-content {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    .ant-card-meta-avatar {
+        padding: 0;
+    }
+
+    .ant-card-meta-detail {
+        margin: var(--spacing-l) auto;
+        text-align: center;
+        width: 100%;
+        & > *:not(:last-child) {
+            margin: 0;
+        }
+    }
+
+    .ant-card-meta-title {
+        font-size: var(--fs-xl);
+        color: var(--color-black);
+        white-space: unset;
+    }
+
+    .ant-card-meta-description {
+        color: var(--color-text-gray);
+    }
+
+    .vi__container {
+        height: 40px;
+        gap: 12px;
+        margin: 0 auto;
+    }
+
+    .vi__character {
+        border: 1px solid var(--color-border-gray);
+        border-radius: 2px;
+        padding: 5px var(--spacing-s);
+        font-size: var(--fs-s);
+        line-height: 130%;
+        color: var(--color-black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-background);
+    }
+
+    .confirm-note {
+        display: block;
+        text-align: center;
+        color: var(--color-text-gray);
+    }
+    .confirm-invalid {
+        .vi__character {
+            border-color: #ff4d4f;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .confirm-card {
+        padding: var(--spacing-xl) var(--spacing-m);
+        .vi__container {
+            width: 280px;
+            gap: 8px;
+        }
+    }
+    .confirm-note {
+        width: 264px;
+        margin: 0 auto;
+    }
+}

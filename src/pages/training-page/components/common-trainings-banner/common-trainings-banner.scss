@@ -1,0 +1,77 @@
+.common-trainings-banner {
+    background: var(--color-background-lightgray);
+    text-align: center;
+    .ant-card-body {
+        padding: var(--spacing-xl) var(--spacing-l) var(--spacing-l);
+    }
+    .ant-card-meta {
+        margin: 0;
+    }
+    .ant-card-meta-title {
+        font-size: var(--fs-xl);
+        color: var(--color-blue);
+        white-space: unset;
+    }
+    .ant-card-meta-detail > div:not(:last-child) {
+        margin-bottom: var(--spacing-xl);
+    }
+    .ant-card-meta-description {
+        color: var(--color-text-gray);
+    }
+    .ant-card-actions {
+        background: var(--color-background-lightgray);
+        padding: var(--spacing-m) 88px;
+    }
+    .ant-card-actions > li {
+        margin: 0;
+        &:not(:last-child) {
+            border: none;
+            margin-right: var(--spacing-m);
+        }
+    }
+}
+.common-trainings-button-rand {
+    color: var(--color-primary-button-blue);
+    &:hover {
+        color: var(--color-link-blue-hover);
+    }
+}
+.common-trainings-button-my {
+    color: var(--color-black);
+}
+
+@media screen and (max-width: 900px) {
+    .common-trainings-banner {
+        .ant-card-actions {
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+        .ant-card-actions > li {
+            width: 100% !important;
+            &:not(:last-child) {
+                border: none;
+                margin: 0;
+            }
+        }
+    }
+    .common-trainings-button-rand,
+    .common-trainings-button-my {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .common-trainings-banner {
+        .ant-card-body {
+            padding: var(--spacing-xl) var(--spacing-xxs) var(--spacing-l);
+        }
+        .ant-card-actions {
+            padding: var(--spacing-m) 0;
+        }
+    }
+}

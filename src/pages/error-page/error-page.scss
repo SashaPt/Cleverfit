@@ -1,0 +1,42 @@
+.error-page {
+    background: url('/main_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.error-content {
+    background: unset;
+}
+
+.error-container {
+    margin: var(--spacing-l) 0 42px;
+    background:  var(--color-background);
+    border-radius: 8px;
+    padding: var(--spacing-l);
+    min-height: calc(100vh - 66px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ant-result-title {
+        font-weight: 500;
+        color: var(--color-black);
+    }
+
+    .ant-btn {
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .error-page {
+        ._container {
+            padding: 0;
+        }
+        .ant-result {
+            padding: 38.5px 0;
+        }
+    }
+}

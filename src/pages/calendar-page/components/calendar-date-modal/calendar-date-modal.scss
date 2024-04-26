@@ -1,0 +1,80 @@
+.calendar-modals .ant-modal-wrap {
+    position: unset;
+    overflow: unset;
+}
+
+.calendar-modals .ant-zoom-leave.ant-zoom-leave-active {
+    z-index: 1;
+}
+
+.calendar-date-modal {
+    width: 264px !important;
+    position: absolute;
+    z-index: 50;
+    padding: 0;
+
+    .ant-modal-header {
+        padding: var(--spacing-m) var(--spacing-s) 4px;
+        border: none;
+    }
+
+    .ant-modal-title {
+        font-size: var(--fs-x);
+        font-weight: 700;
+        color: var(--color-black);
+    }
+
+    .ant-modal-body {
+        padding: 0 var(--spacing-s);
+        min-height: 91px;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+    }
+
+    .ant-modal-close-x {
+        font-size: var(--fs-xs);
+        width: auto;
+        height: auto;
+        margin: 17px var(--spacing-m) 0 0;
+    }
+
+    .calendar-date-modal-header {
+        justify-content: space-between;
+    }
+
+    .ant-modal-footer {
+        padding: var(--spacing-s);
+    }
+}
+
+.calendar-date-modal-header {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-modal-close-button {
+    padding: 0;
+    background: transparent;
+    border: none;
+    height: auto;
+    z-index: 1;
+    width: unset;
+    flex-shrink: 0;
+}
+
+.calendar-date-modal-button {
+    height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+    .calendar-date-modal {
+        width: 312px !important;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+        transform-origin: unset !important;
+    }
+}

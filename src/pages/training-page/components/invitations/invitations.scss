@@ -1,0 +1,33 @@
+.invitations {
+    padding: var(--spacing-m) var(--spacing-l) var(--spacing-l);
+    border-radius: 2px;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.02);
+    background: var(--color-background-lightgray);
+}
+.invitations-sub {
+    color: var(--color-text-gray);
+    margin-bottom: var(--spacing-m);
+}
+.invitation-cards {
+    .ant-list-items {
+        display: grid;
+        gap: 8px;
+    }
+}
+
+.invitations-toggle-button {
+    margin-top: var(--spacing-m);
+    padding: 0px 7px;
+    height: 18px;
+}
+
+@media screen and (max-width: 900px) {
+    .invitations {
+        padding: var(--spacing-s);
+    }
+    .invitation-cards {
+        .ant-list-items {
+            gap: 16px;
+        }
+    }
+}

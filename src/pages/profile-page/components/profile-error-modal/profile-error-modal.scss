@@ -1,0 +1,48 @@
+.profile-error-modal {
+    padding: 0;
+    .ant-modal-content {
+        box-shadow: 0 9px 28px 8px rgba(0, 0, 0, 0.05), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+            0 3px 6px -4px rgba(0, 0, 0, 0.12);
+    }
+    .ant-card-meta-title {
+        white-space: unset;
+    }
+}
+
+.profile-error-modal-card {
+    border-radius: 4px;
+    width: 412px;
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-l);
+    max-width: 100%;
+    .ant-list-item-meta-title {
+        font-size: var(--fs-m);
+        margin-bottom: var(--spacing-xxs);
+        color: var(--color-black);
+    }
+
+    .ant-list-item-meta-description {
+        color: var(--color-text-gray);
+    }
+
+    .ant-card-actions {
+        border: none;
+        margin-top: var(--spacing-l);
+    }
+
+    .ant-card-actions > li {
+        margin: 0 auto;
+        text-align: right;
+    }
+}
+
+.profile-error-modal-button {
+    height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+    .profile-error-modal-save {
+        .profile-error-modal-card {
+            width: 328px;
+        }
+    }
+}

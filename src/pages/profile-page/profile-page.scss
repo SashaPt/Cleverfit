@@ -1,0 +1,121 @@
+.profile-page {
+    background: url('/main_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.profile-content {
+    background: unset;
+}
+
+.profile-container {
+    background: var(--color-background);
+    border-radius: 8px;
+    padding: var(--spacing-l);
+    margin-top: var(--spacing-l);
+    margin-bottom: 42px;
+    position: relative;
+    min-height: calc(100vh - 138px);
+}
+
+.profile-block {
+    max-width: 480px;
+    margin-bottom: var(--spacing-l);
+}
+
+.profile-subtitle {
+    font-weight: 500;
+    font-size: var(--fs-m);
+    color: var(--color-black);
+    margin-bottom: var(--spacing-l);
+}
+
+.profile-form-block {
+    display: flex;
+    gap: 24px;
+}
+
+.profile-inputs {
+    width: 100%;
+}
+
+.profile-input-wrapper {
+    margin-bottom: var(--spacing-m);
+    width: 100%;
+    .ant-input,
+    .ant-picker {
+        height: 40px;
+        width: 100%;
+    }
+    .ant-input-affix-wrapper {
+        padding: 0 11px;
+        .ant-input {
+            height: 38px;
+        }
+    }
+}
+
+.profile-info {
+    .profile-input-wrapper:first-child {
+        margin-bottom: var(--spacing-xl);
+    }
+    .profile-input-wrapper:nth-child(2) {
+        margin-bottom: 46px;
+    }
+    .ant-form-item-explain-error {
+        font-size: var(--fs-xs);
+    }
+}
+
+.profile-button-submit {
+    height: 40px;
+    font-size: var(--fs-m);
+    margin-top: 30px;
+}
+
+.profile-alert {
+    width: 395px;
+    max-width: calc(100% - 256px);
+    position: fixed;
+    bottom: 50px;
+    left: calc(50% + 104px);
+    transform: translateX(-50%);
+    .ant-alert-message {
+        color: var(--color-black);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .profile-page {
+        main ._container {
+            padding: 0;
+        }
+    }
+    .profile-block {
+        margin-bottom: 36px;
+    }
+    .profile-container {
+        padding: var(--spacing-m) var(--spacing-l);
+    }
+
+    .profile-form-block {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+    .profile-img {
+        margin: 0;
+    }
+
+    .profile-button-submit {
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .profile-alert {
+        max-width: calc(100% - 48px);
+        bottom: 48px;
+        left: 50%;
+    }
+}

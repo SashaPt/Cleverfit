@@ -1,0 +1,77 @@
+.registration-form {
+    width: 539px;
+    max-width: 100%;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    background: var(--color-background);
+    border-radius: 2px;
+    padding: 64px 85.5px;
+
+    .logo {
+        margin: 0 auto var(--spacing-xxl);
+    }
+
+    .ant-form-item {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .ant-input-wrapper,
+    .ant-input-affix-wrapper {
+        height: 40px;
+    }
+
+    .ant-input-group-addon {
+        color: var(--color-black);
+    }
+
+    .ant-input-group-wrapper-status-error .ant-input-group-addon {
+        border-right-color: var(--color-border-gray);
+    }
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+        border-left-color: var(--color-border-gray);
+    }
+
+    .ant-input {
+        padding: var(--spacing-xs) 11px;
+        color: var(--color-black);
+    }
+
+    .ant-form-item-explain-error {
+        font-size: var(--fs-xs);
+    }
+
+    .registration-form-google:not([disabled]):hover {
+        color: var(--color-link-blue-hover);
+        border-color: var(--color-link-blue-hover);
+    }
+
+    .registration-form-button-wrapper {
+        margin-bottom: var(--spacing-m);
+    }
+
+    .registration-form-google {
+        color: var(--color-black);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .registration-form {
+        padding: var(--spacing-xl) var(--spacing-m) 92px;
+
+        .logo {
+            height: 50px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .registration-form-button {
+            font-size: var(--fs-s);
+        }
+
+        .registration-form-google {
+            font-size: var(--fs-s);
+            .anticon {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,118 @@
+.search-partners-line {
+    display: flex;
+    align-items: center;
+    gap: 159px;
+    margin-bottom: var(--spacing-l);
+    .ant-input-group {
+        max-width: 484px;
+    }
+    .ant-input-search-button,
+    .ant-input-affix-wrapper {
+        height: 31px;
+    }
+}
+
+.search-partners-back {
+    height: 38px;
+    padding: 0;
+    flex-shrink: 0;
+    font-size: var(--fs-l);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    .anticon {
+        display: flex;
+    }
+    & > .anticon + span {
+        margin-left: var(--spacing-m);
+    }
+}
+
+.search-partners-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .ant-list-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .ant-list-item {
+        border: none;
+        padding: 0;
+    }
+}
+
+.search-partners {
+    .ant-list-pagination {
+        margin: 0;
+        align-items: center;
+    }
+    .ant-pagination-prev,
+    .ant-pagination-next {
+        height: 24px;
+        min-width: 24px;
+        margin: 0;
+        .ant-pagination-item-link {
+            border: none;
+        }
+    }
+    .ant-pagination .ant-pagination-item {
+        height: 20px;
+        min-width: 24px;
+        margin: 0;
+        &:not(.ant-pagination-item-active) {
+            border: none;
+        }
+    }
+    .ant-pagination-item a {
+        padding: 0 7px;
+        color: var(--color-black);
+    }
+    .ant-pagination-item-active {
+        border-color: var(--color-primary-button-blue);
+        a {
+            color: var(--color-primary-button-blue);
+        }
+    }
+}
+@media screen and (max-width: 900px) {
+    .search-partners-line {
+        gap: 64px;
+        max-width: 535px;
+        .ant-input-group {
+            max-width: 380px;
+        }
+    }
+    .search-partners-cards {
+        gap: 12px;
+        .ant-list-items {
+            gap: 12px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search-partners {
+        padding: 0 var(--spacing-s);
+    }
+    .search-partners-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        max-width: 100%;
+        margin-bottom: 20px;
+        .ant-input-group {
+            max-width: 100%;
+        }
+    }
+    .search-partners-back {
+        height: 32px;
+        font-size: var(--fs-m);
+    }
+    .search-partners-cards {
+        .ant-list-item {
+            width: 100%;
+        }
+    }
+}

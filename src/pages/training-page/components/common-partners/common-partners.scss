@@ -1,0 +1,23 @@
+.common-partners {
+    padding-top: 16px;
+    .common-partners-title {
+        color: var(--color-black);
+        font-weight: 500;
+        margin-bottom: var(--spacing-s);
+    }
+}
+.common-partners-empty {
+    color: var(--color-text-gray);
+}
+
+.common-partners-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+@media screen and (max-width: 600px) {
+    .common-partners-cards>div {
+        width: 100%;
+    }
+}

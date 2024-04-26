@@ -1,0 +1,112 @@
+.main-content {
+    background: unset;
+}
+
+.main-page {
+    background: url('/main_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main-page .ant-space-item {
+    display: flex;
+}
+
+.main-container {
+    max-width: 100%;
+    width: 752px;
+    padding: var(--spacing-l) 0 0;
+}
+
+.main-page .ant-layout-content {
+    padding-bottom: 180px;
+}
+
+.main-card {
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+}
+
+.main-card-blue .ant-typography {
+    color: var(--color-blue);
+    font-size: var(--fs-m);
+}
+
+.main-card-black .ant-typography {
+    color: var(--color-black);
+    font-size: var(--fs-l);
+    font-weight: 500;
+    margin: 0;
+}
+
+.main-cards {
+    margin-top: var(--spacing-xxs);
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.main-cards .ant-card {
+    width: 100%;
+    height: 100%;
+}
+
+.main-cards .ant-card-head {
+    min-height: unset;
+    padding: 0;
+}
+
+.main-cards .ant-card-head-title {
+    text-align: center;
+    padding: var(--spacing-s) var(--spacing-l);
+    color: var(--color-black);
+    white-space: unset;
+    text-overflow: unset;
+}
+
+.card-btn {
+    background-color: transparent !important;
+    color: var(--color-primary-button-blue);
+}
+
+.card-btn:hover,
+.card-btn:active {
+    color: var(--color-link-blue-hover);
+}
+
+.card-btn:focus {
+    color: #1d39c4;
+}
+
+@media screen and (max-width: 900px) {
+    .main-cards {
+        grid-template-columns: repeat(auto-fit, minmax(182px, 1fr));
+    }
+
+    .main-cards .ant-card-head-title {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-page .ant-layout-content {
+        padding-bottom: var(--spacing-l);
+    }
+    .main-page .ant-layout-content ._container {
+        padding: 0 var(--spacing-m);
+    }
+
+    .main-card .ant-card-body {
+        padding: var(--spacing-m);
+    }
+
+    .main-cards {
+        gap: 8px;
+    }
+
+    .main-cards .ant-card-head-title {
+        text-align: center;
+    }
+}

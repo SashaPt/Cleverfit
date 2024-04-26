@@ -1,0 +1,110 @@
+.login-form {
+    width: 539px;
+    max-width: 100%;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    background: var(--color-background);
+    border-radius: 2px;
+    padding: 64px 85.5px 142px;
+
+    .logo {
+        margin: 0 auto var(--spacing-xxl);
+    }
+
+    .login-form-forgot:not([disabled]):not(:hover) {
+        color: var(--color-primary-button-blue);
+    }
+
+    .login-form-google:not([disabled]):hover {
+        color: var(--color-link-blue-hover);
+        border-color: var(--color-link-blue-hover);
+    }
+
+    .ant-checkbox-inner,
+    .ant-checkbox-checked .ant-checkbox-inner {
+        border-color: var(--color-primary-button-blue);
+    }
+
+    .ant-form-item {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .ant-input-wrapper,
+    .ant-input-affix-wrapper {
+        height: 40px;
+    }
+
+    .ant-input-group-addon {
+        color: var(--color-black);
+    }
+
+    .ant-input-group-wrapper-status-error .ant-input-group-addon {
+        border-right-color: var(--color-border-gray);
+    }
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+        border-left-color: var(--color-border-gray);
+    }
+
+    .ant-input {
+        padding: var(--spacing-xs) 11px;
+        color: var(--color-black);
+    }
+
+    .ant-form-item-explain-error {
+        font-size: var(--fs-xs);
+    }
+
+    .form-item-container {
+        margin-bottom: var(--spacing-l);
+        .ant-form-item-control-input {
+            min-height: unset;
+        }
+        .ant-form-item-control-input-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 22px;
+        }
+    }
+
+    .login-form-button-wrapper {
+        margin-bottom: var(--spacing-m);
+    }
+
+    .login-form-forgot {
+        padding: 0;
+        height: 24px;
+    }
+
+    .login-form-google {
+        color: var(--color-black);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .login-form {
+        padding: var(--spacing-xl) var(--spacing-m) 92px;
+
+        .logo {
+            height: 50px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .login-form-forgot {
+            padding: 0 7px;
+            height: 18px;
+            font-size: var(--fs-s);
+        }
+
+        .login-form-button {
+            font-size: var(--fs-s);
+        }
+
+        .login-form-google {
+            font-size: var(--fs-s);
+            .anticon {
+                display: none;
+            }
+        }
+    }
+}

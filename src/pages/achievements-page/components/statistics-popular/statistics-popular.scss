@@ -1,0 +1,33 @@
+.statistics-popular {
+    padding: 36px var(--spacing-s);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: var(--spacing-l);
+}
+
+.statistics-popular-line {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.statistics-popular-title {
+    min-width: 188px;
+    color: var(--color-text-gray);
+    font-size: var(--fs-s);
+}
+.statistics-popular-value {
+    color: var(--color-black);
+    font-size: var(--fs-xl);
+    font-weight: 500;
+}
+
+@media screen and (max-width: 900px) {
+    .statistics-popular {
+        padding: var(--spacing-s) 0;
+    }
+    .statistics-popular-title {
+        min-width: 157px;
+    }
+}

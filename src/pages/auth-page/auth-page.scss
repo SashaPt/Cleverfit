@@ -1,0 +1,14 @@
+.auth-page {
+    background: url('/auth_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    justify-content: center;
+
+    ._container {
+        padding: 0 var(--spacing-m);
+        display: flex;
+    }
+}
