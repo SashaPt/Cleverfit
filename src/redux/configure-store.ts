@@ -12,8 +12,10 @@ import { calendarApi } from '../services/calendarApi';
 import { profileApi } from '../services/profileApi';
 import { trainingApi } from '../services/trainingApi';
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
-    history: createBrowserHistory(),
+    history: createBrowserHistory({ basename }),
 });
 
 export const store = configureStore({
